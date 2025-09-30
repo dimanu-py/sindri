@@ -8,7 +8,7 @@ from value_object.errors.invalid_id_format_error import (
     InvalidIdFormatError,
 )
 from value_object.errors.required_value_error import RequiredValueError
-from value_object.value_objects.usables.uuid import (
+from value_object.value_objects.primitives.uuid import (
     Uuid,
 )
 from test.value_objects.uuid_primitives_mother import (
