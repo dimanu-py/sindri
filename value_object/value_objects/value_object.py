@@ -1,6 +1,6 @@
 from abc import ABC
 from collections.abc import Callable
-from typing import override, Self
+from typing import Self, override
 
 
 class ValueObject[T](ABC):
@@ -19,9 +19,16 @@ class ValueObject[T](ABC):
         for cls in reversed(self.__class__.__mro__):
             if cls is object:
                 continue
+
+            methods: list[tuple[int, Callable[[T], None]]] = []
             for name, member in cls.__dict__.items():
                 if getattr(member, "_is_validator", False):
                     validators.append(getattr(self, name))
+                    order: int = getattr(member, "_order", 0)
+                    methods.append((order, getattr(self, name)))
+
+            for _, method in sorted(methods, key=lambda item: item[0]):
+                validators.append(method)
 
         for validator in validators:
             validator(value)
