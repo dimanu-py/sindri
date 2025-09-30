@@ -1,0 +1,24 @@
+from value_object.errors.incorrect_value_type_error import IncorrectValueTypeError
+from value_object.errors.invalid_id_format_error import InvalidIdFormatError
+from value_object.errors.required_value_error import RequiredValueError
+from value_object.value_objects.decorators.validation import validate
+from value_object.value_objects.value_object import ValueObject
+
+
+class Uuid(ValueObject[str]):
+    @validate
+    def _ensure_has_value(self, value: str) -> None:
+        if value is None:
+            raise RequiredValueError
+
+    @validate
+    def _ensure_value_is_string(self, value: str) -> None:
+        if not isinstance(value, str):
+            raise IncorrectValueTypeError(value)
+
+    @validate
+    def _ensure_value_has_valid_uuid_format(self, value: str) -> None:
+        try:
+            UUID(value)
+        except ValueError:
+            raise InvalidIdFormatError
