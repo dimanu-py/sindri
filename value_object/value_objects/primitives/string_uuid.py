@@ -7,7 +7,7 @@ from value_object.value_objects.decorators.validation import validate
 from value_object.value_objects.value_object import ValueObject
 
 
-class Uuid(ValueObject[str]):
+class StringUuid(ValueObject[str]):
     """
     A value object that wraps UUID (Universally Unique Identifier) string values with validation.
 
@@ -27,7 +27,7 @@ class Uuid(ValueObject[str]):
         >>> import uuid
         >>>
         >>> # Using as a simple UUID wrapper
-        >>> user_uuid = Uuid("123e4567-e89b-12d3-a456-426614174000")
+        >>> user_uuid = StringUuid("123e4567-e89b-12d3-a456-426614174000")
         >>> user_uuid.value
         '123e4567-e89b-12d3-a456-426614174000'
         >>> str(user_uuid)
@@ -35,9 +35,9 @@ class Uuid(ValueObject[str]):
         >>>
         >>> # Creating from generated UUID
         >>> generated_id = str(uuid.uuid4())
-        >>> entity_id = Uuid(generated_id)
+        >>> entity_id = StringUuid(generated_id)
         >>>
-        >>> class UserId(Uuid):
+        >>> class UserId(StringUuid):
         ...     @validate
         ...     def _validate_version(self, value: str) -> None:
         ...         parsed_uuid = UUID(value)
@@ -62,7 +62,7 @@ class Uuid(ValueObject[str]):
             RequiredValueError: If the value is None.
 
         Example:
-            >>> Uuid("123e4567-e89b-12d3-a456-426614174000")  # Valid
+            >>> StringUuid("123e4567-e89b-12d3-a456-426614174000")  # Valid
             Uuid('123e4567-e89b-12d3-a456-426614174000')
             >>> # Uuid(None)  # Would raise RequiredValueError
         """
@@ -85,7 +85,7 @@ class Uuid(ValueObject[str]):
             IncorrectValueTypeError: If the value is not a string.
 
         Example:
-            >>> Uuid("123e4567-e89b-12d3-a456-426614174000")  # Valid string
+            >>> StringUuid("123e4567-e89b-12d3-a456-426614174000")  # Valid string
             Uuid('123e4567-e89b-12d3-a456-426614174000')
             >>> # import uuid
             >>> # Uuid(uuid.uuid4())  # Would raise IncorrectValueTypeError (UUID object)
@@ -111,9 +111,9 @@ class Uuid(ValueObject[str]):
 
         Example:
             >>> # Valid UUID formats
-            >>> Uuid("123e4567-e89b-12d3-a456-426614174000")  # Standard format
+            >>> StringUuid("123e4567-e89b-12d3-a456-426614174000")  # Standard format
             Uuid('123e4567-e89b-12d3-a456-426614174000')
-            >>> Uuid("123e4567e89b12d3a456426614174000")  # Without hyphens
+            >>> StringUuid("123e4567e89b12d3a456426614174000")  # Without hyphens
             Uuid('123e4567e89b12d3a456426614174000')
             >>>
             >>> # Invalid formats would raise InvalidIdFormatError:
