@@ -12,31 +12,35 @@ from test.mothers.string_primitives_mother import (
     StringPrimitivesMother,
 )
 
+pytestmark = pytest.mark.unit
 
-@pytest.mark.unit
-class TestStringValueObject:
-    def test_should_create_string_value_object(self) -> None:
-        value = StringPrimitivesMother.any()
 
-        string = StringValueObject(value)
+def test_should_create_string_value_object() -> None:
+    value = StringPrimitivesMother.any()
 
-        expect(string.value).to(equal(value))
+    string = StringValueObject(value)
 
-    def test_should_raise_error_when_value_is_none(self) -> None:
-        expect(lambda: StringValueObject(None)).to(raise_error(RequiredValueError))
+    expect(string.value).to(equal(value))
 
-    def test_should_raise_error_when_value_is_not_string(self) -> None:
-        expect(lambda: StringValueObject(123)).to(raise_error(IncorrectValueTypeError))
 
-    def test_should_compare_equal_with_same_value(self) -> None:
-        common_value = StringPrimitivesMother.any()
-        first_string = StringValueObject(common_value)
-        second_string = StringValueObject(common_value)
+def test_should_raise_error_when_value_is_none() -> None:
+    expect(lambda: StringValueObject(None)).to(raise_error(RequiredValueError))
 
-        expect(first_string).to(equal(second_string))
 
-    def test_should_not_be_equal_with_different_values(self) -> None:
-        first_string = StringValueObject(StringPrimitivesMother.any())
-        second_string = StringValueObject(StringPrimitivesMother.any())
+def test_should_raise_error_when_value_is_not_string() -> None:
+    expect(lambda: StringValueObject(123)).to(raise_error(IncorrectValueTypeError))
 
-        expect(first_string).to_not(equal(second_string))
+
+def test_should_compare_equal_with_same_value() -> None:
+    common_value = StringPrimitivesMother.any()
+    first_string = StringValueObject(common_value)
+    second_string = StringValueObject(common_value)
+
+    expect(first_string).to(equal(second_string))
+
+
+def test_should_not_be_equal_with_different_values() -> None:
+    first_string = StringValueObject(StringPrimitivesMother.any())
+    second_string = StringValueObject(StringPrimitivesMother.any())
+
+    expect(first_string).to_not(equal(second_string))
