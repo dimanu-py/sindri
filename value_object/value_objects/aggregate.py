@@ -67,7 +67,7 @@ class Aggregate(ABC):
         missing_names = ", ".join(sorted(missing))
         extra_names = ", ".join(sorted(extra))
 
-        raise ValueError(f'{cls.__name__} primitives <<<{primitives_names}>>> must contain all constructor parameters. Missing parameters: <<<{missing_names}>> and extra parameters: <<<{extra_names}>>>.')  # noqa: E501  # fmt: skip
+        raise ValueError(f'{cls.__name__} primitives <<<{primitives_names}>>> must contain all constructor parameters. Missing parameters: <<<{missing_names}>>> and extra parameters: <<<{extra_names}>>>.')  # noqa: E501  # fmt: skip
 
     def to_primitives(self) -> dict[str, Any]:
         primitives = self._to_dict()
