@@ -4,7 +4,7 @@ from value_object.value_objects.decorators.validation import validate
 from value_object.value_objects.value_object import ValueObject
 
 
-class StringValueObject(ValueObject[str]):
+class String(ValueObject[str]):
     """
     A value object that wraps string values with validation.
 
@@ -20,7 +20,7 @@ class StringValueObject(ValueObject[str]):
     equality comparison, string representation, and hashing.
 
     Example:
-        >>> class Email(StringValueObject):
+        >>> class Email(String):
         ...     @validate
         ...     def _validate_email_format(self, value: str) -> None:
         ...         if "@" not in value:
@@ -46,9 +46,9 @@ class StringValueObject(ValueObject[str]):
             RequiredValueError: If the value is None.
 
         Example:
-            >>> StringValueObject("hello")  # Valid
+            >>> String("hello")  # Valid
             StringValueObject('hello')
-            >>> StringValueObject("")  # Valid empty string
+            >>> String("")  # Valid empty string
             StringValueObject('')
             >>> # StringValueObject(None)  # Would raise RequiredValueError
         """
@@ -71,7 +71,7 @@ class StringValueObject(ValueObject[str]):
             IncorrectValueTypeError: If the value is not a string.
 
         Example:
-            >>> StringValueObject("hello")  # Valid string
+            >>> String("hello")  # Valid string
             StringValueObject('hello')
             >>> # StringValueObject(123)  # Would raise IncorrectValueTypeError
             >>> # StringValueObject(['a', 'b'])  # Would raise IncorrectValueTypeError
