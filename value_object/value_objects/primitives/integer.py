@@ -4,7 +4,7 @@ from value_object.value_objects.decorators.validation import validate
 from value_object.value_objects.value_object import ValueObject
 
 
-class IntValueObject(ValueObject[int]):
+class Integer(ValueObject[int]):
     """
     A value object that wraps integer values with validation.
 
@@ -20,7 +20,7 @@ class IntValueObject(ValueObject[int]):
     equality comparison, string representation, and hashing.
 
     Example:
-        >>> class Age(IntValueObject):
+        >>> class Age(Integer):
         ...     @validate
         ...     def _validate_positive(self, value: int) -> None:
         ...         if value < 0:
@@ -48,9 +48,9 @@ class IntValueObject(ValueObject[int]):
             RequiredValueError: If the value is None.
 
         Example:
-            >>> IntValueObject(42)  # Valid
+            >>> Integer(42)  # Valid
             IntValueObject(42)
-            >>> IntValueObject(None)  # Raises RequiredValueError
+            >>> Integer(None)  # Raises RequiredValueError
             Traceback (most recent call last):
                 ...
             RequiredValueError: ...
@@ -74,13 +74,13 @@ class IntValueObject(ValueObject[int]):
             IncorrectValueTypeError: If the value is not an integer.
 
         Example:
-            >>> IntValueObject(42)  # Valid integer
+            >>> Integer(42)  # Valid integer
             IntValueObject(42)
-            >>> IntValueObject(42.0)  # Raises IncorrectValueTypeError
+            >>> Integer(42.0)  # Raises IncorrectValueTypeError
             Traceback (most recent call last):
                 ...
             IncorrectValueTypeError: ...
-            >>> IntValueObject("42")  # Raises IncorrectValueTypeError
+            >>> Integer("42")  # Raises IncorrectValueTypeError
             Traceback (most recent call last):
                 ...
             IncorrectValueTypeError: ...
