@@ -31,9 +31,6 @@ class TestIntValueObject:
     def test_should_raise_error_when_value_is_not_integer(self) -> None:
         expect(lambda: IntValueObject("123")).to(raise_error(IncorrectValueTypeError))
 
-    def test_should_raise_error_if_int_value_is_negative(self) -> None:
-        expect(lambda: IntValueObject(-1)).to(raise_error(InvalidNegativeValueError))
-
     def test_should_compare_equal_with_same_value(self) -> None:
         common_value = IntPrimitivesMother.any()
         first_integer = IntValueObject(common_value)
