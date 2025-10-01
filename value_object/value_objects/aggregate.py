@@ -14,7 +14,7 @@ class Aggregate(ABC):
     @override
     def __repr__(self) -> str:
         attributes = []
-        for key, value in sorted(self._to_dict().items()):
+        for key, value in self._to_dict().items():
             attributes.append(f"{key}={value!r}")
 
         return f"{self.__class__.__name__}({', '.join(attributes)})"
