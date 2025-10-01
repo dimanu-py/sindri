@@ -39,6 +39,8 @@ class ValueObject[T](ABC):
 
     @override
     def __eq__(self, other: Self) -> bool:
+        if not isinstance(other, self.__class__):
+            return NotImplemented("Cannot compare ValueObject with different type")
         return self.value == other.value
 
     @override
