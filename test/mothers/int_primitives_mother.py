@@ -1,4 +1,4 @@
-from test.random_generator import RandomGenerator
+from test.mothers.random_generator import RandomGenerator
 
 
 class IntPrimitivesMother:

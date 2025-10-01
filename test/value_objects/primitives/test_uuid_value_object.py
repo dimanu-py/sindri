@@ -11,7 +11,7 @@ from value_object.errors.required_value_error import RequiredValueError
 from value_object.value_objects.primitives.uuid import (
     Uuid,
 )
-from test.value_objects.uuid_primitives_mother import (
+from test.mothers.uuid_primitives_mother import (
     UuidPrimitivesMother,
 )
 

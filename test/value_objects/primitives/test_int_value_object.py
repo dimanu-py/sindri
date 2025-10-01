@@ -4,14 +4,11 @@ from expects import expect, equal, raise_error
 from value_object.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
-from value_object.errors.invalid_negative_value_error import (
-    InvalidNegativeValueError,
-)
 from value_object.errors.required_value_error import RequiredValueError
 from value_object.value_objects.primitives.int_value_object import (
     IntValueObject,
 )
-from test.value_objects.int_primitives_mother import (
+from test.mothers.int_primitives_mother import (
     IntPrimitivesMother,
 )
 

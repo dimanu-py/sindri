@@ -8,7 +8,7 @@ from value_object.errors.required_value_error import RequiredValueError
 from value_object.value_objects.primitives.string_value_object import (
     StringValueObject,
 )
-from test.value_objects.string_primitives_mother import (
+from test.mothers.string_primitives_mother import (
     StringPrimitivesMother,
 )
 
