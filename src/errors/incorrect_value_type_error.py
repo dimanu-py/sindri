@@ -1,6 +1,6 @@
 from typing import TypeVar
 
-from value_object.errors.validation_error import ValidationError
+from src.errors.validation_error import ValidationError
 
 T = TypeVar("T")
 

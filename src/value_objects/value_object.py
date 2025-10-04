@@ -17,7 +17,7 @@ class ValueObject[T](ABC):
         _value: The internal value stored by this value object.
 
     Example:
-        >>> from value_object import ValueObject
+        >>> from src import ValueObject
         >>>
         >>> class String(ValueObject[str]):
         ...     pass
@@ -45,7 +45,7 @@ class ValueObject[T](ABC):
             Various validation errors depending on the specific value object implementation.
 
         Example:
-            >>> from value_object import ValueObject
+            >>> from src import ValueObject
             >>>
             >>> class String(ValueObject[str]):
             ...     pass

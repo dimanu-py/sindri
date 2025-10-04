@@ -2,9 +2,9 @@ import pytest
 from typing import TypeVar, Dict, Optional
 from expects import expect, equal, raise_error
 
-from value_object.errors.incorrect_value_type_error import IncorrectValueTypeError
-from value_object.errors.required_value_error import RequiredValueError
-from value_object.value_objects.primitives.list import List
+from src.errors.incorrect_value_type_error import IncorrectValueTypeError
+from src.errors.required_value_error import RequiredValueError
+from src.value_objects.primitives.list import List
 from test.mothers.list_primitives_mother import ListPrimitivesMother
 
 pytestmark = pytest.mark.unit

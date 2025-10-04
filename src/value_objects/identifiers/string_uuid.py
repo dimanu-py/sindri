@@ -1,10 +1,10 @@
 from uuid import UUID
 
-from value_object.errors.incorrect_value_type_error import IncorrectValueTypeError
-from value_object.errors.invalid_id_format_error import InvalidIdFormatError
-from value_object.errors.required_value_error import RequiredValueError
-from value_object.value_objects.decorators.validation import validate
-from value_object.value_objects.value_object import ValueObject
+from src.errors.incorrect_value_type_error import IncorrectValueTypeError
+from src.errors.invalid_id_format_error import InvalidIdFormatError
+from src.errors.required_value_error import RequiredValueError
+from src.value_objects.decorators.validation import validate
+from src.value_objects.value_object import ValueObject
 
 
 class StringUuid(ValueObject[str]):

@@ -1,4 +1,4 @@
-from value_object.errors.validation_error import ValidationError
+from src.errors.validation_error import ValidationError
 
 
 class RequiredValueError(ValidationError):

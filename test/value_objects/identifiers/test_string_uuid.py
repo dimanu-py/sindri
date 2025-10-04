@@ -1,14 +1,14 @@
 import pytest
 from expects import expect, equal, raise_error
 
-from value_object.errors.incorrect_value_type_error import (
+from src.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
-from value_object.errors.invalid_id_format_error import (
+from src.errors.invalid_id_format_error import (
     InvalidIdFormatError,
 )
-from value_object.errors.required_value_error import RequiredValueError
-from value_object.value_objects.identifiers.string_uuid import (
+from src.errors.required_value_error import RequiredValueError
+from src.value_objects.identifiers.string_uuid import (
     StringUuid,
 )
 from test.mothers.uuid_primitives_mother import (

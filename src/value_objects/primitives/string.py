@@ -1,7 +1,7 @@
-from value_object.errors.incorrect_value_type_error import IncorrectValueTypeError
-from value_object.errors.required_value_error import RequiredValueError
-from value_object.value_objects.decorators.validation import validate
-from value_object.value_objects.value_object import ValueObject
+from src.errors.incorrect_value_type_error import IncorrectValueTypeError
+from src.errors.required_value_error import RequiredValueError
+from src.value_objects.decorators.validation import validate
+from src.value_objects.value_object import ValueObject
 
 
 class String(ValueObject[str]):

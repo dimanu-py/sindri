@@ -1,11 +1,11 @@
 import pytest
 from expects import expect, equal, raise_error
 
-from value_object.errors.incorrect_value_type_error import (
+from src.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
-from value_object.errors.required_value_error import RequiredValueError
-from value_object.value_objects.primitives.float import (
+from src.errors.required_value_error import RequiredValueError
+from src.value_objects.primitives.float import (
     Float,
 )
 from test.mothers.float_primitives_mother import (
