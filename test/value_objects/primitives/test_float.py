@@ -61,7 +61,7 @@ def test_should_not_be_equal_with_different_values() -> None:
     expect(first_float).to_not(equal(second_float))
 
 
-def test_should_maintain_immutability() -> None:
+def test_should_not_allow_to_modify_value() -> None:
     value = FloatPrimitivesMother.any()
     float_obj = Float(value)
 
@@ -69,3 +69,55 @@ def test_should_maintain_immutability() -> None:
         float_obj._value = value + 1.0
 
     expect(modify_value).to(raise_error(AttributeError))
+
+
+def test_should_have_consistent_hash_for_equal_values() -> None:
+    value = FloatPrimitivesMother.any()
+    first_float = Float(value)
+    second_float = Float(value)
+
+    expect(hash(first_float)).to(equal(hash(second_float)))
+
+
+def test_should_have_different_hash_for_different_values() -> None:
+    positive_float = Float(FloatPrimitivesMother.positive())
+    negative_float = Float(FloatPrimitivesMother.negative())
+
+    expect(hash(positive_float)).to_not(equal(hash(negative_float)))
+
+
+def test_should_be_usable_as_dict_key() -> None:
+    positive_float = Float(1.5)
+    negative_float = Float(-2.5)
+
+    test_dict = {positive_float: "positive_value", negative_float: "negative_value"}
+
+    expect(test_dict[Float(1.5)]).to(equal("positive_value"))
+    expect(test_dict[Float(-2.5)]).to(equal("negative_value"))
+
+
+def test_should_be_usable_in_sets() -> None:
+    float1 = Float(3.14)
+    float2 = Float(3.14)
+    float3 = Float(2.71)
+
+    float_set = {float1, float2, float3}
+
+    expect(len(float_set)).to(equal(2))
+
+
+def test_should_not_allow_modifying_value_through_public_name() -> None:
+    float_obj = Float(1.0)
+
+    def modify_public_value() -> None:
+        float_obj.value = 2.0
+
+    expect(modify_public_value).to(raise_error(AttributeError))
+
+
+def test_should_provide_access_to_wrapped_value() -> None:
+    test_value = FloatPrimitivesMother.any()
+    float_obj = Float(test_value)
+
+    expect(float_obj.value).to(equal(test_value))
+    expect(type(float_obj.value)).to(equal(float))

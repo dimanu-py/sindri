@@ -59,3 +59,65 @@ def test_should_not_be_equal_with_different_values() -> None:
     second_string = String("world")
 
     expect(first_string).to_not(equal(second_string))
+
+
+def test_should_not_allow_to_modify_value() -> None:
+    value = StringPrimitivesMother.any()
+    string = String(value)
+
+    def modify_value() -> None:
+        string._value = "modified"
+
+    expect(modify_value).to(raise_error(AttributeError))
+
+
+def test_should_have_consistent_hash_for_equal_values() -> None:
+    value = StringPrimitivesMother.any()
+    first_string = String(value)
+    second_string = String(value)
+
+    expect(hash(first_string)).to(equal(hash(second_string)))
+
+
+def test_should_have_different_hash_for_different_values() -> None:
+    first_string = String("hello")
+    second_string = String("world")
+
+    expect(hash(first_string)).to_not(equal(hash(second_string)))
+
+
+def test_should_be_usable_as_dict_key() -> None:
+    hello_string = String("hello")
+    world_string = String("world")
+
+    test_dict = {hello_string: "hello_value", world_string: "world_value"}
+
+    expect(test_dict[String("hello")]).to(equal("hello_value"))
+    expect(test_dict[String("world")]).to(equal("world_value"))
+
+
+def test_should_be_usable_in_sets() -> None:
+    hello_string = String("hello")
+    hello_string_duplicated = String("hello")
+    world_string = String("world")
+
+    string_set = {hello_string, hello_string_duplicated, world_string}
+
+    expect(len(string_set)).to(equal(2))
+
+
+def test_should_not_allow_modifying_value_through_public_name() -> None:
+    string = String("original")
+
+    def modify_public_value() -> None:
+        string.value = "modified"
+
+    expect(modify_public_value).to(raise_error(AttributeError))
+
+
+def test_should_provide_access_to_wrapped_value() -> None:
+    value = StringPrimitivesMother.any()
+    string = String(value)
+
+    expect(string.value).to(equal(value))
+    expect(type(string.value)).to(equal(str))

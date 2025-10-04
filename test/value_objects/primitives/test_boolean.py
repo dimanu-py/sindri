@@ -74,3 +74,55 @@ def test_should_not_allow_to_modify_value() -> None:
         boolean._value = not value
 
     expect(modify_value).to(raise_error(AttributeError))
+
+
+def test_should_have_consistent_hash_for_equal_values() -> None:
+    value = BooleanPrimitivesMother.true()
+    first_boolean = Boolean(value)
+    second_boolean = Boolean(value)
+
+    expect(hash(first_boolean)).to(equal(hash(second_boolean)))
+
+
+def test_should_have_different_hash_for_different_values() -> None:
+    true_boolean = Boolean(BooleanPrimitivesMother.true())
+    false_boolean = Boolean(BooleanPrimitivesMother.false())
+
+    expect(hash(true_boolean)).to_not(equal(hash(false_boolean)))
+
+
+def test_should_be_usable_as_dict_key() -> None:
+    true_boolean = Boolean(BooleanPrimitivesMother.true())
+    false_boolean = Boolean(BooleanPrimitivesMother.false())
+
+    test_dict = {true_boolean: "true_value", false_boolean: "false_value"}
+
+    expect(test_dict[Boolean(True)]).to(equal("true_value"))
+    expect(test_dict[Boolean(False)]).to(equal("false_value"))
+
+
+def test_should_be_usable_in_sets() -> None:
+    true_boolean = Boolean(BooleanPrimitivesMother.true())
+    true_boolean_duplicated = Boolean(BooleanPrimitivesMother.true())
+    false_boolean = Boolean(BooleanPrimitivesMother.false())
+
+    boolean_set = {true_boolean, true_boolean_duplicated, false_boolean}
+
+    expect(len(boolean_set)).to(equal(2))
+
+
+def test_should_not_allow_modifying_value_through_public_name() -> None:
+    boolean_obj = Boolean(BooleanPrimitivesMother.true())
+
+    def modify_public_value() -> None:
+        boolean_obj.value = False
+
+    expect(modify_public_value).to(raise_error(AttributeError))
+
+
+def test_should_provide_access_to_wrapped_value() -> None:
+    value = BooleanPrimitivesMother.any()
+    boolean = Boolean(value)
+
+    expect(boolean.value).to(equal(value))
+    expect(type(boolean.value)).to(equal(bool))

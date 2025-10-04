@@ -63,3 +63,65 @@ def test_should_not_be_equal_with_different_values() -> None:
     second_integer = Integer(24)
 
     expect(first_integer).to_not(equal(second_integer))
+
+
+def test_should_not_allow_to_modify_value() -> None:
+    value = IntPrimitivesMother.any()
+    integer = Integer(value)
+
+    def modify_value() -> None:
+        integer._value = value + 1
+
+    expect(modify_value).to(raise_error(AttributeError))
+
+
+def test_should_have_consistent_hash_for_equal_values() -> None:
+    value = IntPrimitivesMother.any()
+    first_integer = Integer(value)
+    second_integer = Integer(value)
+
+    expect(hash(first_integer)).to(equal(hash(second_integer)))
+
+
+def test_should_have_different_hash_for_different_values() -> None:
+    first_integer = Integer(42)
+    second_integer = Integer(24)
+
+    expect(hash(first_integer)).to_not(equal(hash(second_integer)))
+
+
+def test_should_be_usable_as_dict_key() -> None:
+    forty_two = Integer(42)
+    twenty_four = Integer(24)
+
+    test_dict = {forty_two: "forty_two_value", twenty_four: "twenty_four_value"}
+
+    expect(test_dict[Integer(42)]).to(equal("forty_two_value"))
+    expect(test_dict[Integer(24)]).to(equal("twenty_four_value"))
+
+
+def test_should_be_usable_in_sets() -> None:
+    forty_two = Integer(42)
+    forty_two_duplicated = Integer(42)
+    twenty_four = Integer(24)
+
+    integer_set = {forty_two, forty_two_duplicated, twenty_four}
+
+    expect(len(integer_set)).to(equal(2))
+
+
+def test_should_not_allow_modifying_value_through_public_name() -> None:
+    integer = Integer(IntPrimitivesMother.any())
+
+    def modify_public_value() -> None:
+        integer.value = 24
+
+    expect(modify_public_value).to(raise_error(AttributeError))
+
+
+def test_should_provide_access_to_wrapped_value() -> None:
+    value = IntPrimitivesMother.any()
+    integer = Integer(value)
+
+    expect(integer.value).to(equal(value))
+    expect(type(integer.value)).to(equal(int))
