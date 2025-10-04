@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 from expects import expect, equal, raise_error
 
@@ -15,48 +17,38 @@ from test.mothers.boolean_primitives_mother import (
 pytestmark = pytest.mark.unit
 
 
-def test_should_create_boolean_value_object() -> None:
-    value = BooleanPrimitivesMother.any()
-
+@pytest.mark.parametrize(
+    "value",
+    [
+        pytest.param(BooleanPrimitivesMother.any(), id="random value"),
+        pytest.param(BooleanPrimitivesMother.true(), id="true value"),
+        pytest.param(BooleanPrimitivesMother.false(), id="false value"),
+    ],
+)
+def test_should_create_boolean_value_object(value: bool) -> None:
     boolean_obj = Boolean(value)
 
     expect(boolean_obj.value).to(equal(value))
-
-
-def test_should_create_boolean_value_object_with_true() -> None:
-    value = BooleanPrimitivesMother.true()
-
-    boolean_obj = Boolean(value)
-
-    expect(boolean_obj.value).to(equal(True))
-
-
-def test_should_create_boolean_value_object_with_false() -> None:
-    value = BooleanPrimitivesMother.false()
-
-    boolean_obj = Boolean(value)
-
-    expect(boolean_obj.value).to(equal(False))
 
 
 def test_should_raise_error_when_value_is_none() -> None:
     expect(lambda: Boolean(None)).to(raise_error(RequiredValueError))
 
 
-def test_should_raise_error_when_value_is_not_boolean() -> None:
-    expect(lambda: Boolean(1)).to(raise_error(IncorrectValueTypeError))
-
-
-def test_should_raise_error_when_value_is_zero() -> None:
-    expect(lambda: Boolean(0)).to(raise_error(IncorrectValueTypeError))
-
-
-def test_should_raise_error_when_value_is_string() -> None:
-    expect(lambda: Boolean("true")).to(raise_error(IncorrectValueTypeError))
-
-
-def test_should_raise_error_when_value_is_string_false() -> None:
-    expect(lambda: Boolean("false")).to(raise_error(IncorrectValueTypeError))
+@pytest.mark.parametrize(
+    "invalid_value",
+    [
+        pytest.param(1, id="integer value"),
+        pytest.param(0, id="zero value"),
+        pytest.param("true", id="truthy string value"),
+        pytest.param("false", id="falsy string value"),
+        pytest.param("", id="empty falsy string"),
+        pytest.param([], id="empty falsy list"),
+        pytest.param({}, id="empty falsy dict"),
+    ],
+)
+def test_should_raise_error_when_value_has_invalid_type(invalid_value: Any) -> None:
+    expect(lambda: Boolean(invalid_value)).to(raise_error(IncorrectValueTypeError))
 
 
 def test_should_compare_equal_with_same_value() -> None:
@@ -68,28 +60,17 @@ def test_should_compare_equal_with_same_value() -> None:
 
 
 def test_should_not_be_equal_with_different_values() -> None:
-    first_boolean = Boolean(BooleanPrimitivesMother.true())
-    second_boolean = Boolean(BooleanPrimitivesMother.false())
+    true_boolean = Boolean(BooleanPrimitivesMother.true())
+    false_boolean = Boolean(BooleanPrimitivesMother.false())
 
-    expect(first_boolean).to_not(equal(second_boolean))
+    expect(true_boolean).to_not(equal(false_boolean))
 
 
-def test_should_maintain_immutability() -> None:
+def test_should_not_allow_to_modify_value() -> None:
     value = BooleanPrimitivesMother.any()
-    boolean_obj = Boolean(value)
+    boolean = Boolean(value)
 
     def modify_value() -> None:
-        boolean_obj._value = not value
+        boolean._value = not value
 
     expect(modify_value).to(raise_error(AttributeError))
-
-
-def test_should_distinguish_between_boolean_and_truthy_values() -> None:
-    expect(lambda: Boolean(1)).to(raise_error(IncorrectValueTypeError))
-    expect(lambda: Boolean(0)).to(raise_error(IncorrectValueTypeError))
-
-
-def test_should_not_accept_empty_collections_as_valid_booleans() -> None:
-    expect(lambda: Boolean([])).to(raise_error(IncorrectValueTypeError))
-    expect(lambda: Boolean({})).to(raise_error(IncorrectValueTypeError))
-    expect(lambda: Boolean("")).to(raise_error(IncorrectValueTypeError))

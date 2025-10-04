@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 from expects import expect, equal, raise_error
 
@@ -15,9 +17,14 @@ from test.mothers.string_primitives_mother import (
 pytestmark = pytest.mark.unit
 
 
-def test_should_create_string_value_object() -> None:
-    value = StringPrimitivesMother.any()
-
+@pytest.mark.parametrize(
+    "value",
+    [
+        pytest.param(StringPrimitivesMother.any(), id="random value"),
+        pytest.param("", id="empty string"),
+    ],
+)
+def test_should_create_string_value_object(value: str) -> None:
     string = String(value)
 
     expect(string.value).to(equal(value))
@@ -27,8 +34,16 @@ def test_should_raise_error_when_value_is_none() -> None:
     expect(lambda: String(None)).to(raise_error(RequiredValueError))
 
 
-def test_should_raise_error_when_value_is_not_string() -> None:
-    expect(lambda: String(123)).to(raise_error(IncorrectValueTypeError))
+@pytest.mark.parametrize(
+    "invalid_value",
+    [
+        pytest.param(123, id="integer value"),
+        pytest.param(12.34, id="float value"),
+        pytest.param(True, id="boolean value"),
+    ],
+)
+def test_should_raise_error_when_value_has_invalid_type(invalid_value: Any) -> None:
+    expect(lambda: String(invalid_value)).to(raise_error(IncorrectValueTypeError))
 
 
 def test_should_compare_equal_with_same_value() -> None:
@@ -40,7 +55,7 @@ def test_should_compare_equal_with_same_value() -> None:
 
 
 def test_should_not_be_equal_with_different_values() -> None:
-    first_string = String(StringPrimitivesMother.any())
-    second_string = String(StringPrimitivesMother.any())
+    first_string = String("hello")
+    second_string = String("world")
 
     expect(first_string).to_not(equal(second_string))

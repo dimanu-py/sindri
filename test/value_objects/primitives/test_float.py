@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 from expects import expect, equal, raise_error
 
 from src.errors.incorrect_value_type_error import (
@@ -15,33 +16,16 @@ from test.mothers.float_primitives_mother import (
 pytestmark = pytest.mark.unit
 
 
-def test_should_create_float_value_object() -> None:
-    value = FloatPrimitivesMother.any()
-
-    float_obj = Float(value)
-
-    expect(float_obj.value).to(equal(value))
-
-
-def test_should_create_float_value_object_with_positive_value() -> None:
-    value = FloatPrimitivesMother.positive()
-
-    float_obj = Float(value)
-
-    expect(float_obj.value).to(equal(value))
-
-
-def test_should_create_float_value_object_with_negative_value() -> None:
-    value = FloatPrimitivesMother.negative()
-
-    float_obj = Float(value)
-
-    expect(float_obj.value).to(equal(value))
-
-
-def test_should_create_float_value_object_with_zero() -> None:
-    value = FloatPrimitivesMother.zero()
-
+@pytest.mark.parametrize(
+    "value",
+    [
+        pytest.param(FloatPrimitivesMother.any(), id="random value"),
+        pytest.param(FloatPrimitivesMother.positive(), id="positive value"),
+        pytest.param(FloatPrimitivesMother.negative(), id="negative value"),
+        pytest.param(FloatPrimitivesMother.zero(), id="zero value"),
+    ],
+)
+def test_should_create_float_value_object(value: float) -> None:
     float_obj = Float(value)
 
     expect(float_obj.value).to(equal(value))
@@ -51,12 +35,15 @@ def test_should_raise_error_when_value_is_none() -> None:
     expect(lambda: Float(None)).to(raise_error(RequiredValueError))
 
 
-def test_should_raise_error_when_value_is_not_float() -> None:
-    expect(lambda: Float(42)).to(raise_error(IncorrectValueTypeError))
-
-
-def test_should_raise_error_when_value_is_string() -> None:
-    expect(lambda: Float("3.14")).to(raise_error(IncorrectValueTypeError))
+@pytest.mark.parametrize(
+    "invalid_value",
+    [
+        pytest.param(42, id="integer value"),
+        pytest.param("3.14", id="string value"),
+    ],
+)
+def test_should_raise_error_when_value_has_invalid_type(invalid_value: Any) -> None:
+    expect(lambda: Float(invalid_value)).to(raise_error(IncorrectValueTypeError))
 
 
 def test_should_compare_equal_with_same_value() -> None:
@@ -79,6 +66,6 @@ def test_should_maintain_immutability() -> None:
     float_obj = Float(value)
 
     def modify_value() -> None:
-        float_obj._value = 999.999
+        float_obj._value = value + 1.0
 
     expect(modify_value).to(raise_error(AttributeError))
