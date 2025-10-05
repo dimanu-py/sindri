@@ -1,6 +1,6 @@
 from test.mothers.random_generator import RandomGenerator
-from test.mothers.int_primitives_mother import IntPrimitivesMother
-from test.mothers.string_primitives_mother import StringPrimitivesMother
+from test.mothers.primitives.int_primitives_mother import IntPrimitivesMother
+from test.mothers.primitives.string_primitives_mother import StringPrimitivesMother
 
 
 class ListPrimitivesMother:

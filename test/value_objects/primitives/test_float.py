@@ -9,7 +9,7 @@ from src.errors.required_value_error import RequiredValueError
 from src.value_objects.primitives.float import (
     Float,
 )
-from test.mothers.float_primitives_mother import (
+from test.mothers.primitives.float_primitives_mother import (
     FloatPrimitivesMother,
 )
 

@@ -10,7 +10,7 @@ from src.errors.required_value_error import RequiredValueError
 from src.value_objects.primitives.string import (
     String,
 )
-from test.mothers.string_primitives_mother import (
+from test.mothers.primitives.string_primitives_mother import (
     StringPrimitivesMother,
 )
 
