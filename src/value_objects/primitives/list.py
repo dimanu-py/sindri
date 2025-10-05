@@ -7,79 +7,20 @@ from src.value_objects.value_object import ValueObject
 
 
 class List[T](ValueObject[list[T]]):
-    _element_type: type | TypeVar | None = None
-
-    @validate
-    def _ensure_has_value(self, value: list[T]) -> None:
-        """
-        Validate that the provided value is not None.
-
-        This validator ensures that required list values are provided
-        and prevents None values from being stored in the value object.
-
-        Args:
-            value: The list value to validate.
-
-        Raises:
-            RequiredValueError: If the value is None.
-        """
-        if value is None:
-            raise RequiredValueError
-
-    @validate
-    def _ensure_is_list(self, value: list[T]) -> None:
-        """
-        Validate that the provided value is of list type.
-
-        This validator ensures type safety by checking that the value
-        is actually a list. This prevents other types like strings,
-        integers, or other objects from being accepted.
-
-        Args:
-            value: The value to validate for list type.
-
-        Raises:
-            IncorrectValueTypeError: If the value is not a list.
-        """
-        if not isinstance(value, list):
-            raise IncorrectValueTypeError(value)
-
     @override
     def __init_subclass__(cls, **kwargs: Any) -> None:
+        """
+        Initialize subclass with proper type parameter validation.
+
+        This method ensures that any subclass of List is properly parameterized
+        with a type argument and extracts the element type for validation purposes.
+        """
         super().__init_subclass__(**kwargs)
 
-        # Check __orig_bases__ to find the List parameterization
-        if not hasattr(cls, "__orig_bases__") or not getattr(cls, "__orig_bases__", None):
-            raise TypeError(f"Class {cls.__name__} must be parameterized with a type argument")
-
-        # Find the List base class in __orig_bases__
-        list_base = None
-        orig_bases = getattr(cls, "__orig_bases__", ())
-        for base in orig_bases:
-            if get_origin(base) is List:
-                list_base = base
-                break
-
-        if list_base is None:
-            raise TypeError(f"Class {cls.__name__} must inherit from List[T] with a type parameter")
-
-        # Extract type arguments
-        element_type, *_ = get_args(list_base)
-
-        # Handle TypeVar cases: If the type is a generic type, store it directly
-        if isinstance(element_type, TypeVar):
-            cls._element_type = element_type
-            return
-        # Validate concrete types: Ensure the type parameter is actually a valid type
-        elif isinstance(element_type, type):
-            cls._element_type = element_type
-            return
-        # Handle generic types like list[int], dict[str, int], etc.
-        elif hasattr(element_type, "__origin__") or get_origin(element_type) is not None:
-            cls._element_type = element_type
-            return
-
-        raise TypeError(f"Type parameter must be a valid type, not a primitive value: {element_type}")
+        cls._validate_class_has_type_parameters()
+        list_base = cls._find_parameterized_list_base()
+        element_type = cls._extract_element_type_from_base(list_base)
+        cls._validate_and_store_element_type(element_type)
 
     @override
     def __hash__(self) -> int:
@@ -93,3 +34,90 @@ class List[T](ValueObject[list[T]]):
             The hash value based on the tuple representation of the list.
         """
         return hash(tuple(self._value))
+
+    @validate
+    def _ensure_has_value(self, value: list[T]) -> None:
+        if value is None:
+            raise RequiredValueError
+
+    @validate
+    def _ensure_is_list(self, value: list[T]) -> None:
+        if not isinstance(value, list):
+            raise IncorrectValueTypeError(value)
+
+
+    @classmethod
+    def _validate_class_has_type_parameters(cls) -> None:
+        """
+        Validate that the class has type parameters defined.
+
+        Raises:
+            TypeError: If the class doesn't have __orig_bases__ or it's empty.
+        """
+        if not hasattr(cls, "__orig_bases__") or not getattr(cls, "__orig_bases__", None):
+            raise TypeError(f"Class {cls.__name__} must be parameterized with a type argument")
+
+    @classmethod
+    def _find_parameterized_list_base(cls) -> Any:
+        """
+        Find the parameterized List base class in the inheritance chain.
+
+        Returns:
+            The parameterized List base class.
+
+        Raises:
+            TypeError: If no parameterized List base is found.
+        """
+        orig_bases = getattr(cls, "__orig_bases__", ())
+        for base in orig_bases:
+            if get_origin(base) is List:
+                return base
+
+        raise TypeError(f"Class {cls.__name__} must inherit from List[T] with a type parameter")
+
+    @classmethod
+    def _extract_element_type_from_base(cls, list_base: Any) -> Any:
+        """
+        Extract the element type from the parameterized List base.
+
+        Args:
+            list_base: The parameterized List base class.
+
+        Returns:
+            The element type parameter.
+        """
+        element_type, *_ = get_args(list_base)
+        return element_type
+
+    @classmethod
+    def _validate_and_store_element_type(cls, element_type: Any) -> None:
+        """
+        Validate the element type and store it in the class.
+
+        This method handles different types of type parameters:
+        - TypeVar instances for generic types
+        - Concrete types like int, str, etc.
+        - Generic types like list[int], dict[str, int], etc.
+
+        Args:
+            element_type: The element type to validate and store.
+
+        Raises:
+            TypeError: If the element type is not a valid type parameter.
+        """
+        # Handle TypeVar cases: If the type is a generic type, store it directly
+        if isinstance(element_type, TypeVar):
+            cls._element_type = element_type
+            return
+
+        # Validate concrete types: Ensure the type parameter is actually a valid type
+        if isinstance(element_type, type):
+            cls._element_type = element_type
+            return
+
+        # Handle generic types like list[int], dict[str, int], etc.
+        if hasattr(element_type, "__origin__") or get_origin(element_type) is not None:
+            cls._element_type = element_type
+            return
+
+        raise TypeError(f"Type parameter must be a valid type, not a primitive value: {element_type}")
