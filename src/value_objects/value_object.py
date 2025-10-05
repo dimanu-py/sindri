@@ -17,14 +17,15 @@ class ValueObject[T](ABC):
         _value: The internal value stored by this value object.
 
     Example:
-        >>> from src import ValueObject
-        >>>
-        >>> class String(ValueObject[str]):
-        ...     pass
-        ...
-        >>> string = String("Hello World")
-        >>> repr(email)
-        String(_value='Hello World')
+        ```python
+        from src import ValueObject
+
+        class String(ValueObject[str]):
+            pass
+
+        string = String("Hello World")
+        repr(email)  # String(_value='Hello World')
+        ```
     """
     __slots__ = ("_value",)
     __match_args__ = ("_value",)
@@ -45,14 +46,14 @@ class ValueObject[T](ABC):
             Various validation errors depending on the specific value object implementation.
 
         Example:
-            >>> from src import ValueObject
-            >>>
-            >>> class String(ValueObject[str]):
-            ...     pass
-            ...
-            >>> string = String("Hello World")
-            >>> repr(email)
-            String(_value='Hello World')
+            from src import ValueObject
+
+            class String(ValueObject[str]):
+                pass
+
+            string = String("Hello World")
+            repr(email)  # String(_value='Hello World')
+            ```
         """
         self._validate(value)
         object.__setattr__(self, "_value", value)
@@ -72,19 +73,21 @@ class ValueObject[T](ABC):
             Various validation errors if any validator fails.
 
         Example:
-            >>> class Username(ValueObject[str]):
-            ...     @validate(order=1)
-            ...     def _validate_not_empty(self, value: str) -> None:
-            ...         if not value.strip():
-            ...             raise ValueError("Username cannot be empty")
-            ...
-            ...     @validate(order=2)
-            ...     def _validate_length(self, value: str) -> None:
-            ...         if len(value) < 3:
-            ...             raise ValueError("Username must be at least 3 characters")
-            ...
-            >>> username = Username("john")  # Both validators pass
-            >>> username._validate("ab")  # Would raise ValueError for length
+            ```python
+            class Username(ValueObject[str]):
+                @validate(order=1)
+                def _validate_not_empty(self, value: str) -> None:
+                    if not value.strip():
+                        raise ValueError("Username cannot be empty")
+
+                @validate(order=2)
+                def _validate_length(self, value: str) -> None:
+                    if len(value) < 3:
+                        raise ValueError("Username must be at least 3 characters")
+
+            username = Username("john")  # Both validators pass
+            username._validate("ab")  # Would raise ValueError for length
+            ```
         """
         validators: list[Callable[[T], None]] = []
         for cls in reversed(self.__class__.__mro__):
@@ -113,14 +116,14 @@ class ValueObject[T](ABC):
             The value wrapped by this value object.
 
         Example:
-            >>> class ProductName(ValueObject[str]):
-            ...     pass
-            ...
-            >>> product = ProductName("iPhone 15")
-            >>> product.value
-            'iPhone 15'
-            >>> type(product.value)
-            <class 'str'>
+            ```python
+            class ProductName(ValueObject[str]):
+                pass
+
+            product = ProductName("iPhone 15")
+            product.value  # 'iPhone 15'
+            type(product.value)  # <class 'str'>
+            ```
         """
         return self._value
 
@@ -138,17 +141,17 @@ class ValueObject[T](ABC):
             True if both value objects have equal values, False otherwise.
 
         Example:
-            >>> class UserId(ValueObject[int]):
-            ...     pass
-            ...
-            >>> user1 = UserId(123)
-            >>> user2 = UserId(123)
-            >>> user3 = UserId(456)
-            >>> user1 == user2
-            True
-            >>> user1 == user3
-            False
-            >>> user1 == 123  # Different type, would raise error
+            ```python
+            class UserId(ValueObject[int]):
+                pass
+
+            user1 = UserId(123)
+            user2 = UserId(123)
+            user3 = UserId(456)
+            user1 == user2  # True
+            user1 == user3  # False
+            user1 == 123  # Different type, would raise error
+            ```
         """
         if not isinstance(other, self.__class__):
             return NotImplemented("Cannot compare ValueObject with different type")
@@ -164,14 +167,14 @@ class ValueObject[T](ABC):
             A string in the format "ClassName(value)" that can be used to recreate the object.
 
         Example:
-            >>> class OrderId(ValueObject[str]):
-            ...     pass
-            ...
-            >>> order = OrderId("ORD-001")
-            >>> repr(order)
-            "OrderId('ORD-001')"
-            >>> eval(repr(order))  # Can recreate the object
-            OrderId('ORD-001')
+            ```python
+            class OrderId(ValueObject[str]):
+                pass
+
+            order = OrderId("ORD-001")
+            repr(order)  # "OrderId('ORD-001')"
+            eval(repr(order))  # OrderId('ORD-001')
+            ```
         """
         return f"{self.__class__.__name__}({self._value!r})"
 
@@ -184,14 +187,14 @@ class ValueObject[T](ABC):
             The string representation of the wrapped value.
 
         Example:
-            >>> class Price(ValueObject[float]):
-            ...     pass
-            ...
-            >>> price = Price(29.99)
-            >>> str(price)
-            '29.99'
-            >>> print(f"Product costs ${price}")
-            Product costs $29.99
+            ```python
+            class Price(ValueObject[float]):
+                pass
+
+            price = Price(29.99)
+            str(price)  # '29.99'
+            print(f"Product costs ${price}")  # Product costs $29.99
+            ```
         """
         return str(self._value)
 
@@ -207,22 +210,20 @@ class ValueObject[T](ABC):
             The hash value of the wrapped value.
 
         Example:
-            >>> class CategoryId(ValueObject[str]):
-            ...     pass
-            ...
-            >>> cat1 = CategoryId("electronics")
-            >>> cat2 = CategoryId("books")
-            >>> cat3 = CategoryId("electronics")
-            >>>
-            >>> # Can be used as dictionary keys
-            >>> categories = {cat1: "Electronics", cat2: "Books"}
-            >>> categories[cat3]  # Same hash as cat1
-            'Electronics'
-            >>>
-            >>> # Can be used in sets
-            >>> unique_categories = {cat1, cat2, cat3}
-            >>> len(unique_categories)  # Only 2 unique values
-            2
+            ```python
+            class CategoryId(ValueObject[str]):
+                pass
+
+            cat1 = CategoryId("electronics")
+            cat2 = CategoryId("books")
+            cat3 = CategoryId("electronics")
+
+            categories = {cat1: "Electronics", cat2: "Books"}
+            categories[cat3]  # 'Electronics'
+
+            unique_categories = {cat1, cat2, cat3}
+            len(unique_categories)  # 2
+            ```
         """
         return hash(self._value)
 
@@ -242,18 +243,15 @@ class ValueObject[T](ABC):
             AttributeError: Always raised to prevent modification of the value object.
 
         Example:
-            >>> class CustomerId(ValueObject[int]):
-            ...     pass
-            ...
-            >>> customer = CustomerId(12345)
-            >>> customer._value = 54321  # Raises AttributeError
-            Traceback (most recent call last):
-                ...
-            AttributeError: Cannot modify the value of a ValueObject
-            >>> customer.new_attribute = "test"  # Raises AttributeError
-            Traceback (most recent call last):
-                ...
-            AttributeError: Class CustomerId object has no attribute 'new_attribute'
+            ```python
+            class CustomerId(ValueObject[int]):
+                pass
+
+            customer = CustomerId(12345)
+            customer._value = 54321  # Raises AttributeError
+
+            customer.new_attribute = "test"  # Raises AttributeError
+            ```
         """
         if name in self.__slots__:
             raise AttributeError("Cannot modify the value of a ValueObject")
