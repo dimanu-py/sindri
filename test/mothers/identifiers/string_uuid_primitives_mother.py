@@ -1,11 +1,16 @@
-from test.mothers.random_generator import RandomGenerator
+from test.mothers.object_mother import ObjectMother
 
 
-class UuidPrimitivesMother:
-    @staticmethod
-    def any() -> str:
-        return RandomGenerator.uuid()
+class StringUuidPrimitivesMother(ObjectMother):
+    """Generate string UUID primitive values for testing."""
 
-    @staticmethod
-    def invalid() -> str:
-        return "00000000-0000-0000-0000"
+    @classmethod
+    def any(cls) -> str:
+        """Generate any random UUID string value."""
+        return cls._faker().uuid4()
+
+    @classmethod
+    def invalid(cls) -> str:
+        """Generate an invalid UUID string."""
+        valid_uuid = cls.any()
+        return valid_uuid[:-4]

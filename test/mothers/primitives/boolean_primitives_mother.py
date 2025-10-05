@@ -1,13 +1,13 @@
-from random import choice
+from test.mothers.object_mother import ObjectMother
 
 
-class BooleanPrimitivesMother:
-    """Mother class for generating boolean primitive values for testing."""
+class BooleanPrimitivesMother(ObjectMother):
+    """Generate boolean primitive values for testing."""
 
-    @staticmethod
-    def any() -> bool:
+    @classmethod
+    def any(cls) -> bool:
         """Generate any random boolean value."""
-        return choice([True, False])
+        return cls._faker().boolean()
 
     @staticmethod
     def true() -> bool:

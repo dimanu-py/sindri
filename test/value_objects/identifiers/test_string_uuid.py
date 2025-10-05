@@ -12,14 +12,14 @@ from src.value_objects.identifiers.string_uuid import (
     StringUuid,
 )
 from test.mothers.identifiers.string_uuid_primitives_mother import (
-    UuidPrimitivesMother,
+    StringUuidPrimitivesMother,
 )
 
 pytestmark = pytest.mark.unit
 
 
 def test_should_create_uuid_value_object() -> None:
-    value = UuidPrimitivesMother.any()
+    value = StringUuidPrimitivesMother.any()
 
     uuid = StringUuid(value)
 
@@ -35,12 +35,12 @@ def test_should_raise_error_when_value_is_not_string() -> None:
 
 
 def test_should_raise_error_when_value_is_not_valid_uuid() -> None:
-    invalid_uuid = UuidPrimitivesMother.invalid()
+    invalid_uuid = StringUuidPrimitivesMother.invalid()
     expect(lambda: StringUuid(invalid_uuid)).to(raise_error(InvalidIdFormatError))
 
 
 def test_should_compare_equal_with_same_value() -> None:
-    common_value = UuidPrimitivesMother.any()
+    common_value = StringUuidPrimitivesMother.any()
     first_uuid = StringUuid(common_value)
     second_uuid = StringUuid(common_value)
 
@@ -48,7 +48,7 @@ def test_should_compare_equal_with_same_value() -> None:
 
 
 def test_should_not_be_equal_with_different_values() -> None:
-    first_uuid = StringUuid(UuidPrimitivesMother.any())
-    second_uuid = StringUuid(UuidPrimitivesMother.any())
+    first_uuid = StringUuid(StringUuidPrimitivesMother.any())
+    second_uuid = StringUuid(StringUuidPrimitivesMother.any())
 
     expect(first_uuid).to_not(equal(second_uuid))
