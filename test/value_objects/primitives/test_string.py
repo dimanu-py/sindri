@@ -21,7 +21,7 @@ pytestmark = pytest.mark.unit
     "value",
     [
         pytest.param(StringPrimitivesMother.any(), id="random value"),
-        pytest.param("", id="empty string"),
+        pytest.param(StringPrimitivesMother.empty(), id="empty string"),
     ],
 )
 def test_should_create_string_value_object(value: str) -> None:

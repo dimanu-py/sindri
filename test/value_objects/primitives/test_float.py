@@ -1,3 +1,5 @@
+from logging.config import valid_ident
+
 import pytest
 from typing import Any
 from expects import expect, equal, raise_error
@@ -107,17 +109,18 @@ def test_should_be_usable_in_sets() -> None:
 
 
 def test_should_not_allow_modifying_value_through_public_name() -> None:
-    float_obj = Float(1.0)
+    value = FloatPrimitivesMother.any()
+    float_obj = Float(value)
 
     def modify_public_value() -> None:
-        float_obj.value = 2.0
+        float_obj.value = value + 1.0
 
     expect(modify_public_value).to(raise_error(AttributeError))
 
 
 def test_should_provide_access_to_wrapped_value() -> None:
-    test_value = FloatPrimitivesMother.any()
-    float_obj = Float(test_value)
+    value = FloatPrimitivesMother.any()
+    float_obj = Float(value)
 
-    expect(float_obj.value).to(equal(test_value))
+    expect(float_obj.value).to(equal(value))
     expect(type(float_obj.value)).to(equal(float))

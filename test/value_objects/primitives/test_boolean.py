@@ -26,9 +26,9 @@ pytestmark = pytest.mark.unit
     ],
 )
 def test_should_create_boolean_value_object(value: bool) -> None:
-    boolean_obj = Boolean(value)
+    boolean = Boolean(value)
 
-    expect(boolean_obj.value).to(equal(value))
+    expect(boolean.value).to(equal(value))
 
 
 def test_should_raise_error_when_value_is_none() -> None:
@@ -52,7 +52,7 @@ def test_should_raise_error_when_value_has_invalid_type(invalid_value: Any) -> N
 
 
 def test_should_compare_equal_with_same_value() -> None:
-    common_value = BooleanPrimitivesMother.true()
+    common_value = BooleanPrimitivesMother.any()
     first_boolean = Boolean(common_value)
     second_boolean = Boolean(common_value)
 
@@ -77,7 +77,7 @@ def test_should_not_allow_to_modify_value() -> None:
 
 
 def test_should_have_consistent_hash_for_equal_values() -> None:
-    value = BooleanPrimitivesMother.true()
+    value = BooleanPrimitivesMother.any()
     first_boolean = Boolean(value)
     second_boolean = Boolean(value)
 
@@ -112,10 +112,11 @@ def test_should_be_usable_in_sets() -> None:
 
 
 def test_should_not_allow_modifying_value_through_public_name() -> None:
-    boolean_obj = Boolean(BooleanPrimitivesMother.true())
+    value = BooleanPrimitivesMother.any()
+    boolean = Boolean(value)
 
     def modify_public_value() -> None:
-        boolean_obj.value = False
+        boolean.value = not value
 
     expect(modify_public_value).to(raise_error(AttributeError))
 

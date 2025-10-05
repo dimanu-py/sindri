@@ -21,10 +21,9 @@ pytestmark = pytest.mark.unit
     "value",
     [
         pytest.param(IntPrimitivesMother.any(), id="random value"),
-        pytest.param(42, id="positive integer"),
-        pytest.param(-42, id="negative integer"),
-        pytest.param(0, id="zero value"),
-        pytest.param(1000000, id="large integer"),
+        pytest.param(IntPrimitivesMother.positive(), id="positive integer"),
+        pytest.param(IntPrimitivesMother.negative(), id="negative integer"),
+        pytest.param(IntPrimitivesMother.zero(), id="zero value"),
     ],
 )
 def test_should_create_integer_value_object(value: int) -> None:
@@ -59,8 +58,8 @@ def test_should_compare_equal_with_same_value() -> None:
 
 
 def test_should_not_be_equal_with_different_values() -> None:
-    first_integer = Integer(42)
-    second_integer = Integer(24)
+    first_integer = Integer(IntPrimitivesMother.positive())
+    second_integer = Integer(IntPrimitivesMother.negative())
 
     expect(first_integer).to_not(equal(second_integer))
 
@@ -84,8 +83,8 @@ def test_should_have_consistent_hash_for_equal_values() -> None:
 
 
 def test_should_have_different_hash_for_different_values() -> None:
-    first_integer = Integer(42)
-    second_integer = Integer(24)
+    first_integer = Integer(IntPrimitivesMother.positive())
+    second_integer = Integer(IntPrimitivesMother.negative())
 
     expect(hash(first_integer)).to_not(equal(hash(second_integer)))
 
@@ -111,10 +110,11 @@ def test_should_be_usable_in_sets() -> None:
 
 
 def test_should_not_allow_modifying_value_through_public_name() -> None:
-    integer = Integer(IntPrimitivesMother.any())
+    value = IntPrimitivesMother.any()
+    integer = Integer(value)
 
     def modify_public_value() -> None:
-        integer.value = 24
+        integer.value = value + 1
 
     expect(modify_public_value).to(raise_error(AttributeError))
 
