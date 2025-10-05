@@ -1,4 +1,4 @@
-from typing import override, Any, get_origin, get_args, TypeVar
+from typing import override, Any, get_origin, get_args, TypeVar, Self
 
 from src.errors.incorrect_value_type_error import IncorrectValueTypeError
 from src.errors.required_value_error import RequiredValueError
@@ -22,6 +22,98 @@ class List[T](ValueObject[list[T]]):
         element_type = cls._extract_element_type_from_base(list_base)
         cls._validate_and_store_element_type(element_type)
 
+    @classmethod
+    def from_primitives(cls, value: list[Any]) -> Self:
+        elements = []
+
+        for primitive in value:
+            if cls._element_is_an_aggregate_instance():
+                elements.append(cls._element_type.from_primitives(primitive))
+            elif cls._element_is_a_value_object_instance():
+                elements.append(cls._element_type(primitive))
+            else:
+                elements.append(primitive)
+        return cls(elements)
+
+    @validate
+    def _ensure_has_value(self, value: list[T]) -> None:
+        if value is None:
+            raise RequiredValueError
+
+    @validate
+    def _ensure_is_list(self, value: list[T]) -> None:
+        if not isinstance(value, list):
+            raise IncorrectValueTypeError(value)
+
+    def __contains__(self, item: Any) -> bool:
+        """
+        Check if an item is present in the list.
+
+        Args:
+            item: The item to check for membership in the list.
+
+        Returns:
+            True if the item is in the list, False otherwise.
+
+        Example:
+            ```python
+            numbers = IntList([1, 2, 3, 4, 5])
+            3 in numbers  # True
+            6 in numbers  # False
+            ```
+        """
+        return item in self._value
+
+    def __iter__(self):
+        """
+        Return an iterator over the list elements.
+
+        Returns:
+            An iterator that yields each element in the list.
+
+        Example:
+            ```python
+            numbers = IntList([1, 2, 3])
+            list(numbers)  # [1, 2, 3]
+            for num in numbers:
+                print(num)
+            # 1
+            # 2
+            # 3
+            ```
+        """
+        return iter(self._value)
+
+    def __len__(self) -> int:
+        """
+        Return the number of elements in the list.
+
+        Returns:
+            The length of the wrapped list.
+
+        Example:
+            ```python
+            numbers = IntList([1, 2, 3, 4, 5])
+            len(numbers)  # 5
+            ```
+        """
+        return len(self._value)
+
+    def __reversed__(self):
+        """
+        Return a reverse iterator over the list elements.
+
+        Returns:
+            A reverse iterator that yields elements from the end to the beginning.
+
+        Example:
+            ```python
+            numbers = IntList([1, 2, 3])
+            list(reversed(numbers))  # [3, 2, 1]
+            ```
+        """
+        return reversed(self._value)
+
     @override
     def __hash__(self) -> int:
         """
@@ -35,16 +127,37 @@ class List[T](ValueObject[list[T]]):
         """
         return hash(tuple(self._value))
 
-    @validate
-    def _ensure_has_value(self, value: list[T]) -> None:
-        if value is None:
-            raise RequiredValueError
+    @override
+    def __repr__(self) -> str:
+        """
+        Return a string representation suitable for debugging.
 
-    @validate
-    def _ensure_is_list(self, value: list[T]) -> None:
-        if not isinstance(value, list):
-            raise IncorrectValueTypeError(value)
+        Returns:
+            A string showing the class name and the wrapped list value.
 
+        Example:
+            ```python
+            numbers = IntList([1, 2, 3])
+            repr(numbers)  # 'IntList(_value=[1, 2, 3])'
+            ```
+        """
+        return f"{self.__class__.__name__}(_value={self._value!r})"
+
+    @override
+    def __str__(self) -> str:
+        """
+        Return a human-readable string representation.
+
+        Returns:
+            The string representation of the wrapped list.
+
+        Example:
+            ```python
+            numbers = IntList([1, 2, 3])
+            str(numbers)  # '[1, 2, 3]'
+            ```
+        """
+        return str(self._value)
 
     @classmethod
     def _validate_class_has_type_parameters(cls) -> None:
@@ -121,3 +234,11 @@ class List[T](ValueObject[list[T]]):
             return
 
         raise TypeError(f"Type parameter must be a valid type, not a primitive value: {element_type}")
+
+    @classmethod
+    def _element_is_an_aggregate_instance(cls) -> bool:
+        return hasattr(cls._element_type, "from_primitives")
+
+    @classmethod
+    def _element_is_a_value_object_instance(cls) -> bool:
+        return hasattr(cls._element_type, "value")
