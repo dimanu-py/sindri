@@ -58,6 +58,7 @@ build_backend = "uv_build"
 
 [tool.semantic_release]
 version_toml = ["pyproject.toml:project.version"]
+version_variables = ["value_crafter/__init__.py:__version__"]
 commit_message = "bump: new version {version} created"
 commit_parser = "conventional"
 major_on_zero = false
