@@ -1,4 +1,4 @@
-from typing import TypeVar, Any
+from typing import Any, TypeVar
 
 from src.value_crafter.value_objects.errors.validation_error import ValidationError
 
