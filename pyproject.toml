@@ -53,6 +53,9 @@ skip-magic-trailing-comma = false
 requires = ["uv_build>=0.8.22,<0.9.0"]
 build-backend = "uv_build"
 
+[tool.uv.build-backend]
+package-dir = "."
+
 [tool.semantic_release]
 version_toml = ["pyproject.toml:project.version"]
 version_variables = ["value_crafter/__init__.py:__version__"]
