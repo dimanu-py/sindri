@@ -129,6 +129,34 @@ class List[T](ValueObject[list[T]]):
         return hash(tuple(self._value))
 
     @override
+    def __eq__(self, other: Any) -> bool:
+        """
+        Check equality with another List value object.
+
+        Args:
+            other: The other object to compare against.
+
+        Returns:
+            True if both are List instances with the same element type and values, False otherwise.
+
+        Example:
+            ```python
+            list1 = IntList([1, 2, 3])
+            list2 = IntList([1, 2, 3])
+            list3 = IntList([4, 5, 6])
+            list1 == list2  # True
+            list1 == list3  # False
+            ```
+        """
+        if not isinstance(other, List):
+            return False
+
+        if self._element_type != other._element_type:
+            return False
+
+        return self._value == other._value
+
+    @override
     def __repr__(self) -> str:
         """
         Return a string representation suitable for debugging.
