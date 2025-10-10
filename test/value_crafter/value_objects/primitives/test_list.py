@@ -30,7 +30,7 @@ def test_should_create_string_list_value_object(value: list[str]) -> None:
 
 
 def test_should_create_from_primitives_with_primitive_types() -> None:
-    primitive_list = [1, 2, 3, 4, 5]
+    primitive_list = ["a", "b", "c", "d", "e"]
 
     strings = Strings.from_primitives(primitive_list)
 
@@ -78,7 +78,6 @@ def test_should_create_from_primitives_with_aggregates() -> None:
     expect(persons.value).to(equal(expected_persons))
 
 
-@pytest.mark.xfail
 def test_should_raise_error_when_trying_to_create_list_of_value_objects_with_primitives() -> None:
     class Email(String): ...
 
@@ -102,7 +101,6 @@ def test_should_raise_error_for_unparameterized_subclass() -> None:
     expect(create_unparameterized_subclass).to(raise_error(TypeError))
 
 
-@pytest.mark.xfail
 @pytest.mark.parametrize(
     "invalid_value",
     [
@@ -127,15 +125,15 @@ def test_should_compare_equal_with_same_value() -> None:
 
 
 def test_should_not_be_equal_with_different_values() -> None:
-    first_list = Strings([1, 2, 3])
-    second_list = Strings([4, 5, 6])
+    first_list = Strings(["a", "b", "c"])
+    second_list = Strings(["d", "e", "f"])
 
     expect(first_list).to_not(equal(second_list))
 
 
 def test_should_not_be_equal_with_different_order() -> None:
-    first_list = Strings([1, 2, 3])
-    second_list = Strings([3, 2, 1])
+    first_list = Strings(["a", "b", "c"])
+    second_list = Strings(["c", "b", "a"])
 
     expect(first_list).to_not(equal(second_list))
 
@@ -195,9 +193,9 @@ def test_should_support_length_operation() -> None:
 
 
 def test_should_support_reversed_iteration() -> None:
-    strings = Strings([1, 2, 3])
+    strings = Strings(["a", "b", "c"])
 
-    expect(list(reversed(strings))).to(equal([3, 2, 1]))
+    expect(list(reversed(strings))).to(equal(["c", "b", "a"]))
 
 
 def test_should_support_reversed_iteration_with_empty_list() -> None:
@@ -214,7 +212,7 @@ def test_should_be_hashable() -> None:
 
 
 def test_should_have_same_hash_for_equal_lists() -> None:
-    value = [1, 2, 3]
+    value = ["a", "b", "c"]
     first_list = Strings(value)
     second_list = Strings(value)
 
@@ -222,16 +220,16 @@ def test_should_have_same_hash_for_equal_lists() -> None:
 
 
 def test_should_have_different_hash_for_different_lists() -> None:
-    first_list = Strings([1, 2, 3])
-    second_list = Strings([4, 5, 6])
+    first_list = Strings(["a", "b", "c"])
+    second_list = Strings(["d", "e", "f"])
 
     expect(hash(first_list)).to_not(equal(hash(second_list)))
 
 
 def test_should_be_usable_in_set() -> None:
-    first_list = Strings([1, 2, 3])
-    second_list = Strings([4, 5, 6])
-    duplicated_list = Strings([1, 2, 3])
+    first_list = Strings(["a", "b", "c"])
+    second_list = Strings(["d", "e", "f"])
+    duplicated_list = Strings(["a", "b", "c"])
 
     strings_as_set = {first_list, second_list, duplicated_list}
 
@@ -239,8 +237,8 @@ def test_should_be_usable_in_set() -> None:
 
 
 def test_should_be_usable_as_dict_key() -> None:
-    first_list = Strings([1, 2, 3])
-    second_list = Strings([4, 5, 6])
+    first_list = Strings(["a", "b", "c"])
+    second_list = Strings(["d", "e", "f"])
 
     dict_with_list_keys = {first_list: "first", second_list: "second"}
 
