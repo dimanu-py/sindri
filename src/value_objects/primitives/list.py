@@ -1,4 +1,4 @@
-from typing import Any, Self, TypeVar, get_args, get_origin, override
+from typing import Any, Self, TypeVar, get_args, get_origin, override, Iterator
 
 from src.errors.incorrect_value_type_error import IncorrectValueTypeError
 from src.errors.required_value_error import RequiredValueError
@@ -64,7 +64,7 @@ class List[T](ValueObject[list[T]]):
         """
         return item in self._value
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[T]:
         """
         Return an iterator over the list elements.
 
@@ -99,7 +99,7 @@ class List[T](ValueObject[list[T]]):
         """
         return len(self._value)
 
-    def __reversed__(self):
+    def __reversed__(self) -> Iterator[T]:
         """
         Return a reverse iterator over the list elements.
 
