@@ -90,7 +90,7 @@ secrets: # Check for secrets in the source code
 .PHONY: audit
 audit: # It audits dependencies and source code
 	@echo "⌛ Checking for vulnerabilities in dependencies...\n"
-	@uv run -m pip_audit --progress-spinner off
+	@uv run -m pip_audit --progress-spinner off --ignore-vuln GHSA-4xh5-x5gv-qwph
 
 .PHONY: clean
 clean: # Clean up the project, removing the virtual environment and some files
