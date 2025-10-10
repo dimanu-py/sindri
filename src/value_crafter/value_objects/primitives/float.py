@@ -41,4 +41,4 @@ class Float(ValueObject[float]):
     @validate
     def _ensure_value_is_float(self, value: float) -> None:
         if not isinstance(value, float):
-            raise IncorrectValueTypeError(value)
+            raise IncorrectValueTypeError(value, float)

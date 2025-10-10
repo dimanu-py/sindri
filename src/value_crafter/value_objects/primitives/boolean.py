@@ -41,4 +41,4 @@ class Boolean(ValueObject[bool]):
     @validate
     def _ensure_value_is_boolean(self, value: bool) -> None:
         if not isinstance(value, bool):
-            raise IncorrectValueTypeError(value)
+            raise IncorrectValueTypeError(value, bool)

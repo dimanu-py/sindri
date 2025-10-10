@@ -45,7 +45,7 @@ class StringUuid(ValueObject[str]):
     @validate
     def _ensure_value_is_string(self, value: str) -> None:
         if not isinstance(value, str):
-            raise IncorrectValueTypeError(value)
+            raise IncorrectValueTypeError(value, str)
 
     @validate
     def _ensure_value_has_valid_uuid_format(self, value: str) -> None:

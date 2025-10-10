@@ -45,7 +45,7 @@ class List[T](ValueObject[list[T]]):
     @validate
     def _ensure_is_list(self, value: list[T]) -> None:
         if not isinstance(value, list):
-            raise IncorrectValueTypeError(value)
+            raise IncorrectValueTypeError(value, type[Any])
 
     @validate
     def _ensure_list_elements_have_expected_type(self, value: list[T]) -> None:
@@ -68,7 +68,7 @@ class List[T](ValueObject[list[T]]):
         if cls._element_is_a_value_object_instance() or cls._element_is_a_primitive_type():
             for item in value:
                 if not isinstance(item, element_type):
-                    raise IncorrectValueTypeError(item)
+                    raise IncorrectValueTypeError(item, list)
 
     def __contains__(self, item: Any) -> bool:
         """

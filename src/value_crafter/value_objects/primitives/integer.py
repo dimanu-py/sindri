@@ -41,4 +41,4 @@ class Integer(ValueObject[int]):
     @validate
     def _ensure_value_is_integer(self, value: int) -> None:
         if not isinstance(value, int):
-            raise IncorrectValueTypeError(value)
+            raise IncorrectValueTypeError(value, int)

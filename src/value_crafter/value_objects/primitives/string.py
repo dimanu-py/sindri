@@ -40,4 +40,4 @@ class String(ValueObject[str]):
     @validate
     def _ensure_is_string(self, value: str) -> None:
         if not isinstance(value, str):
-            raise IncorrectValueTypeError(value)
+            raise IncorrectValueTypeError(value, str)
