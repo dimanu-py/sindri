@@ -46,6 +46,29 @@ class List[T](ValueObject[list[T]]):
         if not isinstance(value, list):
             raise IncorrectValueTypeError(value)
 
+    @validate
+    def _ensure_list_elements_have_expected_type(self, value: list[T]) -> None:
+        cls = self.__class__
+
+        if not isinstance(value, list):
+            return
+
+        if not hasattr(cls, "_element_type"):
+            return
+
+        element_type = cls._element_type
+
+        if isinstance(element_type, TypeVar):
+            return
+
+        if not isinstance(element_type, type):
+            return
+
+        if cls._element_is_a_value_object_instance() or cls._element_is_a_primitive_type():
+            for item in value:
+                if not isinstance(item, element_type):
+                    raise IncorrectValueTypeError(item)
+
     def __contains__(self, item: Any) -> bool:
         """
         Check if an item is present in the list.
@@ -270,4 +293,14 @@ class List[T](ValueObject[list[T]]):
 
     @classmethod
     def _element_is_a_value_object_instance(cls) -> bool:
-        return hasattr(cls._element_type, "value")
+        try:
+            return isinstance(cls._element_type, type) and issubclass(cls._element_type, ValueObject)
+        except TypeError:
+            return False
+
+    @classmethod
+    def _element_is_a_primitive_type(cls) -> bool:
+        try:
+            return isinstance(cls._element_type, type) and not issubclass(cls._element_type, ValueObject)
+        except TypeError:
+            return False
