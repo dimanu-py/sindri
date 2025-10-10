@@ -14,7 +14,8 @@ class List[T](ValueObject[list[T]]):
         Initialize subclass with proper type parameter validation.
 
         This method ensures that any subclass of List is properly parameterized
-        with a type argument and extracts the element type for validation purposes.
+        with a type argument and extracts the element type for validation purposes. It
+        is run automatically when a subclass is created, at definition time.
         """
         super().__init_subclass__(**kwargs)
 
