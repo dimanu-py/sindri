@@ -51,5 +51,5 @@ class StringUuid(ValueObject[str]):
     def _ensure_value_has_valid_uuid_format(self, value: str) -> None:
         try:
             UUID(value)
-        except ValueError:
-            raise InvalidIdFormatError
+        except ValueError as error:
+            raise InvalidIdFormatError from error
