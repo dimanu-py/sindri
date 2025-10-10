@@ -27,7 +27,6 @@ class ValueObject[T](ABC):
         repr(email)  # String(_value='Hello World')
         ```
     """
-
     __slots__ = ("_value",)
     __match_args__ = ("_value",)
 
@@ -155,7 +154,7 @@ class ValueObject[T](ABC):
             ```
         """
         if not isinstance(other, self.__class__):
-            return NotImplemented("Cannot compare ValueObject with different type")
+            raise TypeError("Cannot compare ValueObject with different type")
 
         return self.value == other.value
 
