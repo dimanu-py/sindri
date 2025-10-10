@@ -27,6 +27,7 @@ class ValueObject[T](ABC):
         repr(email)  # String(_value='Hello World')
         ```
     """
+
     __slots__ = ("_value",)
     __match_args__ = ("_value",)
 

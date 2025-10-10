@@ -1,8 +1,8 @@
-from logging.config import valid_ident
+
+from typing import Any
 
 import pytest
-from typing import Any
-from expects import expect, equal, raise_error
+from expects import equal, expect, raise_error
 
 from src.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,

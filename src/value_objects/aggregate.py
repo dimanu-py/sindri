@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from enum import Enum
-from typing import override, Self, Any
 from inspect import Parameter, _empty, signature
+from typing import Any, Self, override
 
 from src.value_objects.value_object import ValueObject
 
