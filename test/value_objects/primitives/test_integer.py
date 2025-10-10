@@ -3,10 +3,10 @@ from typing import Any
 import pytest
 from expects import equal, expect, raise_error
 
-from src.errors.incorrect_value_type_error import (
+from src.value_objects.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
-from src.errors.required_value_error import RequiredValueError
+from src.value_objects.errors.required_value_error import RequiredValueError
 from src.value_objects.primitives.integer import (
     Integer,
 )

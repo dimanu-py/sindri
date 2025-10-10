@@ -1,5 +1,5 @@
-from src.errors.incorrect_value_type_error import IncorrectValueTypeError
-from src.errors.required_value_error import RequiredValueError
+from src.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
+from src.value_objects.errors.required_value_error import RequiredValueError
 from src.value_objects.decorators.validation import validate
 from src.value_objects.value_object import ValueObject
 

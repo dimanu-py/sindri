@@ -1,13 +1,13 @@
 import pytest
 from expects import equal, expect, raise_error
 
-from src.errors.incorrect_value_type_error import (
+from src.value_objects.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
-from src.errors.invalid_id_format_error import (
+from src.value_objects.errors.invalid_id_format_error import (
     InvalidIdFormatError,
 )
-from src.errors.required_value_error import RequiredValueError
+from src.value_objects.errors.required_value_error import RequiredValueError
 from src.value_objects.identifiers.string_uuid import (
     StringUuid,
 )
