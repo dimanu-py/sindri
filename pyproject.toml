@@ -33,6 +33,13 @@ test = [
     "pytest-asyncio",
     "pytest-sugar>=1.1.1",
 ]
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocs-literate-nav>=0.6.2",
+    "mkdocs-macros-plugin>=1.4.0",
+    "mkdocs-material>=9.6.21",
+    "mkdocs-section-index>=0.3.10",
+]
 
 [tool.ruff]
 line-length = 120
