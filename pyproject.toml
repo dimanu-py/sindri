@@ -53,8 +53,15 @@ skip-magic-trailing-comma = false
 requires = ["uv_build>=0.8.22,<0.9.0"]
 build-backend = "uv_build"
 
-[tool.uv.build-backend]
-package-dir = "."
+[tool.pytest.ini_options]
+markers = [
+    "unit: mark a test as a unit test",
+    "acceptance: mark a test as an acceptance test",
+    "integration: mark a test as an integration test",
+]
+testpaths = ["test"]
+asyncio_default_fixture_loop_scope = "function"
+asyncio_mode = "auto"
 
 [tool.semantic_release]
 version_toml = ["pyproject.toml:project.version"]
