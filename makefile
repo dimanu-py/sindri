@@ -116,4 +116,4 @@ show:  ## Show installed dependencies.
 .PHONY: search
 search:  ## Show package details.
 	@read -p "Enter package name to search: " package;\
-	@uv pip show $$package
+	uv pip show $$package
