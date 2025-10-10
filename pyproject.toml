@@ -42,7 +42,7 @@ select = ["E", "F", "W", "B", "C4", "UP", "I"]
 ignore = ["B008", "E501"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["value_object", "test"]
+known-first-party = ["src", "test"]
 
 [tool.ruff.format]
 quote-style = "double"
