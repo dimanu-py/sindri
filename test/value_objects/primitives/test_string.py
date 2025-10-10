@@ -3,7 +3,7 @@ from typing import Any
 import pytest
 from expects import equal, expect, raise_error
 
-from src.mothers import (
+from src.mothers.primitives.string_primitives_mother import (
     StringPrimitivesMother,
 )
 from src.value_objects.errors.incorrect_value_type_error import (

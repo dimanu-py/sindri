@@ -1,7 +1,7 @@
 import pytest
 from expects import equal, expect, raise_error
 
-from src.mothers import (
+from src.mothers.identifiers.string_uuid_primitives_mother import (
     StringUuidPrimitivesMother,
 )
 from src.value_objects.errors.incorrect_value_type_error import (
