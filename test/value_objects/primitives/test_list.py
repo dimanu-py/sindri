@@ -94,8 +94,7 @@ def test_should_raise_error_when_value_is_none() -> None:
 
 def test_should_raise_error_for_unparameterized_subclass() -> None:
     def create_unparameterized_subclass():
-        class InvalidList(List):
-            ...
+        class InvalidList(List): ...
 
         return InvalidList
 
