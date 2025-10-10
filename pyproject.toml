@@ -1,7 +1,7 @@
 [project]
-name = "value-object"
+name = "value-crafter"
 version = "0.0.1"
-description = "Implementation of value object pattern to be reused among projects"
+description = "Value Object and Object Mother patterns implementation for Python"
 authors = [{name = "dimanu-py", email = "dimanu.py@gmail.com"}]
 dependencies = [
 ]
@@ -48,7 +48,6 @@ known-first-party = ["src", "test"]
 quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
-
 
 [project.optional-dependencies]
 build = ["uv>=0.7.21"]
