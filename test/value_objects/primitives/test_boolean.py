@@ -3,15 +3,15 @@ from typing import Any
 import pytest
 from expects import equal, expect, raise_error
 
+from src.mothers import (
+    BooleanPrimitivesMother,
+)
 from src.value_objects.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
 from src.value_objects.errors.required_value_error import RequiredValueError
 from src.value_objects.primitives.boolean import (
     Boolean,
-)
-from src.mothers import (
-    BooleanPrimitivesMother,
 )
 
 pytestmark = pytest.mark.unit

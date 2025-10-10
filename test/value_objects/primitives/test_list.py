@@ -3,12 +3,12 @@ from typing import Any
 import pytest
 from expects import be_false, be_none, be_true, equal, expect, raise_error
 
+from src.mothers import ListPrimitivesMother
+from src.value_objects.aggregate import Aggregate
 from src.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
 from src.value_objects.errors.required_value_error import RequiredValueError
-from src.value_objects.aggregate import Aggregate
 from src.value_objects.primitives.list import List
 from src.value_objects.primitives.string import String
-from src.mothers import ListPrimitivesMother
 
 pytestmark = pytest.mark.unit
 

@@ -1,6 +1,9 @@
 import pytest
 from expects import equal, expect, raise_error
 
+from src.mothers import (
+    StringUuidPrimitivesMother,
+)
 from src.value_objects.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
@@ -10,9 +13,6 @@ from src.value_objects.errors.invalid_id_format_error import (
 from src.value_objects.errors.required_value_error import RequiredValueError
 from src.value_objects.identifiers.string_uuid import (
     StringUuid,
-)
-from src.mothers import (
-    StringUuidPrimitivesMother,
 )
 
 pytestmark = pytest.mark.unit
