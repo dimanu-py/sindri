@@ -1,4 +1,4 @@
-from typing import override, Any, get_origin, get_args, TypeVar, Self
+from typing import Any, Self, TypeVar, get_args, get_origin, override
 
 from src.errors.incorrect_value_type_error import IncorrectValueTypeError
 from src.errors.required_value_error import RequiredValueError
