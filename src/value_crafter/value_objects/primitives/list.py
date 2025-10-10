@@ -51,9 +51,6 @@ class List[T](ValueObject[list[T]]):
     def _ensure_list_elements_have_expected_type(self, value: list[T]) -> None:
         cls = self.__class__
 
-        if not isinstance(value, list):
-            return
-
         if not hasattr(cls, "_element_type"):
             return
 
