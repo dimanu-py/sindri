@@ -155,7 +155,7 @@ class ValueObject[T](ABC):
             ```
         """
         if not isinstance(other, self.__class__):
-            raise TypeError("Cannot compare ValueObject with different type")
+            return False
 
         return self.value == other.value
 
