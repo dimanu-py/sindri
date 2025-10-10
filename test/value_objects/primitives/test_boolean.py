@@ -3,14 +3,14 @@ from typing import Any
 import pytest
 from expects import equal, expect, raise_error
 
-from src.mothers.primitives.boolean_primitives_mother import (
+from value_crafter.mothers.primitives.boolean_primitives_mother import (
     BooleanPrimitivesMother,
 )
-from src.value_objects.errors.incorrect_value_type_error import (
+from value_crafter.value_objects.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
-from src.value_objects.errors.required_value_error import RequiredValueError
-from src.value_objects.primitives.boolean import (
+from value_crafter.value_objects.errors.required_value_error import RequiredValueError
+from value_crafter.value_objects.primitives.boolean import (
     Boolean,
 )
 

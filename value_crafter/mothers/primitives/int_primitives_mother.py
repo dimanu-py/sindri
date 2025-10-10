@@ -1,4 +1,4 @@
-from src.mothers.object_mother import ObjectMother
+from value_crafter.mothers.object_mother import ObjectMother
 
 
 class IntPrimitivesMother(ObjectMother):

@@ -1,7 +1,7 @@
-from src.value_objects.decorators.validation import validate
-from src.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
-from src.value_objects.errors.required_value_error import RequiredValueError
-from src.value_objects.value_object import ValueObject
+from value_crafter.value_objects.decorators.validation import validate
+from value_crafter.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
+from value_crafter.value_objects.errors.required_value_error import RequiredValueError
+from value_crafter.value_objects.value_object import ValueObject
 
 
 class String(ValueObject[str]):

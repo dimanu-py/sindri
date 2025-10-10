@@ -18,7 +18,7 @@ class ValueObject[T](ABC):
 
     Example:
         ```python
-        from src import ValueObject
+        from value_crafter import ValueObject
 
         class String(ValueObject[str]):
             pass
@@ -47,7 +47,7 @@ class ValueObject[T](ABC):
             Various validation errors depending on the specific value object implementation.
 
         Example:
-            from src import ValueObject
+            from value_crafter import ValueObject
 
             class String(ValueObject[str]):
                 pass

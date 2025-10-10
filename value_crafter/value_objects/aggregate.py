@@ -3,7 +3,7 @@ from enum import Enum
 from inspect import Parameter, _empty, signature
 from typing import Any, Self, override
 
-from src.value_objects.value_object import ValueObject
+from value_crafter.value_objects.value_object import ValueObject
 
 
 class Aggregate(ABC):

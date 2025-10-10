@@ -34,7 +34,7 @@ general:
   license: MIT
   python_version: '3.13'
   slug: value-object
-  source_name: src
+  source_name: value_crafter
   version: 0.0.1
   year: 2025
 git:

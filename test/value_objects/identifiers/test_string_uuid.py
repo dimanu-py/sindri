@@ -1,17 +1,17 @@
 import pytest
 from expects import equal, expect, raise_error
 
-from src.mothers.identifiers.string_uuid_primitives_mother import (
+from value_crafter.mothers.identifiers.string_uuid_primitives_mother import (
     StringUuidPrimitivesMother,
 )
-from src.value_objects.errors.incorrect_value_type_error import (
+from value_crafter.value_objects.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
-from src.value_objects.errors.invalid_id_format_error import (
+from value_crafter.value_objects.errors.invalid_id_format_error import (
     InvalidIdFormatError,
 )
-from src.value_objects.errors.required_value_error import RequiredValueError
-from src.value_objects.identifiers.string_uuid import (
+from value_crafter.value_objects.errors.required_value_error import RequiredValueError
+from value_crafter.value_objects.identifiers.string_uuid import (
     StringUuid,
 )
 
