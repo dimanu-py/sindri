@@ -8,7 +8,7 @@ from src.errors.required_value_error import RequiredValueError
 from src.value_objects.aggregate import Aggregate
 from src.value_objects.primitives.list import List
 from src.value_objects.primitives.string import String
-from test.mothers.primitives.list_primitives_mother import ListPrimitivesMother
+from src.mothers import ListPrimitivesMother
 
 pytestmark = pytest.mark.unit
 

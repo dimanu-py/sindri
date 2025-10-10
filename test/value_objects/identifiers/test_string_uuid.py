@@ -11,7 +11,7 @@ from src.errors.required_value_error import RequiredValueError
 from src.value_objects.identifiers.string_uuid import (
     StringUuid,
 )
-from test.mothers.identifiers.string_uuid_primitives_mother import (
+from src.mothers import (
     StringUuidPrimitivesMother,
 )
 

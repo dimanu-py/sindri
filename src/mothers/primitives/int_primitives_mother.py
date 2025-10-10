@@ -1,4 +1,4 @@
-from test.mothers.object_mother import ObjectMother
+from src.mothers.object_mother import ObjectMother
 
 
 class IntPrimitivesMother(ObjectMother):

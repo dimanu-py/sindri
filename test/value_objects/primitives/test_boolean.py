@@ -10,7 +10,7 @@ from src.errors.required_value_error import RequiredValueError
 from src.value_objects.primitives.boolean import (
     Boolean,
 )
-from test.mothers.primitives.boolean_primitives_mother import (
+from src.mothers import (
     BooleanPrimitivesMother,
 )
 
