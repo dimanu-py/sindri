@@ -1,4 +1,4 @@
-class ValidationError(Exception):
+class ValueObjectValidationError(Exception):
     """Base class for all controlled errors during validation of value objects."""
 
     def __init__(self, message: str) -> None:

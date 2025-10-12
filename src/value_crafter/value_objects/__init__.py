@@ -6,7 +6,7 @@ imported directly from :mod:`value_crafter.value_object`.
 
 from src.value_crafter.value_objects.aggregate import Aggregate
 from src.value_crafter.value_objects.decorators.validation import validate
-from src.value_crafter.value_objects.errors.validation_error import ValidationError
+from src.value_crafter.value_objects.errors.value_object_validation_error import ValueObjectValidationError
 from src.value_crafter.value_objects.identifiers.string_uuid import StringUuid
 from src.value_crafter.value_objects.primitives.boolean import Boolean
 from src.value_crafter.value_objects.primitives.float import Float
@@ -25,5 +25,5 @@ __all__ = [
     "List",
     "String",
     "ValueObject",
-    "ValidationError",
+    "ValueObjectValidationError",
 ]
