@@ -1,10 +1,14 @@
 site_name: Sindri
-site_url: https://dimanu-py.github.io/sindri/
+site_url: https://dimanu-py.github.io/sindri
 site_description: >
   A tool to help you create value objects, validate domain logic, ensure data integrity 
   and generate test data in your Python applications.
 repo_name: sindri
 repo_url: https://github.com/dimanu-py/sindri
+extra:
+  homepage: home/
+extra_css:
+  - assets/extra.css
 plugins:
   - search
   - tags
