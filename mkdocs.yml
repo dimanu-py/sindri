@@ -1,0 +1,86 @@
+site_name: Value Crafter
+site_url: https://dimanu-py.github.io/value-crafter/
+site_description: >
+  A tool to help you create value objects, validate domain logic, ensure data integrity 
+  and generate test data in your Python applications.
+repo_name: value-crafter
+repo_url: https://github.com/dimanu-py/value-crafter
+plugins:
+  - search
+  - tags
+  - section-index
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+  - attr_list:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite:
+  - pymdownx.snippets:
+  - pymdownx.superfences:
+theme:
+  name: material
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+  logo: assets/logo.png
+  icon:
+    logo: logo
+  features:
+    - navigation.path
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.sections
+    - navigation.indexes
+    - navigation.tracking
+    - content.code.annotate
+    - toc.follow
+    - navigation.footer
+    - navigation.top
+    - content.code.copy
+    - content.tabs.link
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - search.suggest
+    - search.highlight
+  palette:
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Dark Mode
+      primary: '#B4BEFE'
+      accent: '#FAB387'
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Light Mode
+      primary: '#B4BEFE'
+      accent: '#FAB387'
+nav:
+  - Home:
+      - home/index.md
+      - Getting Started: home/getting_started.md
+      - Navigation Guide: home/navigation_guide.md
+      - Contribution Guide: home/contribution_guide.md
+      - Security: home/security.md
+  - Value Object:
+      - value_objects/index.md
+      - Built-in Value Objects: value_objects/built_in_vo.md
+      - Validation Mechanism: value_objects/validation.md
+      - Customizing Value Objects: value_objects/customizing_vo.md
+      - Aggregate Roots: value_objects/aggregate_roots.md
+  - Object Mother:
+      - object_mother/index.md
+      - Object Mother Pattern Overview: object_mother/overview.md
+      - The ObjectMother Base Class: object_mother/base_class.md
+      - Available Object Mothers: object_mother/available_mothers.md
+      - Usage: object_mother/usage.md
+      - Creating Custom Object Mothers: object_mother/custom_mothers.md
