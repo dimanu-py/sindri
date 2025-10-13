@@ -1,5 +1,5 @@
 from collections.abc import Iterator
-from typing import Any, TypeVar, get_args, get_origin, Generic
+from typing import Any, Generic, TypeVar, get_args, get_origin
 
 from src.sindri._compat import Self, override
 from src.sindri.value_objects.decorators.validation import validate

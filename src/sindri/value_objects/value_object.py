@@ -1,6 +1,6 @@
 from abc import ABC
 from collections.abc import Callable
-from typing import TypeVar, Generic
+from typing import Generic, TypeVar
 
 from src.sindri._compat import Self, override
 
