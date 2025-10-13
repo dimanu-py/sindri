@@ -16,13 +16,12 @@ class StringPrimitivesMother(ObjectMother):
     @classmethod
     def containing_character(cls, character: str) -> str:
         """Generate a string containing a specific character in a random position (not at beginning or end)."""
-        faker = cls._faker()
-        base_word = faker.word()
+        base_word = cls._faker().word()
 
         if len(base_word) < 3:
-            base_word = faker.word() + faker.word()
+            base_word = cls._faker().word() + cls._faker().word()
 
-        character_position = faker.random_int(min=1, max=len(base_word) - 1)
+        character_position = cls._faker().random_int(min=1, max=len(base_word) - 1)
 
         return base_word[:character_position] + character + base_word[character_position + 1 :]
 
