@@ -8,4 +8,4 @@ installed as a dependency.
 from src.sindri import mothers, value_objects
 
 __all__ = ["mothers", "value_objects"]
-__version__ = "0.0.1"
+__version__ = "0.1.0"
