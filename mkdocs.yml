@@ -82,9 +82,6 @@ nav:
       - Customizing Value Objects: value_objects/customizing_vo.md
       - Aggregate Roots: value_objects/aggregate_roots.md
   - Object Mother:
-      - object_mother/index.md
-      - Object Mother Pattern Overview: object_mother/overview.md
-      - The ObjectMother Base Class: object_mother/base_class.md
-      - Available Object Mothers: object_mother/available_mothers.md
-      - Usage: object_mother/usage.md
-      - Creating Custom Object Mothers: object_mother/custom_mothers.md
+      - object_mothers/index.md
+      - Built-in Mothers: object_mothers/built_in_mothers.md
+      - Customizing Mothers: object_mothers/customizing_mothers.md
