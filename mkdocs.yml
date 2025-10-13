@@ -1,10 +1,10 @@
-site_name: Value Crafter
-site_url: https://dimanu-py.github.io/value-crafter/
+site_name: Sindri
+site_url: https://dimanu-py.github.io/sindri/
 site_description: >
   A tool to help you create value objects, validate domain logic, ensure data integrity 
   and generate test data in your Python applications.
-repo_name: value-crafter
-repo_url: https://github.com/dimanu-py/value-crafter
+repo_name: sindri
+repo_url: https://github.com/dimanu-py/sindri
 plugins:
   - search
   - tags

@@ -32,13 +32,14 @@ The easiest way to define an aggregate root is by subclassing the `Aggregate` ba
 its attributes using type annotations. Each attribute can be a primitive type or another value object.
 
 ```python
-from value_crafter.value_objects import Aggregate, String, Integer, List
+from sindri.value_objects import Aggregate, String, Integer, List
+
 
 class Address(Aggregate):
     _street: String
     _city: String
     _zip_code: String
-    
+
     def __init__(self, street: str, city: str, zip_code: str):
         self._street = String(street)
         self._city = String(city)
@@ -54,20 +55,19 @@ address_from_primitives = Address.from_primitives({
 ```
 
 ???+ tip "Another option to create an Aggregate Root"
-    
     ```python
-    from value_crafter.value_objects import Aggregate, String, Integer, List
+    from sindri.value_objects import Aggregate, String, Integer, List
     
     class Address(Aggregate):
         street: String
         city: String
         zip_code: String
-
+    
         def __init__(self, street: String, city: String, zip_code: String):
             self.street = street
             self.city = city
             self.zip_code = zip_code
-
+    
     address_from_constructor = Address(street=String("123 Main St"), city=String("Springfield"), zip_code=String("12345"))
     address_from_primitives = Address.from_primitives({
         "street": "123 Main St",
@@ -96,18 +96,19 @@ With this approach, if we wanted to verify if two addresses are in the same city
 
 ```python
 from typing import Self
-from value_crafter.value_objects import Aggregate, String
+from sindri.value_objects import Aggregate, String
+
 
 class Address(Aggregate):
     _street: String
     _city: String
     _zip_code: String
-    
+
     def __init__(self, street: str, city: str, zip_code: str):
         self._street = String(street)
         self._city = String(city)
         self._zip_code = String(zip_code)
-    
+
     def is_in_same_city(self, other: Self) -> bool:
         return self._city == other._city
 ```

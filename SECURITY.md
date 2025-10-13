@@ -1,6 +1,6 @@
 # Security Policy
 
-Thank you for helping keep **Value Crafter** package and its users safe.
+Thank you for helping keep **Sindri** package and its users safe.
 We take security issues seriously and appreciate responsible disclosures.
 
 ## Reporting a Vulnerability
@@ -40,4 +40,4 @@ We kindly ask you to:
 
 We are committed to keeping this project and its users safe and will strive to resolve all legitimate reports swiftly and transparently.
 
-_Thank you for keeping the **Value Crafter** package community secure!_
+_Thank you for keeping the **Sindri** package community secure!_

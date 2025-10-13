@@ -102,7 +102,7 @@ This property returns the internal `_value` attribute, allowing you to retrieve 
 primitive value without exposing the internal state for modification.
 
 ```python
-from value_crafter.value_objects import String
+from sindri.value_objects import String
 
 username = String("john_doe")
 print(username.value)  # john_doe

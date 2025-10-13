@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🛠️ Instant Boilerplate for Python Projects 🛠️</h1>
+  <h1>🛠️ Sindri 🛠️</h1>
   <strong>Easy use and customizable implementation for Value Object and Object Mother patterns.</strong>
 </div>
 
@@ -13,21 +13,18 @@
 > [!NOTE]
 > This project was generated using [Instant Python](https://github.com/dimanu-py/instant-python), a fast, easy and reliable project generator for Python projects.
 
-> [!NOTE]
-> This project was inspired by Montoto, A. Value Object Pattern [Computer software]. https://github.com/adriamontoto/value-object-pattern
-
 <div align="center"><table><tr><td>
-Value Crafter replaces ad hoc primitives and fragile validators with a consistent Value Object and Aggregate 
+Sindri replaces ad hoc primitives and fragile validators with a consistent Value Object and Aggregate 
 toolkit you can adopt quickly. 
 Spin up validated value objects, aggregates, and test data with a simple and a small, focused API.
 
-Value Crafter provides a drop-in solution for implementing Value Object and Object Mother patterns.
+Sindri provides a drop-in solution for implementing Value Object and Object Mother patterns.
 This library provides a basic-high-customizable implementation to help you enforce
 domain invariants and improve code quality with minimal effort.
 
 <br><br>
 
-<b>Why use Value Crafter?</b> Building your domain with Value Crafter lets you:
+<b>Why use Sindri?</b> Building your domain with Sindri lets you:
 
 <ul style="list-style-type: none">
   <li>⏱️ Cut domain modeling and validation to seconds</li>

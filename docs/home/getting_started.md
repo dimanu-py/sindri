@@ -1,6 +1,6 @@
 # Getting Started
 
-This page provides a quick start guide for installing and using the `value-crafter` library in your project. 
+This page provides a quick start guide for installing and using the `sindri` library in your project. 
 You will learn how to:
 
 - [Install the library](#installation)
@@ -14,18 +14,18 @@ If you are interested in contributing to the project, visit the [Contributing](.
 
 ## Installation
 
-`value-crafter` requires Python 3.13 and uses uv as its dependency manager.
+`sindri` requires Python 3.13 and uses uv as its dependency manager.
 
 ### Installing with pip
 
 ```bash
-pip install value-crafter
+pip install sindri
 ```
 
 ### Installing with uv
 
 ```bash
-uv add value-crafter
+uv add sindri
 ```
 
 The library has no runtime dependencies. All dependencies listed in pyproject.toml
@@ -39,13 +39,13 @@ You can use the [built-in primitive value objects](../value_objects/built_in_vo.
 instances of them.
 
 ```python
-from value_crafter.value_objects import Integer, Boolean
+from sindri.value_objects import Integer, Boolean
 
 age = Integer(25)
 is_active = Boolean(True)
 
-print(age.value) # 25
-print(is_active.value) # True
+print(age.value)  # 25
+print(is_active.value)  # True
 ```
 
 !!! notes "Advanced Usage"
@@ -59,15 +59,15 @@ The library provides an easy-to-use API to generate test data using the [Object 
 You can use the built-in primitive object mothers directly in your tests:
 
 ```python
-from value_crafter.mothers import IntPrimitivesMother, BooleanPrimitivesMother
+from sindri.mothers import IntegerPrimitivesMother, BooleanPrimitivesMother
 
-random_age = IntPrimitivesMother.any()
+random_age = IntegerPrimitivesMother.any()
 is_active = BooleanPrimitivesMother.true()
 ```
 
 ## Next Steps
 
-Now that you have a basic understanding of how to install and use the `value-crafter` library,
+Now that you have a basic understanding of how to install and use the `sindri` library,
 you can explore the following sections for more detailed information:
 
 - [Value Objects](../value_objects/index.md): Learn more about creating and using value objects.

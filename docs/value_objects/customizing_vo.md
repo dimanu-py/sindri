@@ -13,7 +13,7 @@ express the ubiquitous language of your domain.
 The fastest way to create these types of value objects is by subclassing one of the [built-in primitive types](built_in_vo.md).
 
 ```python
-from value_crafter.value_objects import String
+from sindri.value_objects import String
 
 
 class ProductCode(String):
@@ -27,13 +27,13 @@ You can also specialize a value object and add custom validation logic using the
 seen in the [previous section](validation.md#custom-validations)
 
 ```python
-from value_crafter.value_objects import Integer, validate, ValueObjectValidationError
+from sindri.value_objects import Integer, validate, SindriValidationError
 
 
-class NegativeIntegerError(ValueObjectValidationError):
+class NegativeIntegerError(SindriValidationError):
     def __init__(self) -> None:
         super().__init__("The integer must be positive")
-    
+
 
 class PositiveInteger(Integer):
     @validate
@@ -49,12 +49,12 @@ you can create your own value object from scratch by subclassing the `ValueObjec
 
 ```python
 from datetime import date
-from value_crafter.value_objects import ValueObject, validate, ValueObjectValidationError
+from sindri.value_objects import ValueObject, validate, SindriValidationError
 
 
 class Date(ValueObject[date]):
     @validate
     def _must_be_a_date(self):
         if not isinstance(self.value, date):
-            raise ValueObjectValidationError("The value must be a date")
+            raise SindriValidationError("The value must be a date")
 ```

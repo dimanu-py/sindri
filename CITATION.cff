@@ -1,13 +1,13 @@
 cff-version: 1.2.0
-title: value-object
+title: sindri
 message: If you use this software, please cite it using the metadata below.
 type: software
 authors:
   - given-names: dimanu-py
-repository-code: https://github.com/dimanu-py/value-object/
-url: https://pypi.org/project/value-object/
+repository-code: https://github.com/dimanu-py/sindri/
+url: https://pypi.org/project/sindri/
 abstract: >
-    Implementation of value object pattern to be reused among projects
+    Implementation of value object and object mother patterns to be reused among projects
 keywords:
   - python
 license: MIT

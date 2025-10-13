@@ -34,7 +34,8 @@ method:
 - Returns None if validation passes
 
 ```python
-from value_crafter.value_objects import ValueObject, validate
+from sindri.value_objects import ValueObject, validate
+
 
 class YourValueObject(ValueObject[int]):
     @validate
@@ -49,37 +50,37 @@ When the value object is instantiated, all methods decorated with `@validate` ar
 can be controlled in two ways:
 
 1. **Definition Order**: By default, validation methods are executed in the order they are defined in the class.
-    
+
     ```python
-    from value_crafter.value_objects import ValueObject, validate, ValueObjectValidationError
+    from sintri.value_objects import ValueObject, validate, SintriValidationError
    
     class Integer(ValueObject[int]):
         @validate
         def _ensure_has_value(self, value: int) -> None:
             if value is None:
-                raise ValueObjectValidationError("Value is required")
+                raise SintriValidationError("Value is required")
     
         @validate
         def _ensure_value_is_integer(self, value: int) -> None:
             if not isinstance(value, int):
-                raise ValueObjectValidationError("Invalid type, expected int")
+                raise SintriValidationError("Invalid type, expected int")
     ```
 
 2. **Explicit Order**: You can specify an `order` parameter in the `@validate` decorator to control the sequence explicitly.
 
     ```python
-    from value_crafter.value_objects import ValueObject, validate, ValueObjectValidationError
+    from sintri.value_objects import ValueObject, validate, SintriValidationError
     
     class Integer(ValueObject[int]):
         @validate(order=1)
         def _ensure_value_is_integer(self, value: int) -> None:
             if not isinstance(value, int):
-                raise ValueObjectValidationError("Invalid type, expected int")
+                raise SintriValidationError("Invalid type, expected int")
    
         @validate(order=0)
         def _ensure_has_value(self, value: int) -> None:
             if value is None:
-                raise ValueObjectValidationError("Value is required")
+                raise SintriValidationError("Value is required")
     ```
 
 ## Error Hierarchy
@@ -110,12 +111,13 @@ You can still use directly `ValueObjectValidationError` for general validation e
 enhance clarity and maintainability.
 
 ```python
-from value_crafter.value_objects import Float, validate, ValueObjectValidationError
+from sindri.value_objects import Float, validate, SindriValidationError
 
-class NegativePriceError(ValueObjectValidationError):
+
+class NegativePriceError(SindriValidationError):
     def __init__(self, value: float) -> None:
         super().__init__(f"Price cannot have negative value, received '{value}'.")
-        
+
 
 class Price(Float):
     @validate

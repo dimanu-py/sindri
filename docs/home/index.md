@@ -1,6 +1,6 @@
-# Value Crafter
+# Sindri
 
-Value Crafter provides a drop-in solution for implementing Value Object and Object Mother patterns.
+Sindri provides a drop-in solution for implementing Value Object and Object Mother patterns.
 This library provides a basic-high-customizable implementation to help you enforce
 domain invariants and improve code quality with minimal effort.
 
