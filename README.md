@@ -4,10 +4,10 @@
 </div>
 
 <p align="center">
-  <a href="https://dimanu-py.github.io/instant-python/home/getting_started/">Getting Started</a>&nbsp;&nbsp;•&nbsp;
-  <a href="https://dimanu-py.github.io/instant-python/guide/command_config/">Usage</a>&nbsp;&nbsp;•&nbsp;
-  <a href="https://dimanu-py.github.io/instant-python/examples/configuration/">Examples</a>&nbsp;&nbsp;•&nbsp;
-  <a href="https://dimanu-py.github.io/instant-python/home/contributing/">Contributing</a>
+  <a href="https://dimanu-py.github.io/sindri/home/getting_started/">Getting Started</a>&nbsp;&nbsp;•&nbsp;
+  <a href="https://dimanu-py.github.io/sindri/value_objects/">Value Object Pattern</a>&nbsp;&nbsp;•&nbsp;
+  <a href="https://dimanu-py.github.io/sindri/object_mothers/">Object Mother Pattern</a>&nbsp;&nbsp;•&nbsp;
+  <a href="https://dimanu-py.github.io/sindri/home/contributing/">Contributing</a>
 </p>
 
 > [!NOTE]
@@ -18,11 +18,10 @@ Sindri replaces ad hoc primitives and fragile validators with a consistent Value
 toolkit you can adopt quickly. 
 Spin up validated value objects, aggregates, and test data with a simple and a small, focused API.
 
-Sindri provides a drop-in solution for implementing Value Object and Object Mother patterns.
-This library provides a basic-high-customizable implementation to help you enforce
+Sindri provides a basic-high-customizable implementation to help you enforce
 domain invariants and improve code quality with minimal effort.
 
-<br><br>
+<br>
 
 <b>Why use Sindri?</b> Building your domain with Sindri lets you:
 
@@ -39,38 +38,60 @@ domain invariants and improve code quality with minimal effort.
 
 ## Documentation
 
-This section provides a high-level overview of the `instant-python` library, its features, and how to get started.
-For detailed instructions and examples, please refer to the [full Instant Python documentation](https://dimanu-py.github.io/instant-python/home/).
+This section provides a high-level overview of the `sindri` library, its features, and how to get started.
+For detailed instructions and examples, please refer to the [full Sindri documentation](https://dimanu-py.github.io/sindri/home/).
 
-- [Installation](https://dimanu-py.github.io/instant-python/home/#installation)
-- [Getting Started](https://dimanu-py.github.io/instant-python/home/getting_started/)
-- [Examples](https://dimanu-py.github.io/instant-python/examples/configuration/)
+- [Installation](#installation)
+- [Basic Usage](#basic-usage)
+- [Contributing](#contributing)
 
 ### Need help?
 
 -   Join a discussion 💬 on [GitHub Discussions]
 -   [Raise an issue][GitHub Issues] on GitHub
 
-[GitHub Discussions]: https://github.com/dimanu-py/instant-python/discussions
-[GitHub Issues]: https://github.com/dimanu-py/instant-python/issues
+[GitHub Discussions]: https://github.com/dimanu-py/sindri/discussions
+[GitHub Issues]: https://github.com/dimanu-py/sindri/issues
 
 ## Installation
 
-The latest version of `instant-python` can be installed from PyPI:
+The latest version of `sindri` can be installed from PyPI:
 
 ```bash
-pip install instant-python
+pip install sindri
 ```
-
-> [!TIP]
-> We highly recommend using a virtual environment to avoid conflicts with other Python packages.
 
 ### Requirements
 
-Instant Python tries to support the latest Python versions, we officially support from Python 3.10 to 3.13.
+Sindri tries to support the latest Python versions, we officially support from Python 3.10 to 3.13.
 Older versions of Python may work, but they are not guaranteed to be compatible.
+
+## Basic Usage
+
+Here is a simple example of how to use `sindri` to create a value object and generate test data using an object mother.
+
+```python
+from sindri.value_objects import Integer, String
+
+age = Integer(30)
+name = String("John Doe")
+
+print(f"Name: {name.value}, Age: {age.value}")
+```
+
+```python
+from sindri.mothers import IntegerPrimitivesMother, StringPrimitivesMother
+
+random_age = IntegerPrimitivesMother.any()
+random_name = StringPrimitivesMother.any()
+```
+
+> [!NOTE]
+> To learn more about advanced usage of value objects, including validation, custom value objects,
+> complex objects like aggregates, visit the [Value Objects](https://dimanu-py.github.io/sindri/value_objects/)
+> and [Object Mothers](https://dimanu-py.github.io/sindri/object_mothers) sections.
 
 ## Contributing
 
-We welcome contributions to `instant-python`! If you have ideas, suggestions, or improvements, please check out our
-[contributing guide](https://dimanu-py.github.io/instant-python/home/contributing/) for details on how to get involved.
+We welcome contributions to `sindri`! If you have ideas, suggestions, or improvements, please check out our
+[contributing guide](https://dimanu-py.github.io/sindri/home/contributing/) for details on how to get involved.
