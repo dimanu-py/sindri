@@ -1,13 +1,16 @@
 from collections.abc import Iterator
-from typing import Any, Self, TypeVar, get_args, get_origin, override
+from typing import Any, TypeVar, get_args, get_origin, Generic
 
+from src.sindri._compat import Self, override
 from src.sindri.value_objects.decorators.validation import validate
 from src.sindri.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
 from src.sindri.value_objects.errors.required_value_error import RequiredValueError
 from src.sindri.value_objects.value_object import ValueObject
 
+T = TypeVar("T")
 
-class List[T](ValueObject[list[T]]):
+
+class List(ValueObject[list[T]], Generic[T]):
     @override
     def __init_subclass__(cls, **kwargs: Any) -> None:
         """

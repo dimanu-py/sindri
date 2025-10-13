@@ -1,8 +1,10 @@
 from collections.abc import Callable
-from typing import Any
+from typing import Any, TypeVar
+
+F = TypeVar('F', bound=Callable[..., Any])
 
 
-def validate[F: Callable[..., Any]](func: F | None = None, *, order: int = 0) -> Callable[[F], F] | F:
+def validate(func: F | None = None, *, order: int = 0) -> Callable[[F], F] | F:
     """Mark a method as a validator for ValueObject validation.
 
     Arguments:

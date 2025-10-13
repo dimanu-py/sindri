@@ -1,9 +1,13 @@
 from abc import ABC
 from collections.abc import Callable
-from typing import Self, override
+from typing import TypeVar, Generic
+
+from src.sindri._compat import Self, override
+
+T = TypeVar("T")
 
 
-class ValueObject[T](ABC):
+class ValueObject(ABC, Generic[T]):
     """
     Abstract base class for implementing value objects with immutability and validation.
 
