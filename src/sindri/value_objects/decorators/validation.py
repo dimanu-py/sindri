@@ -13,7 +13,7 @@ def validate(func: F | None = None, *, order: int = 0) -> Callable[[F], F] | F:
     """  # noqa: E501
 
     def wrapper(fn: F) -> F:
-        if type(order) is not int:
+        if not isinstance(order, int):
             raise TypeError(f"Validation order {order} must be an integer. Got {type(order).__name__} type.")
         if order < 0:
             raise ValueError(f"Validation order {order} must be a positive value.")
