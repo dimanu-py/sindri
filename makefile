@@ -117,3 +117,11 @@ show:  ## Show installed dependencies.
 search:  ## Show package details.
 	@read -p "Enter package name to search: " package;\
 	uv pip show $$package
+
+.PHONY: docs-serve
+docs-serve:  ## Start server for documentation.
+	@uv run mkdocs serve
+
+.PHONY: watch
+watch:  ## Run all test with every change.
+	@uv run ptw --runner "pytest test -ra"
