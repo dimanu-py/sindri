@@ -1,5 +1,5 @@
 [project]
-name = "sindri"
+name = "sindripy"
 version = "0.1.0"
 description = "Value Object and Object Mother patterns implementation for Python"
 authors = [{name = "dimanu-py", email = "dimanu.py@gmail.com"}]
@@ -8,6 +8,21 @@ dependencies = [
 requires-python = ">=3.10, <3.14"
 readme = "README.md"
 license = { file = "LICENSE" }
+classifiers = [
+    "Framework :: FastAPI",
+    "Typing :: Typed",
+    "Programming Language :: Python",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Testing :: unit",
+    "Testing :: BDD"
+]
+
+[project.urls]
+documentation = "https://dimanu-py.github.io/sindri/home/"
+repository = "https://github.com/dimanu-py/sindri/"
 
 
 [dependency-groups]

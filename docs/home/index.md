@@ -53,7 +53,7 @@ and [Object Mothers](../object_mothers/index.md) sections.
 The latest version of `sindri` can be installed from PyPI:
 
 ```bash
-pip install sindri
+pip install sindripy
 ```
 
 ### Requirements

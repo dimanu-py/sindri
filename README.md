@@ -58,7 +58,7 @@ For detailed instructions and examples, please refer to the [full Sindri documen
 The latest version of `sindri` can be installed from PyPI:
 
 ```bash
-pip install sindri
+pip install sindripy
 ```
 
 ### Requirements

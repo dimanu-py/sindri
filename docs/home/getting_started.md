@@ -19,13 +19,13 @@ If you are interested in contributing to the project, visit the [Contributing](.
 ### Installing with pip
 
 ```bash
-pip install sindri
+pip install sindripy
 ```
 
 ### Installing with uv
 
 ```bash
-uv add sindri
+uv add sindripy
 ```
 
 The library has no runtime dependencies. All dependencies listed in pyproject.toml
