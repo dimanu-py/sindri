@@ -69,7 +69,7 @@ nav:
       - home/index.md
       - Getting Started: home/getting_started.md
       - Navigation Guide: home/navigation_guide.md
-      - Contribution Guide: home/contribution_guide.md
+      - Contributing Guide: home/contributing_guide.md
       - Security: home/security.md
   - Value Object:
       - value_objects/index.md

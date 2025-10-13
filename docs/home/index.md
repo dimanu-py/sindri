@@ -33,7 +33,8 @@ domain invariants and improve code quality with minimal effort.
 ## Documentation
 
 This section provides a high-level overview of the `sindri` library, its features, and how to get started.
-For detailed instructions and examples, please refer to the [full Sindri documentation](https://dimanu-py.github.io/sindri/home/).
+For detailed instructions and examples, please refer to the [Value Objects](../value_objects/index.md) 
+and [Object Mothers](../object_mothers/index.md) sections.
 
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
@@ -82,10 +83,10 @@ random_name = StringPrimitivesMother.any()
 
 !!! note "Learn More"
     To learn more about advanced usage of value objects, including validation, custom value objects,
-    complex objects like aggregates, visit the [Value Objects](https://dimanu-py.github.io/sindri/value_objects/)
-    and [Object Mothers](https://dimanu-py.github.io/sindri/object_mothers) sections.
+    complex objects like aggregates, visit the [Value Objects](../value_objects/index.md)
+    and [Object Mothers](../object_mothers/index.md) sections.
 
 ## Contributing
 
 We welcome contributions to `sindri`! If you have ideas, suggestions, or improvements, please check out our
-[contributing guide](https://dimanu-py.github.io/sindri/home/contributing/) for details on how to get involved.
+[contributing guide](contributing_guide.md) for details on how to get involved.
