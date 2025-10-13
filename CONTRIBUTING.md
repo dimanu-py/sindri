@@ -7,12 +7,12 @@ your help makes the library better for everyone.
 
 1. **Search first**: check for existing [issues](https://github.com/dimanu-py/sindri/issues) before opening a new one. You might
    find that your issue has already been reported or even fixed in a pull request.
-2. **Security issues**: report privately via our [`Security Policy`](https://dimanu-py.github.io/sindri/home/security/); **do not** raise a public issue for vulnerabilities.
+2. **Security issues**: report privately via our [`Security Policy`](https://dimanu-py.github.io/sindri/blob/main/SECURITY.md); **do not** raise a public issue for vulnerabilities.
 
 ## Start Contributing
 
-!!! info "UNIX System Required"
-    All examples assume you are using a UNIX system with `GNU Make` installed. For more information about the Makefile, see the [Tooling](#tooling) section.
+> [!IMPORTANT]
+> All examples assume you are using a UNIX system with `GNU Make` installed. For more information about the Makefile, see the [Tooling](#tooling) section.
 
 ### Common Steps
 
@@ -55,8 +55,8 @@ If you want to implement a new feature, fix a bug, or improve the codebase, it's
 
 3. **Commit Your Changes**: Commit your changes with a descriptive commit message.
 
-    !!! info "Commit Message Guidelines"
-        More information about our commit message guidelines can be found in the [Commit Message Guidelines](#commit-message-guidelines) section.
+   > [!INFO]
+   > More information about our commit message guidelines can be found in the [Commit Message Guidelines](#commit-message-guidelines) section.
 
     ```bash
     git add .
@@ -71,8 +71,8 @@ If you want to implement a new feature, fix a bug, or improve the codebase, it's
 
 5. **Open a Pull Request**: Open a pull request against the `main` branch and fill out our [`pull request template`](https://github.com/dimanu-py/sindri/blob/main/.github/pull_request_template.md).
 
-    !!! info "Pull Request Guidelines"
-        More information about our pull request guidelines and feedback can be found in the [Pull Request Guidelines](#pull-request-guidelines) section.
+   > [!INFO]
+   > More information about our pull request guidelines and feedback can be found in the [Pull Request Guidelines](#pull-request-guidelines) section.
 
 ### Contributing with Documentation
 
@@ -87,8 +87,8 @@ Once you have made your changes, you can follow these steps to contribute:
 
 1. **Commit Your Changes**: Commit your changes with a descriptive commit message.
 
-    !!! info "Commit Message Guidelines"
-        More information about our commit message guidelines can be found in the [Commit Message Guidelines](#commit-message-guidelines) section.
+   > [!INFO]
+   > More information about our commit message guidelines can be found in the [Commit Message Guidelines](#commit-message-guidelines) section.
 
     ```bash
     git add .
@@ -103,8 +103,8 @@ Once you have made your changes, you can follow these steps to contribute:
 
 3. **Open a Pull Request**: Open a pull request against the `main` branch and fill out our [`pull request template`](https://github.com/dimanu-py/sindri/blob/main/.github/pull_request_template.md).
 
-    !!! info "Pull Request Guidelines"
-        More information about our pull request guidelines and feedback can be found in the [Pull Request Guidelines](#pull-request-guidelines) section.
+    > [!INFO]
+    > More information about our pull request guidelines and feedback can be found in the [Pull Request Guidelines](#pull-request-guidelines) section.
 
 
 <a name="commit-message-guidelines"></a>
@@ -114,11 +114,11 @@ This project follows **[Conventional Commits](https://www.conventionalcommits.or
 **[Commitizen](https://commitizen-tools.github.io)** as a pre-commit hook and
 **[Semantic Versioning](https://semver.org)** used by [python-semantic-release](https://python-semantic-release.readthedocs.io).
 
-!!! info "Versioning"
-    More information about versioning and releases can be found in the [Releases](https://dimanu-py.github.io/sindri/home/releases/) page.
+> [!INFO]
+> More information about versioning and releases can be found in the [Releases](https://dimanu-py.github.io/sindri/home/releases/) page.
 
-!!! important "Signed and Signed-off Commits Required"
-    This repository only accepts signed and signed-off commits, check [GitHub documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits) if you need help with that.
+> [!IMPORTANT]
+> This repository only accepts signed and signed-off commits, check [GitHub documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits) if you need help with that.
 
 ### How to Write a Good Commit Message
 
@@ -140,8 +140,8 @@ This project follows **[Conventional Commits](https://www.conventionalcommits.or
 <a name="pull-request-guidelines"></a>
 ## Pull Request Guidelines
 
-!!! important
-    Only code owners are allowed to merge a pull request.
+> [!IMPORTANT]
+> Only code owners are allowed to merge a pull request.
 
 - Use our [`pull request template`](https://github.com/dimanu-py/sindri/blob/main/.github/pull_request_template.md).
 - **Keep PRs Focused**: Submit one logical change per pull request. Avoid bundling unrelated changes together.
@@ -168,12 +168,11 @@ We follow [Conventional Comments](https://conventionalcomments.org) to keep revi
 <a name="tooling"></a>
 ## Tooling
 
-!!! important "UNIX System Required"
-    All default project commands require **GNU Make** and are intended to be run on a **UNIX system**.
+> [!IMPORTANT]
+> All default project commands require **GNU Make** and are intended to be run on a **UNIX system**.
 
-
-!!! important "UV Required"
-    You must have [**UV**](https://docs.astral.sh/uv/) installed to use the most of the default project commands.
+> [!IMPORTANT]
+> You must have [**UV**](https://docs.astral.sh/uv/) installed to use the most of the default project commands.
 
 The project provides a [`Makefile`](https://github.com/dimanu-py/sindri/blob/main/makefile) with some helpful commands,
 this commands must be run from the root of the project. For more details on each command, run `make help`.
