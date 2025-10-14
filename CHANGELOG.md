@@ -2,6 +2,15 @@
 
 <!-- version list -->
 
+## v0.1.4 (2025-10-14)
+
+### Bug Fixes
+
+- Update known-first-party package and change build system to hatchling to be able to configure
+  package setup
+  ([`13e450b`](https://github.com/dimanu-py/sindri/commit/13e450bee1d01334001c3d75d420d3ee700e068d))
+
+
 ## v0.1.3 (2025-10-14)
 
 ### Bug Fixes
