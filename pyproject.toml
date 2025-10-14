@@ -9,21 +9,25 @@ requires-python = ">=3.10, <3.14"
 readme = "README.md"
 license = { file = "LICENSE" }
 classifiers = [
-    "Framework :: FastAPI",
     "Typing :: Typed",
     "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: Libraries",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
-    "Testing :: unit",
-    "Testing :: BDD"
+    "Topic :: Software Development :: Testing :: Unit",
+    "Topic :: Software Development :: Testing :: BDD",
+    "Framework :: FastAPI"
 ]
 
 [project.urls]
 documentation = "https://dimanu-py.github.io/sindri/home/"
 repository = "https://github.com/dimanu-py/sindri/"
-
 
 [dependency-groups]
 dev = [
