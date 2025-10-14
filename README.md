@@ -7,7 +7,7 @@
   <a href="https://dimanu-py.github.io/sindri/home/getting_started/">Getting Started</a>&nbsp;&nbsp;•&nbsp;
   <a href="https://dimanu-py.github.io/sindri/value_objects/">Value Object Pattern</a>&nbsp;&nbsp;•&nbsp;
   <a href="https://dimanu-py.github.io/sindri/object_mothers/">Object Mother Pattern</a>&nbsp;&nbsp;•&nbsp;
-  <a href="https://dimanu-py.github.io/sindri/home/contributing/">Contributing</a>
+  <a href="https://dimanu-py.github.io/sindri/home/contributing_guide/">Contributing</a>
 </p>
 
 > [!NOTE]
@@ -94,4 +94,4 @@ random_name = StringPrimitivesMother.any()
 ## Contributing
 
 We welcome contributions to `sindripy`! If you have ideas, suggestions, or improvements, please check out our
-[contributing guide](https://dimanu-py.github.io/sindri/home/contributing/) for details on how to get involved.
+[contributing guide](https://dimanu-py.github.io/sindri/home/contributing_guide/) for details on how to get involved.
