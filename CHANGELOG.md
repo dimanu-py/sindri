@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.1.2 (2025-10-14)
+
+### Bug Fixes
+
+- Correct urls to contributing guide in readme
+  ([`440eb86`](https://github.com/dimanu-py/sindri/commit/440eb86911d386d49b43d5c726454ca3d6686743))
+
+
 ## v0.1.1 (2025-10-14)
 
 ### Bug Fixes
