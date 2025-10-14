@@ -61,7 +61,7 @@ All object mothers use class methods for data generation:
 - Clean and concise test code
 
 ```python
-from sindri.mothers import StringPrimitivesMother
+from sindripy.mothers import StringPrimitivesMother
 
 username = StringPrimitivesMother.any()
 ```
@@ -91,8 +91,8 @@ Primitive mothers are useful for:
 - Testing validation logic in value objects
 
 ```python
-from sindri.mothers import IntegerPrimitivesMother
-from sindri.value_objects import Integer
+from sindripy.mothers import IntegerPrimitivesMother
+from sindripy.value_objects import Integer
 
 # Using primitive mother to create raw values
 raw_age = IntegerPrimitivesMother.positive()

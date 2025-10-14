@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🛠️ Sindri 🛠️</h1>
+  <h1>🛠️ Sindripy 🛠️</h1>
   <strong>Easy use and customizable implementation for Value Object and Object Mother patterns.</strong>
 </div>
 
@@ -18,12 +18,12 @@ Sindri replaces ad hoc primitives and fragile validators with a consistent Value
 toolkit you can adopt quickly. 
 Spin up validated value objects, aggregates, and test data with a simple and a small, focused API.
 
-Sindri provides a basic-high-customizable implementation to help you enforce
+Sindripy provides a basic-high-customizable implementation to help you enforce
 domain invariants and improve code quality with minimal effort.
 
 <br>
 
-<b>Why use Sindri?</b> Building your domain with Sindri lets you:
+<b>Why use sindripy?</b> Building your domain with Sindri lets you:
 
 <ul style="list-style-type: none">
   <li>⏱️ Cut domain modeling and validation to seconds</li>
@@ -38,8 +38,8 @@ domain invariants and improve code quality with minimal effort.
 
 ## Documentation
 
-This section provides a high-level overview of the `sindri` library, its features, and how to get started.
-For detailed instructions and examples, please refer to the [full Sindri documentation](https://dimanu-py.github.io/sindri/home/).
+This section provides a high-level overview of the `sindripy` library, its features, and how to get started.
+For detailed instructions and examples, please refer to the [full Sindripy documentation](https://dimanu-py.github.io/sindri/home/).
 
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
@@ -55,7 +55,7 @@ For detailed instructions and examples, please refer to the [full Sindri documen
 
 ## Installation
 
-The latest version of `sindri` can be installed from PyPI:
+The latest version of `sindripy` can be installed from PyPI:
 
 ```bash
 pip install sindripy
@@ -71,7 +71,7 @@ Older versions of Python may work, but they are not guaranteed to be compatible.
 Here is a simple example of how to use `sindri` to create a value object and generate test data using an object mother.
 
 ```python
-from sindri.value_objects import Integer, String
+from sindripy.value_objects import Integer, String
 
 age = Integer(30)
 name = String("John Doe")
@@ -80,7 +80,7 @@ print(f"Name: {name.value}, Age: {age.value}")
 ```
 
 ```python
-from sindri.mothers import IntegerPrimitivesMother, StringPrimitivesMother
+from sindripy.mothers import IntegerPrimitivesMother, StringPrimitivesMother
 
 random_age = IntegerPrimitivesMother.any()
 random_name = StringPrimitivesMother.any()
@@ -93,5 +93,5 @@ random_name = StringPrimitivesMother.any()
 
 ## Contributing
 
-We welcome contributions to `sindri`! If you have ideas, suggestions, or improvements, please check out our
+We welcome contributions to `sindripy`! If you have ideas, suggestions, or improvements, please check out our
 [contributing guide](https://dimanu-py.github.io/sindri/home/contributing/) for details on how to get involved.

@@ -1,11 +1,11 @@
 cff-version: 1.2.0
-title: sindri
+title: sindripy
 message: If you use this software, please cite it using the metadata below.
 type: software
 authors:
   - given-names: dimanu-py
 repository-code: https://github.com/dimanu-py/sindri/
-url: https://pypi.org/project/sindri/
+url: https://pypi.org/project/sindripy/
 abstract: >
     Implementation of value object and object mother patterns to be reused among projects
 keywords:

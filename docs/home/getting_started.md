@@ -1,6 +1,6 @@
 # Getting Started
 
-This page provides a quick start guide for installing and using the `sindri` library in your project. 
+This page provides a quick start guide for installing and using the `sindripy` library in your project. 
 You will learn how to:
 
 - [Install the library](#installation)
@@ -14,7 +14,7 @@ If you are interested in contributing to the project, visit the [Contributing](.
 
 ## Installation
 
-`sindri` requires Python 3.13 and uses uv as its dependency manager.
+`sindripy` requires at least Python 3.10 and uses uv as its dependency manager.
 
 ### Installing with pip
 
@@ -39,7 +39,7 @@ You can use the [built-in primitive value objects](../value_objects/built_in_vo.
 instances of them.
 
 ```python
-from sindri.value_objects import Integer, Boolean
+from sindripy.value_objects import Integer, Boolean
 
 age = Integer(25)
 is_active = Boolean(True)
@@ -59,7 +59,7 @@ The library provides an easy-to-use API to generate test data using the [Object 
 You can use the built-in primitive object mothers directly in your tests:
 
 ```python
-from sindri.mothers import IntegerPrimitivesMother, BooleanPrimitivesMother
+from sindripy.mothers import IntegerPrimitivesMother, BooleanPrimitivesMother
 
 random_age = IntegerPrimitivesMother.any()
 is_active = BooleanPrimitivesMother.true()

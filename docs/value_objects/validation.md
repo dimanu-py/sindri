@@ -34,7 +34,7 @@ method:
 - Returns None if validation passes
 
 ```python
-from sindri.value_objects import ValueObject, validate
+from sindripy.value_objects import ValueObject, validate
 
 
 class YourValueObject(ValueObject[int]):
@@ -111,7 +111,7 @@ You can still use directly `ValueObjectValidationError` for general validation e
 enhance clarity and maintainability.
 
 ```python
-from sindri.value_objects import Float, validate, SindriValidationError
+from sindripy.value_objects import Float, validate, SindriValidationError
 
 
 class NegativePriceError(SindriValidationError):

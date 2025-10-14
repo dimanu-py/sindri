@@ -3,7 +3,7 @@
 
 ## For Users
 
-- Quick Start: [Getting Started](getting_started.md) - Install and basic use of `sindri` in your project
+- Quick Start: [Getting Started](getting_started.md) - Install and basic use of `sindripy` in your project
 - Core Concepts: [Value Objects](../value_objects/index.md) - Understanding the value object pattern implementation
 - Test Data: [Object Mothers](../object_mothers/index.md) - Generate test data for value objects
 

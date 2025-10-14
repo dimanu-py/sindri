@@ -14,7 +14,7 @@ express the ubiquitous language of your domain in your tests.
 The simplest way to create custom object mothers is by subclassing the `ObjectMother` base class:
 
 ```python
-from sindri.mothers import ObjectMother
+from sindripy.mothers import ObjectMother
 
 
 class UserMother(ObjectMother):
@@ -26,7 +26,7 @@ class UserMother(ObjectMother):
             "email": faker.email(),
             "age": faker.random_int(min=18, max=100)
         }
-    
+
     @classmethod
     def adult(cls) -> dict:
         faker = cls._faker()
@@ -35,7 +35,7 @@ class UserMother(ObjectMother):
             "email": faker.email(),
             "age": faker.random_int(min=18, max=65)
         }
-    
+
     @classmethod
     def minor(cls) -> dict:
         faker = cls._faker()
@@ -59,7 +59,7 @@ minor_user = UserMother.minor()
 You can also extend existing primitive mothers to add domain-specific generation methods:
 
 ```python
-from sindri.mothers import StringPrimitivesMother
+from sindripy.mothers import StringPrimitivesMother
 
 
 class EmailMother(StringPrimitivesMother):
@@ -67,13 +67,13 @@ class EmailMother(StringPrimitivesMother):
     def valid(cls) -> str:
         """Generate a valid email address."""
         return cls._faker().email()
-    
+
     @classmethod
     def with_domain(cls, domain: str) -> str:
         """Generate an email with a specific domain."""
         username = cls._faker().user_name()
         return f"{username}@{domain}"
-    
+
     @classmethod
     def invalid(cls) -> str:
         """Generate an invalid email (missing @ symbol)."""
@@ -86,8 +86,8 @@ When working with [value objects](../value_objects/index.md), you can create mot
 value object instances directly:
 
 ```python
-from sindri.mothers import ObjectMother
-from sindri.value_objects import String, Integer
+from sindripy.mothers import ObjectMother
+from sindripy.value_objects import String, Integer
 
 
 class Email(String):
@@ -105,7 +105,7 @@ class EmailMother(ObjectMother):
     def any(cls) -> Email:
         """Generate any valid email value object."""
         return Email(cls._faker().email())
-    
+
     @classmethod
     def with_domain(cls, domain: str) -> Email:
         """Generate an email with a specific domain."""
@@ -118,12 +118,12 @@ class AgeMother(ObjectMother):
     def any(cls) -> Age:
         """Generate any valid age."""
         return Age(cls._faker().random_int(min=0, max=120))
-    
+
     @classmethod
     def adult(cls) -> Age:
         """Generate an adult age (18+)."""
         return Age(cls._faker().random_int(min=18, max=100))
-    
+
     @classmethod
     def child(cls) -> Age:
         """Generate a child age (0-17)."""
@@ -144,7 +144,7 @@ For more complex domain objects or aggregates, you can create mothers that handl
 object graph:
 
 ```python
-from sindri.mothers import ObjectMother, StringPrimitivesMother, IntegerPrimitivesMother
+from sindripy.mothers import ObjectMother, StringPrimitivesMother, IntegerPrimitivesMother
 from dataclasses import dataclass
 
 
@@ -182,7 +182,7 @@ class PersonMother(ObjectMother):
             age=faker.random_int(min=1, max=100),
             address=AddressMother.any()
         )
-    
+
     @classmethod
     def with_age(cls, age: int) -> Person:
         """Generate a person with a specific age."""
@@ -192,7 +192,7 @@ class PersonMother(ObjectMother):
             age=age,
             address=AddressMother.any()
         )
-    
+
     @classmethod
     def with_address(cls, address: Address) -> Person:
         """Generate a person with a specific address."""
@@ -209,7 +209,7 @@ class PersonMother(ObjectMother):
 Object mothers can be composed to create more complex test scenarios:
 
 ```python
-from sindri.mothers import ObjectMother
+from sindripy.mothers import ObjectMother
 
 
 class OrderMother(ObjectMother):
@@ -222,7 +222,7 @@ class OrderMother(ObjectMother):
             "items": [ItemMother.any() for _ in range(faker.random_int(min=1, max=5))],
             "total": faker.pyfloat(positive=True, min_value=10, max_value=1000)
         }
-    
+
     @classmethod
     def with_customer(cls, customer):
         faker = cls._faker()

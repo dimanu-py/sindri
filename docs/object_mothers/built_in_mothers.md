@@ -19,10 +19,10 @@ The `BooleanPrimitivesMother` class generates boolean test data for testing scen
 | `false()`  | Generate the `False` boolean value                             | `bool`  |
 
 ```python
-from sindri.mothers import BooleanPrimitivesMother
+from sindripy.mothers import BooleanPrimitivesMother
 
-random_flag = BooleanPrimitivesMother.any()      # True or False
-active_flag = BooleanPrimitivesMother.true()     # True
+random_flag = BooleanPrimitivesMother.any()  # True or False
+active_flag = BooleanPrimitivesMother.true()  # True
 inactive_flag = BooleanPrimitivesMother.false()  # False
 ```
 
@@ -45,12 +45,12 @@ The `IntegerPrimitivesMother` class generates integer test data for testing scen
 - `max_value` (int): Maximum value (default: 1000)
 
 ```python
-from sindri.mothers import IntegerPrimitivesMother
+from sindripy.mothers import IntegerPrimitivesMother
 
 random_number = IntegerPrimitivesMother.any()  # Random integer
-age = IntegerPrimitivesMother.positive()       # Always > 0
-debt = IntegerPrimitivesMother.negative()      # Always < 0
-balance = IntegerPrimitivesMother.zero()       # 0
+age = IntegerPrimitivesMother.positive()  # Always > 0
+debt = IntegerPrimitivesMother.negative()  # Always < 0
+balance = IntegerPrimitivesMother.zero()  # 0
 
 # With constraints
 positive_int = IntegerPrimitivesMother.create(is_positive=True, min_value=1, max_value=100)
@@ -77,12 +77,12 @@ The `FloatPrimitivesMother` class generates floating-point test data for testing
 - `max_value` (float): Maximum value (default: 10000.0)
 
 ```python
-from sindri.mothers import FloatPrimitivesMother
+from sindripy.mothers import FloatPrimitivesMother
 
 random_decimal = FloatPrimitivesMother.any()  # Random float
-price = FloatPrimitivesMother.positive()      # Always > 0
-loss = FloatPrimitivesMother.negative()       # Always < 0
-balance = FloatPrimitivesMother.zero()        # 0.0
+price = FloatPrimitivesMother.positive()  # Always > 0
+loss = FloatPrimitivesMother.negative()  # Always < 0
+balance = FloatPrimitivesMother.zero()  # 0.0
 
 # With constraints
 price = FloatPrimitivesMother.create(is_positive=True, min_value=0.01, max_value=999.99)
@@ -104,15 +104,15 @@ The `StringPrimitivesMother` class generates string test data for testing scenar
 | `text()`                         | Generate a text string with spaces and punctuation (up to 200 chars)     | `str`   |
 
 ```python
-from sindri.mothers import StringPrimitivesMother
+from sindripy.mothers import StringPrimitivesMother
 
-random_word = StringPrimitivesMother.any()                          # e.g., "hello"
-blank = StringPrimitivesMother.empty()                              # ""
-email_like = StringPrimitivesMother.containing_character("@")       # e.g., "user@name"
-file_name = StringPrimitivesMother.ending_with(".txt")              # e.g., "document.txt"
-hashtag = StringPrimitivesMother.beginning_with("#")                # e.g., "#trending"
-code = StringPrimitivesMother.with_length(8)                        # Exactly 8 characters
-description = StringPrimitivesMother.text()                         # e.g., "Lorem ipsum..."
+random_word = StringPrimitivesMother.any()  # e.g., "hello"
+blank = StringPrimitivesMother.empty()  # ""
+email_like = StringPrimitivesMother.containing_character("@")  # e.g., "user@name"
+file_name = StringPrimitivesMother.ending_with(".txt")  # e.g., "document.txt"
+hashtag = StringPrimitivesMother.beginning_with("#")  # e.g., "#trending"
+code = StringPrimitivesMother.with_length(8)  # Exactly 8 characters
+description = StringPrimitivesMother.text()  # e.g., "Lorem ipsum..."
 ```
 
 ## ListPrimitivesMother
@@ -124,7 +124,7 @@ The `ListPrimitivesMother` class generates list test data for testing scenarios 
 | `empty()`  | Generate an empty list     | `list`  |
 
 ```python
-from sindri.mothers import ListPrimitivesMother
+from sindripy.mothers import ListPrimitivesMother
 
 empty_collection = ListPrimitivesMother.empty()  # []
 ```
@@ -139,10 +139,10 @@ The `StringUuidPrimitivesMother` class generates UUID string test data for testi
 | `invalid()` | Generate an invalid UUID string (useful for testing validation)    | `str`   |
 
 ```python
-from sindri.mothers import StringUuidPrimitivesMother
+from sindripy.mothers import StringUuidPrimitivesMother
 
-user_id = StringUuidPrimitivesMother.any()      # e.g., "550e8400-e29b-41d4-a716-446655440000"
-bad_id = StringUuidPrimitivesMother.invalid()   # Invalid UUID format
+user_id = StringUuidPrimitivesMother.any()  # e.g., "550e8400-e29b-41d4-a716-446655440000"
+bad_id = StringUuidPrimitivesMother.invalid()  # Invalid UUID format
 ```
 
 ## Using Mothers with Value Objects
@@ -150,8 +150,8 @@ bad_id = StringUuidPrimitivesMother.invalid()   # Invalid UUID format
 Object mothers work seamlessly with value objects to simplify test data creation:
 
 ```python
-from sindri.mothers import StringPrimitivesMother, IntegerPrimitivesMother
-from sindri.value_objects import String, Integer
+from sindripy.mothers import StringPrimitivesMother, IntegerPrimitivesMother
+from sindripy.value_objects import String, Integer
 
 # Create value objects with test data
 username = String(StringPrimitivesMother.any())
