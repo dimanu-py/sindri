@@ -1,10 +1,10 @@
 from uuid import UUID
 
-from src.sindripy.value_objects.decorators.validation import validate
-from src.sindripy.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
-from src.sindripy.value_objects.errors.invalid_id_format_error import InvalidIdFormatError
-from src.sindripy.value_objects.errors.required_value_error import RequiredValueError
-from src.sindripy.value_objects.value_object import ValueObject
+from sindripy.value_objects.decorators.validation import validate
+from sindripy.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
+from sindripy.value_objects.errors.invalid_id_format_error import InvalidIdFormatError
+from sindripy.value_objects.errors.required_value_error import RequiredValueError
+from sindripy.value_objects.value_object import ValueObject
 
 
 class StringUuid(ValueObject[str]):

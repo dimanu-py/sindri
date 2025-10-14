@@ -5,7 +5,7 @@ available through the ``sindripy`` namespace when the library is
 installed as a dependency.
 """
 
-from src.sindripy import mothers, value_objects
+from sindripy import mothers, value_objects
 
 __all__ = ["mothers", "value_objects"]
 __version__ = "0.1.2"

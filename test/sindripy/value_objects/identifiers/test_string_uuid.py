@@ -1,17 +1,17 @@
 import pytest
 from expects import equal, expect, raise_error
 
-from src.sindripy.mothers.identifiers.string_uuid_primitives_mother import (
+from sindripy.mothers.identifiers.string_uuid_primitives_mother import (
     StringUuidPrimitivesMother,
 )
-from src.sindripy.value_objects.errors.incorrect_value_type_error import (
+from sindripy.value_objects.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
-from src.sindripy.value_objects.errors.invalid_id_format_error import (
+from sindripy.value_objects.errors.invalid_id_format_error import (
     InvalidIdFormatError,
 )
-from src.sindripy.value_objects.errors.required_value_error import RequiredValueError
-from src.sindripy.value_objects.identifiers.string_uuid import (
+from sindripy.value_objects.errors.required_value_error import RequiredValueError
+from sindripy.value_objects.identifiers.string_uuid import (
     StringUuid,
 )
 

@@ -3,8 +3,8 @@ from enum import Enum
 from inspect import Parameter, _empty, signature
 from typing import Any
 
-from src.sindripy._compat import Self, override
-from src.sindripy.value_objects.value_object import ValueObject
+from sindripy._compat import Self, override
+from sindripy.value_objects.value_object import ValueObject
 
 
 class Aggregate(ABC):

@@ -2,7 +2,7 @@ from abc import ABC
 from collections.abc import Callable
 from typing import Generic, TypeVar
 
-from src.sindripy._compat import Self, override
+from sindripy._compat import Self, override
 
 T = TypeVar("T")
 

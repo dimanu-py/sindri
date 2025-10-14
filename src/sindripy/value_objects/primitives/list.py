@@ -1,11 +1,11 @@
 from collections.abc import Iterator
 from typing import Any, Generic, TypeVar, get_args, get_origin
 
-from src.sindripy._compat import Self, override
-from src.sindripy.value_objects.decorators.validation import validate
-from src.sindripy.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
-from src.sindripy.value_objects.errors.required_value_error import RequiredValueError
-from src.sindripy.value_objects.value_object import ValueObject
+from sindripy._compat import Self, override
+from sindripy.value_objects.decorators.validation import validate
+from sindripy.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
+from sindripy.value_objects.errors.required_value_error import RequiredValueError
+from sindripy.value_objects.value_object import ValueObject
 
 T = TypeVar("T")
 

@@ -1,7 +1,7 @@
-from src.sindripy.value_objects.decorators.validation import validate
-from src.sindripy.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
-from src.sindripy.value_objects.errors.required_value_error import RequiredValueError
-from src.sindripy.value_objects.value_object import ValueObject
+from sindripy.value_objects.decorators.validation import validate
+from sindripy.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
+from sindripy.value_objects.errors.required_value_error import RequiredValueError
+from sindripy.value_objects.value_object import ValueObject
 
 
 class String(ValueObject[str]):

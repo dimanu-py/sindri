@@ -3,14 +3,14 @@ from typing import Any
 import pytest
 from expects import equal, expect, raise_error
 
-from src.sindripy.mothers.primitives.integer_primitives_mother import (
+from sindripy.mothers.primitives.integer_primitives_mother import (
     IntegerPrimitivesMother,
 )
-from src.sindripy.value_objects.errors.incorrect_value_type_error import (
+from sindripy.value_objects.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
-from src.sindripy.value_objects.errors.required_value_error import RequiredValueError
-from src.sindripy.value_objects.primitives.integer import (
+from sindripy.value_objects.errors.required_value_error import RequiredValueError
+from sindripy.value_objects.primitives.integer import (
     Integer,
 )
 

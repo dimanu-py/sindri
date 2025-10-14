@@ -1,6 +1,6 @@
 from typing import Any, TypeVar
 
-from src.sindripy.value_objects.errors.sindri_validation_error import SindriValidationError
+from sindripy.value_objects.errors.sindri_validation_error import SindriValidationError
 
 T = TypeVar("T")
 

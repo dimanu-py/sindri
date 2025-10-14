@@ -3,12 +3,12 @@ from typing import Any
 import pytest
 from expects import be_false, be_none, be_true, equal, expect, raise_error
 
-from src.sindripy.mothers.primitives.list_primitives_mother import ListPrimitivesMother
-from src.sindripy.value_objects.aggregate import Aggregate
-from src.sindripy.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
-from src.sindripy.value_objects.errors.required_value_error import RequiredValueError
-from src.sindripy.value_objects.primitives.list import List
-from src.sindripy.value_objects.primitives.string import String
+from sindripy.mothers.primitives.list_primitives_mother import ListPrimitivesMother
+from sindripy.value_objects.aggregate import Aggregate
+from sindripy.value_objects.errors.incorrect_value_type_error import IncorrectValueTypeError
+from sindripy.value_objects.errors.required_value_error import RequiredValueError
+from sindripy.value_objects.primitives.list import List
+from sindripy.value_objects.primitives.string import String
 
 pytestmark = pytest.mark.unit
 

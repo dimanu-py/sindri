@@ -1,4 +1,4 @@
-from src.sindripy.mothers.object_mother import ObjectMother
+from sindripy.mothers.object_mother import ObjectMother
 
 
 class StringPrimitivesMother(ObjectMother):
