@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.1.3 (2025-10-14)
+
+### Bug Fixes
+
+- Update import paths to remove 'src' prefix
+  ([`3a94d51`](https://github.com/dimanu-py/sindri/commit/3a94d5121c493b7ecb17082fcdff5701643902a4))
+
+
 ## v0.1.2 (2025-10-14)
 
 ### Bug Fixes
