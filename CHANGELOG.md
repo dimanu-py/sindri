@@ -2,6 +2,24 @@
 
 <!-- version list -->
 
+## v0.1.1 (2025-10-14)
+
+### Bug Fixes
+
+- Update project name for pypi
+  ([`63d765c`](https://github.com/dimanu-py/sindri/commit/63d765c6b8ec379d7fd6628f35bd1f33e6157593))
+
+### Build System
+
+- Update Python version classifiers in pyproject.toml
+  ([`8abc14a`](https://github.com/dimanu-py/sindri/commit/8abc14a8d2ba0308e8ad3c52ac7081fe6b3e2e51))
+
+### Refactoring
+
+- Rename source folder to sindripy
+  ([`83a3dd5`](https://github.com/dimanu-py/sindri/commit/83a3dd5661420d9460e11785780db785b65cedf7))
+
+
 ## v0.1.0 (2025-10-13)
 
 ### Bug Fixes

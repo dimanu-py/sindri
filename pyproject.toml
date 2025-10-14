@@ -1,6 +1,6 @@
 [project]
 name = "sindripy"
-version = "0.1.0"
+version = "0.1.1"
 description = "Value Object and Object Mother patterns implementation for Python"
 authors = [{name = "dimanu-py", email = "dimanu.py@gmail.com"}]
 dependencies = [
