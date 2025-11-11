@@ -2,6 +2,22 @@
 
 <!-- version list -->
 
+## v0.1.5 (2025-11-11)
+
+### Bug Fixes
+
+- **errors**: Update error message for InvalidIdFormatError
+  ([`98b94d3`](https://github.com/dimanu-py/sindri/commit/98b94d3aa9d2dbdef802bbaeb9af57be961fd5b4))
+
+### Build System
+
+- Correct errors in mypy by adjusting configuration file
+  ([`bb31c60`](https://github.com/dimanu-py/sindri/commit/bb31c60e53d06a3f9699d7d0eef214dda852df96))
+
+- Modify build command in semantic release to update uv.lock version too
+  ([`a6647bd`](https://github.com/dimanu-py/sindri/commit/a6647bdf0639fbd07fda7b2799591437389c93f1))
+
+
 ## v0.1.4 (2025-10-14)
 
 ### Bug Fixes
