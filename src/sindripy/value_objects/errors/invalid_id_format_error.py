@@ -4,5 +4,5 @@ from sindripy.value_objects.errors.sindri_validation_error import SindriValidati
 class InvalidIdFormatError(SindriValidationError):
     def __init__(self) -> None:
         super().__init__(
-            message="User id must be a valid UUID",
+            message="Id must be a valid UUID",
         )
