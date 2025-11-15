@@ -4,14 +4,10 @@
 </div>
 
 <p align="center">
-  <a href="https://dimanu-py.github.io/sindri/home/getting_started/">Getting Started</a>&nbsp;&nbsp;•&nbsp;
+  <a href="https://dimanu-py.github.io/sindri/getting_started/">Getting Started</a>&nbsp;&nbsp;•&nbsp;
   <a href="https://dimanu-py.github.io/sindri/value_objects/">Value Object Pattern</a>&nbsp;&nbsp;•&nbsp;
-  <a href="https://dimanu-py.github.io/sindri/object_mothers/">Object Mother Pattern</a>&nbsp;&nbsp;•&nbsp;
-  <a href="https://dimanu-py.github.io/sindri/home/contributing_guide/">Contributing</a>
+  <a href="https://dimanu-py.github.io/sindri/object_mothers/">Object Mother Pattern</a>
 </p>
-
-> [!NOTE]
-> This project was generated using [Instant Python](https://github.com/dimanu-py/instant-python), a fast, easy and reliable project generator for Python projects.
 
 <div align="center"><table><tr><td>
 Sindri replaces ad hoc primitives and fragile validators with a consistent Value Object and Aggregate 
@@ -36,37 +32,42 @@ domain invariants and improve code quality with minimal effort.
 
 </td></tr></table></div>
 
-## Documentation
+<div style="background-color: #1e2d3d; border: 1px solid #00d9ff; border-radius: 8px; padding: 16px; margin: 16px 0; display: flex; align-items: flex-start; gap: 12px;">
+  <div style="font-size: 20px; color: #00d9ff; flex-shrink: 0;">💧</div>
+  <div>
+    <strong style="color: #00d9ff;">Created with Instant Python</strong><br>
+    <span style="color: #a0a0a0;">This project was generated using <a href="https://github.com/dimanu-py/instant-python" style="color: #00d9ff; text-decoration: none;">Instant Python</a>, a fast, easy and reliable project generator for Python projects.</span>
+  </div>
+</div>
 
-This section provides a high-level overview of the `sindripy` library, its features, and how to get started.
-For detailed instructions and examples, please refer to the [full Sindripy documentation](https://dimanu-py.github.io/sindri/home/).
+## Navigation Guide
 
-- [Installation](#installation)
-- [Basic Usage](#basic-usage)
-- [Contributing](#contributing)
+This section provides a high-level overview of the `sindripy` documentation so you can find quickly what you need.
+
+### For Users
+
+- [Installation]
+- [First Steps]
+- [Value Object Pattern]
+- [Object Mother Pattern]
+
+### For Developers
+
+- [Contributing Guide]
+- [Security Policy]
 
 ### Need help?
 
 -   Join a discussion 💬 on [GitHub Discussions]
 -   [Raise an issue][GitHub Issues] on GitHub
 
-[GitHub Discussions]: https://github.com/dimanu-py/sindri/discussions
-[GitHub Issues]: https://github.com/dimanu-py/sindri/issues
-
-## Installation
+## Fast Kickstart
 
 The latest version of `sindripy` can be installed from PyPI:
 
 ```bash
 pip install sindripy
 ```
-
-### Requirements
-
-Sindri tries to support the latest Python versions, we officially support from Python 3.10 to 3.13.
-Older versions of Python may work, but they are not guaranteed to be compatible.
-
-## Basic Usage
 
 Here is a simple example of how to use `sindri` to create a value object and generate test data using an object mother.
 
@@ -86,12 +87,20 @@ random_age = IntegerPrimitivesMother.any()
 random_name = StringPrimitivesMother.any()
 ```
 
-> [!NOTE]
-> To learn more about advanced usage of value objects, including validation, custom value objects,
-> complex objects like aggregates, visit the [Value Objects](https://dimanu-py.github.io/sindri/value_objects/)
-> and [Object Mothers](https://dimanu-py.github.io/sindri/object_mothers) sections.
+<div style="background-color: #1e2d3d; border: 1px solid #00d9ff; border-radius: 8px; padding: 16px; margin: 16px 0; display: flex; align-items: flex-start; gap: 12px;">
+  <div style="font-size: 20px; color: #00d9ff; flex-shrink: 0;">ℹ️</div>
+  <div>
+    <strong style="color: #00d9ff;">Learn More</strong><br>
+    <span style="color: #a0a0a0;">To learn more about advanced usage of value objects, including validation, custom value objects, complex objects like aggregates, visit the <a href="https://dimanu-py.github.io/sindri/value_objects/" style="color: #00d9ff; text-decoration: none;">Value Object Pattern</a> and <a href="https://dimanu-py.github.io/sindri/object_mothers" style="color: #00d9ff; text-decoration: none;">Object Mother Pattern</a> sections of the documentation.</span>
+  </div>
+</div>
 
-## Contributing
 
-We welcome contributions to `sindripy`! If you have ideas, suggestions, or improvements, please check out our
-[contributing guide](https://dimanu-py.github.io/sindri/home/contributing_guide/) for details on how to get involved.
+[GitHub Discussions]: https://github.com/dimanu-py/sindri/discussions
+[GitHub Issues]: https://github.com/dimanu-py/sindri/issues
+[Installation]: https://github.com/dimanu-py/sindri/getting_started/installation/
+[First Steps]: https://github.com/dimanu-py/sindri/getting_started/first_steps/
+[Value Object Pattern]: https://dimanu-py.github.io/sindri/value_objects/
+[Object Mother Pattern]: https://dimanu-py.github.io/sindri/object_mothers
+[Contributing Guide]: https://github.com/dimanu-py/sindri/contributing/contributing_guide/
+[Security Policy]: https://github.com/dimanu-py/sindri/contributing/security/
