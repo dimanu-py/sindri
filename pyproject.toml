@@ -117,8 +117,8 @@ build_command = """
 
 [tool.semantic_release.commit_parser_options]
 minor_tags = ["feat"]
-patch_tags = ["fix", "perf", "refactor", "test", "build"]
-allowed_tags = ["feat", "fix", "refactor", "perf", "build"]
+patch_tags = ["fix", "perf", "refactor", "test", "docs"]
+allowed_tags = ["feat", "fix", "refactor", "perf", "build", "docs"]
 default_bump_level = 0
 parse_squash_commits = false
 ignore_merge_commits = true
