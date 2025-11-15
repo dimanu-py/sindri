@@ -2,6 +2,25 @@
 
 <!-- version list -->
 
+## v0.1.6 (2025-11-15)
+
+### Build System
+
+- Exclude build commits from changelog and include docs commits
+  ([`b5aaebe`](https://github.com/dimanu-py/sindri/commit/b5aaebe4615102190ce1a3ace60515a06121a962))
+
+- Update library version in uv.lock file
+  ([`add4b02`](https://github.com/dimanu-py/sindri/commit/add4b02df6c40a09b30b068d6f7cef58f9ea09b3))
+
+### Documentation
+
+- Reorganize documentation of the library
+  ([`8fe7c58`](https://github.com/dimanu-py/sindri/commit/8fe7c5886514a5ce242270d20ad402f5cbac9aab))
+
+- Update links in README.md and improve format
+  ([`f3fd43f`](https://github.com/dimanu-py/sindri/commit/f3fd43f44cb7156d3932c1443edd55029c855873))
+
+
 ## v0.1.5 (2025-11-11)
 
 ### Bug Fixes
