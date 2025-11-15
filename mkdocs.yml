@@ -69,12 +69,11 @@ theme:
       primary: '#B4BEFE'
       accent: '#FAB387'
 nav:
-  - Home:
-      - home/index.md
-      - Getting Started: home/getting_started.md
-      - Navigation Guide: home/navigation_guide.md
-      - Contributing Guide: home/contributing_guide.md
-      - Security: home/security.md
+  - Home: home/index.md
+  - Getting Started:
+      - getting_started/index.md
+      - Installation: getting_started/installation.md
+      - First Steps: getting_started/first_steps.md
   - Value Object:
       - value_objects/index.md
       - Built-in Value Objects: value_objects/built_in_vo.md
@@ -85,3 +84,6 @@ nav:
       - object_mothers/index.md
       - Built-in Mothers: object_mothers/built_in_mothers.md
       - Customizing Mothers: object_mothers/customizing_mothers.md
+  - Contributing:
+      - How to Contribute: contributing/contributing_guide.md
+      - Security Policy: contributing/security.md

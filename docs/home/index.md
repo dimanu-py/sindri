@@ -4,9 +4,6 @@
   <strong>Easy use and customizable implementation for Value Object and Object Mother patterns.</strong>
 </div>
 
-!!! tip "Created with Instant Python"
-    This project was generated using [Instant Python](https://dimanu-py.github.io/instant-python/home/), a fast, easy and reliable project generator for Python projects.
-
 <div align="center"><table><tr><td>
 Sindripy replaces ad hoc primitives and fragile validators with a consistent Value Object and Aggregate 
 toolkit you can adopt quickly. 
@@ -30,15 +27,24 @@ domain invariants and improve code quality with minimal effort.
 
 </td></tr></table></div>
 
-## Documentation
+!!! tip "Created with Instant Python"
+    This project was generated using [Instant Python](https://dimanu-py.github.io/instant-python/home/), a fast, easy and reliable project generator for Python projects.
 
-This section provides a high-level overview of the `sindripy` library, its features, and how to get started.
-For detailed instructions and examples, please refer to the [Value Objects](../value_objects/index.md) 
-and [Object Mothers](../object_mothers/index.md) sections.
+## Navigation Guide
 
-- [Installation](#installation)
-- [Basic Usage](#basic-usage)
-- [Contributing](#contributing)
+This section provides a high-level overview of the `sindripy` documentation so you can find quickly what you need.
+
+### For Users
+
+- [Installation]
+- [First Steps]
+- [Value Object Pattern]
+- [Object Mother Pattern]
+
+### For Developers
+
+- [Contributing Guide]
+- [Security Policy]
 
 ### Need help?
 
@@ -47,46 +53,9 @@ and [Object Mothers](../object_mothers/index.md) sections.
 
 [GitHub Discussions]: https://github.com/dimanu-py/sindri/discussions
 [GitHub Issues]: https://github.com/dimanu-py/sindri/issues
-
-## Installation
-
-The latest version of `sindripy` can be installed from PyPI:
-
-```bash
-pip install sindripy
-```
-
-### Requirements
-
-Sindripy tries to support the latest Python versions, we officially support from Python 3.10 to 3.13.
-Older versions of Python may work, but they are not guaranteed to be compatible.
-
-## Basic Usage
-
-Here is a simple example of how to use `sindripy` to create a value object and generate test data using an object mother.
-
-```python
-from sindripy.value_objects import Integer, String
-
-age = Integer(30)
-name = String("John Doe")
-
-print(f"Name: {name.value}, Age: {age.value}")
-```
-
-```python
-from sindripy.mothers import IntegerPrimitivesMother, StringPrimitivesMother
-
-random_age = IntegerPrimitivesMother.any()
-random_name = StringPrimitivesMother.any()
-```
-
-!!! note "Learn More"
-    To learn more about advanced usage of value objects, including validation, custom value objects,
-    complex objects like aggregates, visit the [Value Objects](../value_objects/index.md)
-    and [Object Mothers](../object_mothers/index.md) sections.
-
-## Contributing
-
-We welcome contributions to `sindripy`! If you have ideas, suggestions, or improvements, please check out our
-[contributing guide](contributing_guide.md) for details on how to get involved.
+[Installation]: ../getting_started/installation.md
+[First Steps]: ../getting_started/first_steps.md
+[Value Object Pattern]: ../value_objects/index.md
+[Object Mother Pattern]: ../object_mothers/index.md
+[Contributing Guide]: ../contributing/contributing_guide.md
+[Security Policy]: ../contributing/security.md
