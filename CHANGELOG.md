@@ -2,6 +2,20 @@
 
 <!-- version list -->
 
+## v0.1.7 (2025-11-21)
+
+### Bug Fixes
+
+- **pyproject**: Put faker dependency as a prod dependency of sindripy to avoid errors when using
+  object mothers
+  ([`c478887`](https://github.com/dimanu-py/sindri/commit/c47888754e1b1776c917cf5c81aec05d2b0be65d))
+
+### Build System
+
+- **pyproject**: Modify build_command to try and update uv.lock with new version released
+  ([`41082cf`](https://github.com/dimanu-py/sindri/commit/41082cf3eb7e602f42a5cbf19ca8f156abdc5c43))
+
+
 ## v0.1.6 (2025-11-15)
 
 ### Build System
