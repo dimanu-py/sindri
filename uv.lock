@@ -1191,11 +1191,13 @@ wheels = [
 name = "sindripy"
 version = "0.1.5"
 source = { editable = "." }
+dependencies = [
+    { name = "faker" },
+]
 
 [package.dev-dependencies]
 dev = [
     { name = "expects" },
-    { name = "faker" },
     { name = "mypy" },
     { name = "pip-audit" },
     { name = "pre-commit" },
@@ -1223,18 +1225,17 @@ release = [
 ]
 test = [
     { name = "expects" },
-    { name = "faker" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
     { name = "pytest-sugar" },
 ]
 
 [package.metadata]
+requires-dist = [{ name = "faker" }]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "expects", specifier = ">=0.9.0" },
-    { name = "faker" },
     { name = "mypy" },
     { name = "pip-audit" },
     { name = "pre-commit" },
@@ -1260,7 +1261,6 @@ lint = [
 release = [{ name = "python-semantic-release" }]
 test = [
     { name = "expects", specifier = ">=0.9.0" },
-    { name = "faker" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
     { name = "pytest-sugar", specifier = ">=1.1.1" },
