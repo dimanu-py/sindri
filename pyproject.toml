@@ -110,7 +110,7 @@ allow_zero_version = true
 no_git_verify = false
 tag_format = "{version}"
 build_command = """
-    pip install -e '.[build]'
+    python -m pip install -e '.[build]'
     uv lock --upgrade-package sindripy
     git add uv.lock
 """
