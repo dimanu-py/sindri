@@ -9,6 +9,26 @@ dependencies = [
 requires-python = ">=3.10, <3.14"
 readme = "README.md"
 license = { file = "LICENSE" }
+keywords = [
+    "value object",
+    "value-object",
+    "value objects",
+    "value-objects",
+    "Value Object",
+    "object mother",
+    "object-mother",
+    "object mothers",
+    "object-mothers",
+    "Object Mother",
+    "domain driven design",
+    "ddd",
+    "clean architecture",
+    "hexagonal architecture",
+    "design patterns",
+    "testing",
+    "bdd",
+    "unit tests",
+]
 classifiers = [
     "Typing :: Typed",
     "Programming Language :: Python",
@@ -23,6 +43,7 @@ classifiers = [
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Testing :: Unit",
     "Topic :: Software Development :: Testing :: BDD",
+    "Topic :: Software Development :: Libraries",
     "Framework :: FastAPI"
 ]
 
@@ -98,7 +119,6 @@ markers = [
 ]
 testpaths = ["test"]
 asyncio_default_fixture_loop_scope = "function"
-asyncio_mode = "auto"
 
 [tool.semantic_release]
 version_toml = ["pyproject.toml:project.version"]
