@@ -1,7 +1,8 @@
-<div align="center">
-  <h1>🛠️ Sindripy 🛠️</h1>
-  <strong>Easy use and customizable implementation for Value Object and Object Mother patterns.</strong>
-</div>
+# Sindripy
+
+### Value Object and Object Mother patterns for Python and Domain Driven Design applications
+
+Easy use and customizable implementation for Value Object and Object Mother patterns.
 
 <p align="center">
   <a href="https://dimanu-py.github.io/sindri/getting_started/">Getting Started</a>&nbsp;&nbsp;•&nbsp;
