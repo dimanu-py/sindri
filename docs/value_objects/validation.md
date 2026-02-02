@@ -12,7 +12,8 @@ initialization
 - [Error Hierarchy](#error-hierarchy): a structured set of exception classes for different validation failure scenarios
 - [Custom Validations](#custom-validations): specific validation logic implemented in each value object class
 
-All validation occurs during value object construction, ensuring that invalid objects cannot exist in the system. 
+All validation occurs during value object construction after the value is assigned to the internal `_value` attribute, ensuring 
+that invalid objects cannot exist in the system. 
 
 !!! note "Extensibility"
     The framework is designed to be extensible, allowing developers to add custom validation rules 
@@ -25,10 +26,10 @@ object class.
 
 ### Validation Method Signature
 
-The decorator is applied to instance methods that accept a value parameter. Each decorated
+The decorator is applied to instance methods that access the value via `self._value`. Each decorated
 method:
 
-- Receives the value being validated as a parameter
+- Accesses the value being validated through `self._value`
 - Performs a specific validation check
 - Raises an appropriate exception if validation fails
 - Returns None if validation passes
@@ -39,48 +40,48 @@ from sindripy.value_objects import ValueObject, validate
 
 class YourValueObject(ValueObject[int]):
     @validate
-    def _ensure_value_is_positive(self, value: int) -> None:
-        # Your validation logic here
+    def _ensure_value_is_positive(self) -> None:
+        # Your validation logic here - access value via self._value
         ...
 ```
 
 ### Handling Validation Order
 
-When the value object is instantiated, all methods decorated with `@validate` are executed. The order of execution
-can be controlled in two ways:
+When the value object is instantiated, the value is first assigned to `_value` and then all methods decorated with `@validate` are executed. 
+The order of execution can be controlled in two ways:
 
 1. **Definition Order**: By default, validation methods are executed in the order they are defined in the class.
 
     ```python
-    from sintri.value_objects import ValueObject, validate, SintriValidationError
+    from sindripy.value_objects import ValueObject, validate, SindriValidationError
    
     class Integer(ValueObject[int]):
         @validate
-        def _ensure_has_value(self, value: int) -> None:
-            if value is None:
-                raise SintriValidationError("Value is required")
+        def _ensure_has_value(self) -> None:
+            if self._value is None:
+                raise SindriValidationError("Value is required")
     
         @validate
-        def _ensure_value_is_integer(self, value: int) -> None:
-            if not isinstance(value, int):
-                raise SintriValidationError("Invalid type, expected int")
+        def _ensure_value_is_integer(self) -> None:
+            if not isinstance(self._value, int):
+                raise SindriValidationError("Invalid type, expected int")
     ```
 
 2. **Explicit Order**: You can specify an `order` parameter in the `@validate` decorator to control the sequence explicitly.
 
     ```python
-    from sintri.value_objects import ValueObject, validate, SintriValidationError
+    from sindripy.value_objects import ValueObject, validate, SindriValidationError
     
     class Integer(ValueObject[int]):
         @validate(order=1)
-        def _ensure_value_is_integer(self, value: int) -> None:
-            if not isinstance(value, int):
-                raise SintriValidationError("Invalid type, expected int")
+        def _ensure_value_is_integer(self) -> None:
+            if not isinstance(self._value, int):
+                raise SindriValidationError("Invalid type, expected int")
    
         @validate(order=0)
-        def _ensure_has_value(self, value: int) -> None:
-            if value is None:
-                raise SintriValidationError("Value is required")
+        def _ensure_has_value(self) -> None:
+            if self._value is None:
+                raise SindriValidationError("Value is required")
     ```
 
 ## Error Hierarchy
@@ -121,9 +122,9 @@ class NegativePriceError(SindriValidationError):
 
 class Price(Float):
     @validate
-    def _ensure_value_is_positive(self, value: float) -> None:
-        if value < 0:
-            raise NegativePriceError(value)
+    def _ensure_value_is_positive(self) -> None:
+        if self._value < 0:
+            raise NegativePriceError(self._value)
 ```
 
 !!! tip "Best Practices"

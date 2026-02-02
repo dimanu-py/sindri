@@ -9,6 +9,7 @@ For detailed information on specific value object types, see:
 - [Validation framework and custom rules](validation.md)
 - [Creating custom value objects](customizing_vo.md)
 - [Domain aggregates and entities](aggregate_roots.md)
+- [Migration Guide for validator signature changes](migration_guide.md)
 
 For generating test data using value objects, see [Object Mothers](../object_mothers/index.md).
 
@@ -90,7 +91,7 @@ and logging.
 
 Value objects can include custom validation logic to ensure that their values meet specific
 domain constraints. This is achieved using the `@validate` decorator, which allows you to define
-validation methods that are automatically called during construction.
+validation methods that are automatically called after the value is assigned to `_value` during construction.
 
 For more details on validation, see the [Validation Mechanism](validation.md) section.
 

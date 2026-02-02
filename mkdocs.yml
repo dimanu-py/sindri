@@ -80,6 +80,7 @@ nav:
       - Validation Mechanism: value_objects/validation.md
       - Customizing Value Objects: value_objects/customizing_vo.md
       - Aggregate Roots: value_objects/aggregate_roots.md
+      - Migration Guide: value_objects/migration_guide.md
   - Object Mother:
       - object_mothers/index.md
       - Built-in Mothers: object_mothers/built_in_mothers.md

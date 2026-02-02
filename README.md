@@ -87,6 +87,30 @@ random_age = IntegerPrimitivesMother.any()
 random_name = StringPrimitivesMother.any()
 ```
 
+# Migrating to v1.0.0
+
+This release includes a breaking change to the validator API used by value objects:
+
+- Validators no longer accept the incoming value as a parameter. Instead, the value is assigned to `self._value` before validators run, and validator methods have the signature `def _validate_xxx(self) -> None:`.
+- This simplifies validator signatures and reduces repetition across validation methods.
+
+Why this is a breaking change
+
+- Existing validator methods that still declare a `value` parameter will receive the wrong signature and raise a `TypeError` when the framework calls them. Custom code that expects the old parameter (for example, custom exception constructors or external utilities) may also need small updates.
+
+How to migrate
+
+- Follow the step-by-step migration guide which shows the exact edits and examples: [Validator Signature Migration Guide](docs/value_objects/migration_guide.md).
+- In short: find all methods decorated with `@validate`, remove the `value` parameter, replace uses of `value` with `self._value`, and update any error messages or custom exceptions that referenced the old parameter.
+
+A quick checklist:
+
+- [ ] Update `@validate` methods to `def _... (self) -> None`
+- [ ] Replace `value` references with `self._value`
+- [ ] Update error messages and custom exception usages
+- [ ] Run your tests
+
+
 <div style="background-color: #1e2d3d; border: 1px solid #00d9ff; border-radius: 8px; padding: 16px; margin: 16px 0; display: flex; align-items: flex-start; gap: 12px;">
   <div style="font-size: 20px; color: #00d9ff; flex-shrink: 0;">ℹ️</div>
   <div>

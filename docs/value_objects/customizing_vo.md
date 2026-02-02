@@ -37,8 +37,8 @@ class NegativeIntegerError(SindriValidationError):
 
 class PositiveInteger(Integer):
     @validate
-    def _must_be_positive(self):
-        if self.value <= 0:
+    def _must_be_positive(self) -> None:
+        if self._value <= 0:
             raise NegativeIntegerError
 ```
 
@@ -54,7 +54,7 @@ from sindripy.value_objects import ValueObject, validate, SindriValidationError
 
 class Date(ValueObject[date]):
     @validate
-    def _must_be_a_date(self):
-        if not isinstance(self.value, date):
+    def _must_be_a_date(self) -> None:
+        if not isinstance(self._value, date):
             raise SindriValidationError("The value must be a date")
 ```
