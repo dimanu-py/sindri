@@ -23,7 +23,7 @@ class Boolean(ValueObject[bool]):
         ```python
         class IsActive(Boolean):
              @validate
-             def _validate_true_for_premium(self, value: bool) -> None:
+             def _validate_true_for_premium(self) -> None:
                  # Custom business logic can be added here
                  pass
 
@@ -34,11 +34,11 @@ class Boolean(ValueObject[bool]):
     """
 
     @validate
-    def _ensure_has_value(self, value: bool) -> None:
-        if value is None:
+    def _ensure_has_value(self) -> None:
+        if self._value is None:
             raise RequiredValueError
 
     @validate
-    def _ensure_value_is_boolean(self, value: bool) -> None:
-        if not isinstance(value, bool):
-            raise IncorrectValueTypeError(value, bool)
+    def _ensure_value_is_boolean(self) -> None:
+        if not isinstance(self._value, bool):
+            raise IncorrectValueTypeError(self._value, bool)

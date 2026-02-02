@@ -14,7 +14,7 @@ class List(ValueObject[list[T]], Generic[T]):
     @override
     def __init_subclass__(cls, **kwargs: Any) -> None:
         """
-        Initialize subclass with proper type parameter validation.
+        Initialize a subclass with proper type parameter validation.
 
         This method ensures that any subclass of List is properly parameterized
         with a type argument and extracts the element type for validation purposes. It
@@ -41,17 +41,17 @@ class List(ValueObject[list[T]], Generic[T]):
         return cls(elements)
 
     @validate
-    def _ensure_has_value(self, value: list[T]) -> None:
-        if value is None:
+    def _ensure_has_value(self) -> None:
+        if self._value is None:
             raise RequiredValueError
 
     @validate
-    def _ensure_is_list(self, value: list[T]) -> None:
-        if not isinstance(value, list):
-            raise IncorrectValueTypeError(value, type[Any])
+    def _ensure_is_list(self) -> None:
+        if not isinstance(self._value, list):
+            raise IncorrectValueTypeError(self._value, type[Any])
 
     @validate
-    def _ensure_list_elements_have_expected_type(self, value: list[T]) -> None:
+    def _ensure_list_elements_have_expected_type(self) -> None:
         cls = self.__class__
 
         if not hasattr(cls, "_element_type"):
@@ -66,7 +66,7 @@ class List(ValueObject[list[T]], Generic[T]):
             return
 
         if cls._element_is_a_value_object_instance() or cls._element_is_a_primitive_type():
-            for item in value:
+            for item in self._value:
                 if not isinstance(item, element_type):
                     raise IncorrectValueTypeError(item, list)
 

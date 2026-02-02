@@ -41,8 +41,8 @@ class ValueObject(ABC, Generic[T]):
         """
         Initialize the value object with the given value.
 
-        The value is validated using all methods decorated with @validate before
-        being stored. Once initialized, the value cannot be modified.
+        The value is validated using all methods decorated with @validate once it has
+        been stored. Once initialized and validated, the value cannot be modified.
 
         Args:
             value: The value to be wrapped by this value object.
@@ -60,19 +60,16 @@ class ValueObject(ABC, Generic[T]):
             repr(email)  # String(_value='Hello World')
             ```
         """
-        self._validate(value)
         object.__setattr__(self, "_value", value)
+        self._validate()
 
-    def _validate(self, value: T) -> None:
+    def _validate(self) -> None:
         """
-        Validates the given value using all methods decorated with @validate.
+        Validates the stored value using all methods decorated with @validate.
 
         This method collects all validator methods from the class hierarchy (in reverse MRO order)
         and executes them in the order specified by their _order attribute. All validators
         must pass for the value to be considered valid.
-
-        Args:
-            value: The value to validate.
 
         Raises:
             Various validation errors if any validator fails.
@@ -81,25 +78,25 @@ class ValueObject(ABC, Generic[T]):
             ```python
             class Username(ValueObject[str]):
                 @validate(order=1)
-                def _validate_not_empty(self, value: str) -> None:
-                    if not value.strip():
+                def _validate_not_empty(self) -> None:
+                    if not self._value.strip():
                         raise ValueError("Username cannot be empty")
 
                 @validate(order=2)
-                def _validate_length(self, value: str) -> None:
-                    if len(value) < 3:
+                def _validate_length(self) -> None:
+                    if len(self._value) < 3:
                         raise ValueError("Username must be at least 3 characters")
 
             username = Username("john")  # Both validators pass
-            username._validate("ab")  # Would raise ValueError for length
+            username._validate()  # Would raise ValueError for length
             ```
         """
-        validators: list[Callable[[T], None]] = []
+        validators: list[Callable[[], None]] = []
         for cls in reversed(self.__class__.__mro__):
             if cls is object:
                 continue
 
-            methods: list[tuple[int, Callable[[T], None]]] = []
+            methods: list[tuple[int, Callable[[], None]]] = []
             for name, member in cls.__dict__.items():
                 if getattr(member, "_is_validator", False):
                     validators.append(getattr(self, name))
@@ -110,7 +107,7 @@ class ValueObject(ABC, Generic[T]):
                 validators.append(method)
 
         for validator in validators:
-            validator(value)
+            validator()
 
     @property
     def value(self) -> T:
@@ -161,7 +158,7 @@ class ValueObject(ABC, Generic[T]):
         if not isinstance(other, self.__class__):
             return False
 
-        return self.value == other.value
+        return self._value == other._value
 
     @override
     def __repr__(self) -> str:

@@ -23,8 +23,8 @@ class Integer(ValueObject[int]):
         ```python
         class Age(Integer):
             @validate
-            def _validate_positive(self, value: int) -> None:
-                if value < 0:
+            def _validate_positive(self) -> None:
+                if self._value < 0:
                     raise ValueError("Age cannot be negative")
 
         age = Age(25)
@@ -34,11 +34,11 @@ class Integer(ValueObject[int]):
     """
 
     @validate
-    def _ensure_has_value(self, value: int) -> None:
-        if value is None:
+    def _ensure_has_value(self) -> None:
+        if self._value is None:
             raise RequiredValueError
 
     @validate
-    def _ensure_value_is_integer(self, value: int) -> None:
-        if not isinstance(value, int):
-            raise IncorrectValueTypeError(value, int)
+    def _ensure_value_is_integer(self) -> None:
+        if not isinstance(self._value, int):
+            raise IncorrectValueTypeError(self._value, int)

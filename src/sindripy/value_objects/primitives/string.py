@@ -23,8 +23,8 @@ class String(ValueObject[str]):
         ```python
         class Email(String):
             @validate
-            def _validate_email_format(self, value: str) -> None:
-                if "@" not in value:
+            def _validate_email_format(self) -> None:
+                if "@" not in self._value:
                     raise ValueError("Invalid email format")
 
         email = Email("user@example.com")
@@ -33,11 +33,11 @@ class String(ValueObject[str]):
     """
 
     @validate
-    def _ensure_has_value(self, value: str) -> None:
-        if value is None:
+    def _ensure_has_value(self) -> None:
+        if self._value is None:
             raise RequiredValueError
 
     @validate
-    def _ensure_is_string(self, value: str) -> None:
-        if not isinstance(value, str):
-            raise IncorrectValueTypeError(value, str)
+    def _ensure_is_string(self) -> None:
+        if not isinstance(self._value, str):
+            raise IncorrectValueTypeError(self._value, str)

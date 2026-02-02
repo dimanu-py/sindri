@@ -27,8 +27,8 @@ class StringUuid(ValueObject[str]):
         ```python
         class UserId(StringUuid):
             @validate
-            def _validate_version(self, value: str) -> None:
-                parsed_uuid = UUID(value)
+            def _validate_version(self) -> None:
+                parsed_uuid = UUID(self._value)
                 if parsed_uuid.version != 4:
                     raise ValueError("Only UUID version 4 allowed")
 
@@ -38,18 +38,18 @@ class StringUuid(ValueObject[str]):
     """
 
     @validate
-    def _ensure_has_value(self, value: str) -> None:
-        if value is None:
+    def _ensure_has_value(self) -> None:
+        if self._value is None:
             raise RequiredValueError
 
     @validate
-    def _ensure_value_is_string(self, value: str) -> None:
-        if not isinstance(value, str):
-            raise IncorrectValueTypeError(value, str)
+    def _ensure_value_is_string(self) -> None:
+        if not isinstance(self._value, str):
+            raise IncorrectValueTypeError(self._value, str)
 
     @validate
-    def _ensure_value_has_valid_uuid_format(self, value: str) -> None:
+    def _ensure_value_has_valid_uuid_format(self) -> None:
         try:
-            UUID(value)
+            UUID(self._value)
         except ValueError as error:
             raise InvalidIdFormatError from error

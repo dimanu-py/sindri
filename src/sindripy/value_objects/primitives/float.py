@@ -23,8 +23,8 @@ class Float(ValueObject[float]):
         ```python
         class Price(Float):
             @validate
-            def _validate_positive(self, value: float) -> None:
-                if value < 0:
+            def _validate_positive(self) -> None:
+                if self._value < 0:
                     raise ValueError("Price cannot be negative")
 
         price = Price(29.99)
@@ -34,11 +34,11 @@ class Float(ValueObject[float]):
     """
 
     @validate
-    def _ensure_has_value(self, value: float) -> None:
-        if value is None:
+    def _ensure_has_value(self) -> None:
+        if self._value is None:
             raise RequiredValueError
 
     @validate
-    def _ensure_value_is_float(self, value: float) -> None:
-        if not isinstance(value, float):
-            raise IncorrectValueTypeError(value, float)
+    def _ensure_value_is_float(self) -> None:
+        if not isinstance(self._value, float):
+            raise IncorrectValueTypeError(self._value, float)
