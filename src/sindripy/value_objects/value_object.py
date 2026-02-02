@@ -63,6 +63,41 @@ class ValueObject(ABC, Generic[T]):
         object.__setattr__(self, "_value", value)
         self._validate()
 
+    def _call_validator_with_adapter(self, validator: Callable) -> None:
+        """
+        Call validator method with backward compatibility support.
+
+        Supports both old signature (method(self, value)) and new signature (method(self)).
+        Detects the validator signature and calls it appropriately.
+        """
+        import inspect
+
+        try:
+            # Get the signature of the validator method
+            sig = inspect.signature(validator)
+            params = list(sig.parameters.keys())
+
+            # Check if it expects a value parameter (old signature)
+            if len(params) == 2 and params[1] != "self":
+                # Old signature: method(self, value) - emit deprecation warning
+                _warn_deprecation(validator.__name__)
+                validator(self._value)  # type: ignore[arg-type]
+            else:
+                # New signature: method(self)
+                validator()
+        except (ValueError, TypeError):
+            # If signature inspection fails, try new signature first, then old
+            try:
+                validator()
+            except Exception:
+                # Try old signature as fallback
+                _warn_deprecation(validator.__name__)
+                try:
+                    validator(self._value)  # type: ignore[arg-type]
+                except Exception:
+                    # If both fail, re-raise the original error
+                    raise
+
     def _validate(self) -> None:
         """
         Validates the stored value using all methods decorated with @validate.
@@ -107,7 +142,7 @@ class ValueObject(ABC, Generic[T]):
                 validators.append(method)
 
         for validator in validators:
-            validator()
+            self._call_validator_with_adapter(validator)
 
     @property
     def value(self) -> T:
@@ -264,3 +299,15 @@ class ValueObject(ABC, Generic[T]):
             raise AttributeError("Cannot modify the value of a ValueObject")
 
         raise AttributeError(f"Class {self.__class__.__name__} object has no attribute '{name}'")
+
+
+def _warn_deprecation(validator_name: str) -> None:
+    import warnings
+
+    warnings.warn(
+        f"Validator '{validator_name}' may use deprecated signature. "
+        f"Update to '{validator_name}(self)' instead of '{validator_name}(self, value)'. "
+        "See migration guide for details: https://dimanu-py.github.io/sindri/value_objects/mibration_guide/",
+        DeprecationWarning,
+        stacklevel=4,
+    )
