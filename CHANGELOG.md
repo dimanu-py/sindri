@@ -2,6 +2,47 @@
 
 <!-- version list -->
 
+## v1.0.0 (2026-02-03)
+
+### Build System
+
+- Update dependencies to avoid vulnerabilities
+  ([`d863cce`](https://github.com/dimanu-py/sindri/commit/d863cce206199d53a745aec3e5be54d559c1b671))
+
+- Update sindripy version to 0.1.7 in uv.lock file
+  ([`d67bb2f`](https://github.com/dimanu-py/sindri/commit/d67bb2f15babf745650d12a43c17e6bc98d178ba))
+
+- **pyproject**: Add 'docs' to include groups
+  ([`bd8c7b7`](https://github.com/dimanu-py/sindri/commit/bd8c7b7ad1c06e080277173ee4ad83eea8885488))
+
+- **pyproject**: Add keywords for pypi seo discovery
+  ([`d36bf42`](https://github.com/dimanu-py/sindri/commit/d36bf42087994950ffacc7db37d11523e4d18da8))
+
+- **pyproject**: Remove pip install command from build_command
+  ([`842e8d7`](https://github.com/dimanu-py/sindri/commit/842e8d7195cb4e8041fd66dc268cd15446c4dbaf))
+
+- **pyproject**: Set major_on_zero to true for versioning to bump major version on breaking changes
+  ([`38d1329`](https://github.com/dimanu-py/sindri/commit/38d1329f09e4164bcbbff79b69b0108262636021))
+
+### Documentation
+
+- Update README to enhance clarity and structure for Value Object and Object Mother patterns
+  ([`ff8a3a5`](https://github.com/dimanu-py/sindri/commit/ff8a3a5a8591178eb793f6cc5eb557bfbad5ff80))
+
+- Update validation documentation and add migration guide for validator signature changes
+  ([`e38b62d`](https://github.com/dimanu-py/sindri/commit/e38b62df0ac4719601dad2a9d3ab2c461b8cfe5b))
+
+### Features
+
+- **value-objects**: Add adapter pattern to ensure backward compatibility between new and old
+  validators until old version gets deprecated
+  ([`39c3bf8`](https://github.com/dimanu-py/sindri/commit/39c3bf80136a130f6795287498eb7ae71685c3f1))
+
+- **value-objects**: Store first the value inside attribute and then perform validation instead of
+  first perform validation and then assign the attribute
+  ([`86d24b2`](https://github.com/dimanu-py/sindri/commit/86d24b2b6d96043863e27fe79ef33f407817fcd0))
+
+
 ## v0.1.7 (2025-11-21)
 
 ### Bug Fixes
