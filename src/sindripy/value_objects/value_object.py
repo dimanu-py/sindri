@@ -307,7 +307,7 @@ def _warn_deprecation(validator_name: str) -> None:
     warnings.warn(
         f"Validator '{validator_name}' may use deprecated signature. "
         f"Update to '{validator_name}(self)' instead of '{validator_name}(self, value)'. "
-        "See migration guide for details: https://dimanu-py.github.io/sindri/value_objects/mibration_guide/",
+        "See migration guide for details: https://dimanu-py.github.io/sindri/value_objects/migration_guide/",
         DeprecationWarning,
         stacklevel=4,
     )
