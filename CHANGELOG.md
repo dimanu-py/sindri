@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.1 (2026-02-05)
+
+### Bug Fixes
+
+- **value-objects**: Correct url to migration guide in deprecation warning
+  ([`a7ba318`](https://github.com/dimanu-py/sindri/commit/a7ba31872bf7d160bda156a3ce7ad4e752a55bfc))
+
+
 ## v1.0.0 (2026-02-03)
 
 ### Build System

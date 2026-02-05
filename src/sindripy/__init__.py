@@ -8,4 +8,4 @@ installed as a dependency.
 from sindripy import mothers, value_objects
 
 __all__ = ["mothers", "value_objects"]
-__version__ = "1.0.0"
+__version__ = "1.0.1"
