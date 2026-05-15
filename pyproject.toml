@@ -43,13 +43,15 @@ classifiers = [
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Testing :: Unit",
     "Topic :: Software Development :: Testing :: BDD",
-    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development",
     "Framework :: FastAPI"
 ]
 
 [project.urls]
 documentation = "https://dimanu-py.github.io/sindri/home/"
 repository = "https://github.com/dimanu-py/sindri/"
+homepage = "https://dimanu-py.github.io/sindri/home/"
+issues = "https://github.com/dimanu-py/sindri/issues/"
 
 [dependency-groups]
 dev = [
