@@ -5,6 +5,7 @@ site_description: >
   and generate test data in your Python applications.
 repo_name: sindripy
 repo_url: https://github.com/dimanu-py/sindri
+docs_dir: docs/documentation
 extra:
   homepage: home/
 extra_css:

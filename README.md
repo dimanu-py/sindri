@@ -101,7 +101,7 @@ Why this is a breaking change
 
 How to migrate
 
-- Follow the step-by-step migration guide which shows the exact edits and examples: [Validator Signature Migration Guide](docs/value_objects/migration_guide.md).
+- Follow the step-by-step migration guide which shows the exact edits and examples: [Validator Signature Migration Guide](docs/documentation/value_objects/migration_guide.md).
 - In short: find all methods decorated with `@validate`, remove the `value` parameter, replace uses of `value` with `self._value`, and update any error messages or custom exceptions that referenced the old parameter.
 
 A quick checklist:

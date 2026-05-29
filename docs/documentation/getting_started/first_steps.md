@@ -49,6 +49,6 @@ def test_user_creation() -> None:
     mothers that are implemented, what methods they provide, and how to extend or create your custom object mothers in the 
     [Object Mothers] section.
 
-[installed sindripy]: ../getting_started/installation.md
+[installed sindripy]: installation.md
 [Value Objects]: ../value_objects/index.md
 [Object Mothers]: ../object_mothers/index.md
