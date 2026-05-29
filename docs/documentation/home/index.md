@@ -1,20 +1,20 @@
-# Sindripy
+# Value Objects & Object Mother
 
 <div align="center">
   <strong>Easy use and customizable implementation for Value Object and Object Mother patterns.</strong>
 </div>
 
 <div align="center"><table><tr><td>
-Sindripy replaces ad hoc primitives and fragile validators with a consistent Value Object and Aggregate 
+Sindri replaces ad hoc primitives and fragile validators with a consistent Value Object and Aggregate 
 toolkit you can adopt quickly. 
 Spin up validated value objects, aggregates, and test data with a simple and a small, focused API.
 
-Sindripy provides a basic-high-customizable implementation to help you enforce
-domain invariants and improve code quality with minimal effort.
+The project provides two independent packages: **`value-objects`** (zero runtime dependencies) for value
+object patterns and **`object-mother`** (depends on faker) for test data generation.
 
 <br><br>
 
-<b>Why use sindripy?</b> Building your domain with Sindri lets you:
+<b>Why use them?</b> Building your domain with Sindri lets you:
 
 <ul style="list-style-type: none">
   <li>⏱️ Cut domain modeling and validation to seconds</li>
@@ -32,7 +32,7 @@ domain invariants and improve code quality with minimal effort.
 
 ## Navigation Guide
 
-This section provides a high-level overview of the `sindripy` documentation so you can find quickly what you need.
+This section provides a high-level overview of the documentation so you can find quickly what you need.
 
 ### For Users
 

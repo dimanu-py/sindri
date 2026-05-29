@@ -1,6 +1,6 @@
 # How to Contribute
 
-First off, **thank you** for wanting to improve **sindripy** package! Whether you're fixing a typo or building a whole new feature,
+First off, **thank you** for wanting to improve **value-objects** and **object-mother** packages! Whether you're fixing a typo or building a whole new feature,
 your help makes the library better for everyone.
 
 ## Before You Start
@@ -202,4 +202,4 @@ If you find this library useful and want to help, you can also give it a star on
 [![Donate](https://img.shields.io/badge/Buy_me_a_coffee-5d83f5?style=for-the-badge&logo=ko-fi&logoColor=white&__cf_chl_managed_tk__=pmd_sOkOcrsQ4T6MRVPX2TeB_mbk2ZryAIn3rNigWIBBC6U-1633993526-0-gqNtZGzNAyWjcnBszQkl)](https://buymeacoffee.com/dimanu.py)
 
 
-_Thank you for helping make **sindripy** package awesome!_
+_Thank you for helping make **value-objects** and **object-mother** packages awesome!_

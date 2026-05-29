@@ -1,6 +1,6 @@
 # Contributing
 
-First off, **thank you** for wanting to improve **sindripy** package! Whether you're fixing a typo or building a whole new feature,
+First off, **thank you** for wanting to improve **value-objects** and **object-mother** packages! Whether you're fixing a typo or building a whole new feature,
 your help makes the library better for everyone.
 
 ## Before You Start

@@ -1,27 +1,27 @@
 !!! info "Python Version Support"
-    Sindripy officially support from Python 3.10 to 3.13.
+    Both packages officially support from Python 3.10 and higher.
     Older versions of Python may work, but they are not guaranteed to be compatible.
 
-The latest version of `sindripy` can be installed directly from PyPI.
-
-The library has no runtime dependencies. All dependencies listed in _pyproject.toml_
-are development dependencies
+The project provides two independent packages you can install separately depending on your needs.
 
 ## Installing with pip
 
 ```bash
-pip install sindripy
+pip install value-objects      # value objects only, zero runtime dependencies
+pip install object-mother      # object mothers with faker for test data
+pip install value-objects object-mother  # both
 ```
 
 ## Installing with uv
 
 ```bash
-uv add sindripy
+uv add value-objects
+uv add object-mother --group test
 ```
 
 ## Next steps
 
-Now that you have installed `sindripy` you can advance to the [First Steps] section to learn the basic features 
-of `sindripy` and learn how to create value objects and generate test data using object mothers.
+Now that you have installed the packages, you can advance to the [First Steps] section to learn the basic features 
+and how to create value objects and generate test data using object mothers.
 
 [First Steps]: first_steps.md

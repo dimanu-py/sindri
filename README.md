@@ -1,8 +1,8 @@
-# Sindripy
+# Sindri: Value Objects & Object Mother
 
 ### Value Object and Object Mother patterns for Python and Domain Driven Design applications
 
-Easy use and customizable implementation for Value Object and Object Mother patterns.
+Easy use and customizable implementation for Value Object and Object Mother patterns, split into two independent packages.
 
 <p align="center">
   <a href="https://dimanu-py.github.io/sindri/getting_started/">Getting Started</a>&nbsp;&nbsp;•&nbsp;
@@ -15,12 +15,12 @@ Sindri replaces ad hoc primitives and fragile validators with a consistent Value
 toolkit you can adopt quickly. 
 Spin up validated value objects, aggregates, and test data with a simple and a small, focused API.
 
-Sindripy provides a basic-high-customizable implementation to help you enforce
-domain invariants and improve code quality with minimal effort.
+The project provides two independent packages: **`value-objects`** (zero runtime dependencies) for value
+object patterns and **`object-mother`** (depends on faker) for test data generation.
 
 <br>
 
-<b>Why use sindripy?</b> Building your domain with Sindri lets you:
+<b>Why use them?</b> Building your domain with Sindri lets you:
 
 <ul style="list-style-type: none">
   <li>⏱️ Cut domain modeling and validation to seconds</li>
@@ -43,7 +43,7 @@ domain invariants and improve code quality with minimal effort.
 
 ## Navigation Guide
 
-This section provides a high-level overview of the `sindripy` documentation so you can find quickly what you need.
+This section provides a high-level overview of the documentation so you can find quickly what you need.
 
 ### For Users
 
@@ -64,16 +64,17 @@ This section provides a high-level overview of the `sindripy` documentation so y
 
 ## Fast Kickstart
 
-The latest version of `sindripy` can be installed from PyPI:
+Install only what you need:
 
 ```bash
-pip install sindripy
+pip install value-objects      # zero dependencies
+pip install object-mother      # with faker for test data
 ```
 
 Here is a simple example of how to use `sindri` to create a value object and generate test data using an object mother.
 
 ```python
-from sindripy.value_objects import Integer, String
+from value_objects import Integer, String
 
 age = Integer(30)
 name = String("John Doe")
@@ -82,7 +83,7 @@ print(f"Name: {name.value}, Age: {age.value}")
 ```
 
 ```python
-from sindripy.mothers import IntegerPrimitivesMother, StringPrimitivesMother
+from object_mother import IntegerPrimitivesMother, StringPrimitivesMother
 
 random_age = IntegerPrimitivesMother.any()
 random_name = StringPrimitivesMother.any()

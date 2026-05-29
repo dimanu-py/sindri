@@ -14,7 +14,7 @@ express the ubiquitous language of your domain in your tests.
 The simplest way to create custom object mothers is by subclassing the `ObjectMother` base class:
 
 ```python
-from sindripy.mothers import ObjectMother
+from object_mother import ObjectMother
 
 
 class UserMother(ObjectMother):
@@ -59,7 +59,7 @@ minor_user = UserMother.minor()
 You can also extend existing primitive mothers to add domain-specific generation methods:
 
 ```python
-from sindripy.mothers import StringPrimitivesMother
+from object_mother import StringPrimitivesMother
 
 
 class EmailMother(StringPrimitivesMother):
@@ -86,8 +86,8 @@ When working with [value objects](../value_objects/index.md), you can create mot
 value object instances directly:
 
 ```python
-from sindripy.mothers import ObjectMother
-from sindripy.value_objects import String, Integer
+from object_mother import ObjectMother
+from value_objects import String, Integer
 
 
 class Email(String):
@@ -144,7 +144,7 @@ For more complex domain objects or aggregates, you can create mothers that handl
 object graph:
 
 ```python
-from sindripy.mothers import ObjectMother, StringPrimitivesMother, IntegerPrimitivesMother
+from object_mother import ObjectMother, StringPrimitivesMother, IntegerPrimitivesMother
 from dataclasses import dataclass
 
 
@@ -209,7 +209,7 @@ class PersonMother(ObjectMother):
 Object mothers can be composed to create more complex test scenarios:
 
 ```python
-from sindripy.mothers import ObjectMother
+from object_mother import ObjectMother
 
 
 class OrderMother(ObjectMother):

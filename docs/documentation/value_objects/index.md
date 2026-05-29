@@ -103,7 +103,7 @@ This property returns the internal `_value` attribute, allowing you to retrieve 
 primitive value without exposing the internal state for modification.
 
 ```python
-from sindripy.value_objects import String
+from value_objects import String
 
 username = String("john_doe")
 print(username.value)  # john_doe

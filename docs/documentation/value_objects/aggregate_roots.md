@@ -32,7 +32,7 @@ The easiest way to define an aggregate root is by subclassing the `Aggregate` ba
 its attributes using type annotations. Each attribute can be a primitive type or another value object.
 
 ```python
-from sindripy.value_objects import Aggregate, String, Integer, List
+from value_objects import Aggregate, String, Integer, List
 
 
 class Address(Aggregate):
@@ -96,7 +96,7 @@ With this approach, if we wanted to verify if two addresses are in the same city
 
 ```python
 from typing import Self
-from sindripy.value_objects import Aggregate, String
+from value_objects import Aggregate, String
 
 
 class Address(Aggregate):

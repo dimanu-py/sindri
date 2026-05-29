@@ -19,7 +19,7 @@ The `BooleanPrimitivesMother` class generates boolean test data for testing scen
 | `false()`  | Generate the `False` boolean value                             | `bool`  |
 
 ```python
-from sindripy.mothers import BooleanPrimitivesMother
+from object_mother import BooleanPrimitivesMother
 
 random_flag = BooleanPrimitivesMother.any()  # True or False
 active_flag = BooleanPrimitivesMother.true()  # True
@@ -45,7 +45,7 @@ The `IntegerPrimitivesMother` class generates integer test data for testing scen
 - `max_value` (int): Maximum value (default: 1000)
 
 ```python
-from sindripy.mothers import IntegerPrimitivesMother
+from object_mother import IntegerPrimitivesMother
 
 random_number = IntegerPrimitivesMother.any()  # Random integer
 age = IntegerPrimitivesMother.positive()  # Always > 0
@@ -77,7 +77,7 @@ The `FloatPrimitivesMother` class generates floating-point test data for testing
 - `max_value` (float): Maximum value (default: 10000.0)
 
 ```python
-from sindripy.mothers import FloatPrimitivesMother
+from object_mother import FloatPrimitivesMother
 
 random_decimal = FloatPrimitivesMother.any()  # Random float
 price = FloatPrimitivesMother.positive()  # Always > 0
@@ -104,7 +104,7 @@ The `StringPrimitivesMother` class generates string test data for testing scenar
 | `text()`                         | Generate a text string with spaces and punctuation (up to 200 chars)     | `str`   |
 
 ```python
-from sindripy.mothers import StringPrimitivesMother
+from object_mother import StringPrimitivesMother
 
 random_word = StringPrimitivesMother.any()  # e.g., "hello"
 blank = StringPrimitivesMother.empty()  # ""
@@ -124,7 +124,7 @@ The `ListPrimitivesMother` class generates list test data for testing scenarios 
 | `empty()`  | Generate an empty list     | `list`  |
 
 ```python
-from sindripy.mothers import ListPrimitivesMother
+from object_mother import ListPrimitivesMother
 
 empty_collection = ListPrimitivesMother.empty()  # []
 ```
@@ -139,7 +139,7 @@ The `StringUuidPrimitivesMother` class generates UUID string test data for testi
 | `invalid()` | Generate an invalid UUID string (useful for testing validation)    | `str`   |
 
 ```python
-from sindripy.mothers import StringUuidPrimitivesMother
+from object_mother import StringUuidPrimitivesMother
 
 user_id = StringUuidPrimitivesMother.any()  # e.g., "550e8400-e29b-41d4-a716-446655440000"
 bad_id = StringUuidPrimitivesMother.invalid()  # Invalid UUID format
@@ -150,8 +150,8 @@ bad_id = StringUuidPrimitivesMother.invalid()  # Invalid UUID format
 Object mothers work seamlessly with value objects to simplify test data creation:
 
 ```python
-from sindripy.mothers import StringPrimitivesMother, IntegerPrimitivesMother
-from sindripy.value_objects import String, Integer
+from object_mother import StringPrimitivesMother, IntegerPrimitivesMother
+from value_objects import String, Integer
 
 # Create value objects with test data
 username = String(StringPrimitivesMother.any())
