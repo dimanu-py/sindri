@@ -53,12 +53,20 @@ repository = "https://github.com/dimanu-py/sindri/"
 homepage = "https://dimanu-py.github.io/sindri/home/"
 issues = "https://github.com/dimanu-py/sindri/issues/"
 
+[workspace]
+members = [
+    "packages/value-objects",
+    "packages/object-mother",
+]
+
 [dependency-groups]
 dev = [
     {include-group = "lint"},
     {include-group = "test"},
     {include-group = "release"},
     {include-group = "docs"},
+    "object-mother",
+    "value-objects",
 ]
 
 release = [
@@ -155,3 +163,13 @@ mode = "update"
 changelog_file = "CHANGELOG"
 output_format = "md"
 mask_initial_release = false
+
+[tool.uv.workspace]
+members = [
+    "packages/value-objects",
+    "packages/object-mother",
+]
+
+[tool.uv.sources]
+value-objects = { workspace = true, editable = true }
+object-mother = { workspace = true, editable = true }
