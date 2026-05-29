@@ -125,3 +125,11 @@ docs-serve:  ## Start server for documentation.
 .PHONY: watch
 watch:  ## Run all test with every change.
 	@uv run ptw --runner "pytest test -ra"
+
+.PHONY: opencode
+opencode:  ## Create symlinks for OpenCode compatibility.
+	@echo "\n⌛ Creating OpenCode symlinks...\n"
+	@mkdir -p .opencode
+	@rm -rf .opencode/commands
+	@ln -s ../.agents/commands .opencode/commands
+	@ls -la .opencode
