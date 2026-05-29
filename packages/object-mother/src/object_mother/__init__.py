@@ -1,9 +1,10 @@
 """Public facade for object mother helpers.
 
 This module re-exports the available object mother implementations so
-that projects using this library can import them from
-``sindripy.mothers`` directly.
+that projects using this library can import them directly.
 """
+
+__version__ = "1.0.0"
 
 from object_mother.identifiers.string_uuid_primitives_mother import StringUuidPrimitivesMother
 from object_mother.object_mother import ObjectMother

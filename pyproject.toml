@@ -46,10 +46,6 @@ quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
 
-
-
-
-
 [tool.pytest.ini_options]
 markers = [
     "unit: mark a test as a unit test",
@@ -58,32 +54,6 @@ markers = [
 ]
 testpaths = ["packages/value-objects/test", "packages/object-mother/test"]
 asyncio_default_fixture_loop_scope = "function"
-
-[tool.semantic_release]
-commit_message = "bump: new version {version} created"
-commit_parser = "conventional"
-major_on_zero = true
-allow_zero_version = true
-no_git_verify = false
-
-[tool.semantic_release.commit_parser_options]
-minor_tags = ["feat"]
-patch_tags = ["fix", "perf", "refactor", "test", "docs"]
-allowed_tags = ["feat", "fix", "refactor", "perf", "build", "docs"]
-default_bump_level = 0
-parse_squash_commits = false
-ignore_merge_commits = true
-
-[tool.semantic_release.changelog]
-changelog_file = "CHANGELOG.md"
-exclude_commit_patterns = ['''^Merge pull request #''', '''^Merge branch ''']
-mode = "update"
-#template_dir = "docs/changelog"
-
-[tool.semantic_release.changelog.default_templates]
-changelog_file = "CHANGELOG"
-output_format = "md"
-mask_initial_release = false
 
 [tool.uv.workspace]
 members = [
