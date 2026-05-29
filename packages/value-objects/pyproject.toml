@@ -30,7 +30,13 @@ classifiers = [
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Topic :: Software Development",
-]
+    ]
+
+[project.urls]
+documentation = "https://dimanu-py.github.io/sindri/home/"
+repository = "https://github.com/dimanu-py/sindri/"
+homepage = "https://dimanu-py.github.io/sindri/home/"
+issues = "https://github.com/dimanu-py/sindri/issues/"
 
 [build-system]
 requires = ["hatchling"]
@@ -38,3 +44,32 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/value_objects"]
+
+[tool.semantic_release]
+version_toml = ["pyproject.toml:project.version"]
+version_variables = ["src/value_objects/__init__.py:__version__"]
+commit_message = "bump(value-objects): new version {version} created"
+commit_parser = "conventional"
+major_on_zero = true
+allow_zero_version = true
+no_git_verify = false
+tag_format = "value-objects-v{version}"
+build_command = "uv build"
+
+[tool.semantic_release.commit_parser_options]
+minor_tags = ["feat"]
+patch_tags = ["fix", "perf", "refactor", "test", "docs"]
+allowed_tags = ["feat", "fix", "refactor", "perf", "build", "docs"]
+default_bump_level = 0
+parse_squash_commits = false
+ignore_merge_commits = true
+
+[tool.semantic_release.changelog]
+changelog_file = "CHANGELOG.md"
+exclude_commit_patterns = ['''^Merge pull request #''', '''^Merge branch ''']
+mode = "update"
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG"
+output_format = "md"
+mask_initial_release = false

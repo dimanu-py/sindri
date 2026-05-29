@@ -1,8 +1,10 @@
 """Public facade for value object implementations.
 
 This module re-exports the most common value objects so they can be
-imported directly from :mod:`sindripy.value_object`.
+imported directly from :mod:`value_objects`.
 """
+
+__version__ = "1.0.0"
 
 from value_objects.aggregate import Aggregate
 from value_objects.decorators.validation import validate
