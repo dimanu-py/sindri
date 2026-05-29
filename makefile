@@ -32,7 +32,7 @@ remove-dep:  ## Remove a dependency <make remove-dep dep="pytest --group test">
 .PHONY: test
 test:  ## Run all test.
 	@echo "⌛ Running tests...\n"
-	@uv run pytest test -ra
+	@uv run pytest -ra
 
 .PHONY: unit
 unit:  ## Run all unit test.
@@ -52,7 +52,7 @@ acceptance:  ## Run all acceptance test.
 .PHONY: coverage
 coverage:  ## Run all test with coverage.
 	@echo "⌛ Running tests with coverage...\n"
-	@uv run coverage run --branch -m pytest test
+	@uv run coverage run --branch -m pytest
 	@uv run coverage html
 	@$(BROWSER) htmlcov/index.html
 
@@ -64,23 +64,23 @@ check-typing:  ## Run mypy type checking.
 
 .PHONY: check-lint
 check-lint:  ## Run ruff linting check.
-	@echo "⌛ Running linting check...\n"
-	@uvx ruff check src test
+	@echo "\n⌛ Running linting check...\n"
+	@uvx ruff check packages/value-objects/src packages/value-objects/test packages/object-mother/src
 
 .PHONY: lint
 lint:  ## Apply ruff linting fix.
 	@echo "\n⌛ Applying linting fixes...\n"
-	@uvx ruff check --fix src test
+	@uvx ruff check --fix packages/value-objects/src packages/value-objects/test packages/object-mother/src
 
 .PHONY: check-format
 check-format:  ## Run ruff format check.
 	@echo "⌛ Checking code formatting...\n"
-	@uvx ruff format --check src test
+	@uvx ruff format --check packages/value-objects/src packages/value-objects/test packages/object-mother/src
 
 .PHONY: format
 format:  ## Apply ruff format fix.
 	@echo "⌛ Formatting project code...\n"
-	@uvx ruff format src test
+	@uvx ruff format packages/value-objects/src packages/value-objects/test packages/object-mother/src
 
 .PHONY: secrets
 secrets: # Check for secrets in the source code
@@ -124,7 +124,7 @@ docs-serve:  ## Start server for documentation.
 
 .PHONY: watch
 watch:  ## Run all test with every change.
-	@uv run ptw --runner "pytest test -ra"
+	@uv run ptw --runner "pytest packages/value-objects/test packages/object-mother/test -ra"
 
 .PHONY: opencode
 opencode:  ## Create symlinks for OpenCode compatibility.

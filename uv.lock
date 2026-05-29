@@ -1351,9 +1351,6 @@ wheels = [
 name = "sindripy"
 version = "1.0.1"
 source = { editable = "." }
-dependencies = [
-    { name = "faker" },
-]
 
 [package.dev-dependencies]
 dev = [
@@ -1398,7 +1395,6 @@ test = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "faker" }]
 
 [package.metadata.requires-dev]
 dev = [

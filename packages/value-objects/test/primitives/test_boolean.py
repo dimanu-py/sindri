@@ -3,14 +3,14 @@ from typing import Any
 import pytest
 from expects import equal, expect, raise_error
 
-from sindripy.mothers.primitives.boolean_primitives_mother import (
+from object_mother.primitives.boolean_primitives_mother import (
     BooleanPrimitivesMother,
 )
-from sindripy.value_objects.errors.incorrect_value_type_error import (
+from value_objects.errors.incorrect_value_type_error import (
     IncorrectValueTypeError,
 )
-from sindripy.value_objects.errors.required_value_error import RequiredValueError
-from sindripy.value_objects.primitives.boolean import (
+from value_objects.errors.required_value_error import RequiredValueError
+from value_objects.primitives.boolean import (
     Boolean,
 )
 
