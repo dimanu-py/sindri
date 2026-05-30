@@ -155,4 +155,4 @@ jobs:
         run: uv pip install pytest pytest-cov
 
       - name: 🏃 Run tests
-        run: uv run pytest test -ra -s
+        run: uv run pytest -ra -s
