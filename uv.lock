@@ -22,7 +22,7 @@ dev = [
     { name = "mkdocs-material", specifier = ">=9.6.21" },
     { name = "mkdocs-section-index", specifier = ">=0.3.10" },
     { name = "mypy" },
-    { name = "object-mother-sindri", editable = "packages/object-mother" },
+    { name = "object-mother-sindri", editable = "packages/object_mother" },
     { name = "pip-audit" },
     { name = "pre-commit" },
     { name = "pytest" },
@@ -30,7 +30,7 @@ dev = [
     { name = "pytest-sugar", specifier = ">=1.1.1" },
     { name = "python-semantic-release" },
     { name = "ruff" },
-    { name = "value-object-sindri", editable = "packages/value-objects" },
+    { name = "value-object-sindri", editable = "packages/value_objects" },
 ]
 docs = [
     { name = "mkdocs", specifier = ">=1.6.1" },
@@ -981,7 +981,7 @@ wheels = [
 [[package]]
 name = "object-mother-sindri"
 version = "1.0.0"
-source = { editable = "packages/object-mother" }
+source = { editable = "packages/object_mother" }
 dependencies = [
     { name = "faker" },
 ]
@@ -1584,9 +1584,9 @@ mother = [
 
 [package.metadata]
 requires-dist = [
-    { name = "object-mother-sindri", editable = "packages/object-mother" },
-    { name = "object-mother-sindri", marker = "extra == 'mother'", editable = "packages/object-mother" },
-    { name = "value-object-sindri", editable = "packages/value-objects" },
+    { name = "object-mother-sindri", editable = "packages/object_mother" },
+    { name = "object-mother-sindri", marker = "extra == 'mother'", editable = "packages/object_mother" },
+    { name = "value-object-sindri", editable = "packages/value_objects" },
 ]
 provides-extras = ["mother"]
 
@@ -1752,7 +1752,13 @@ wheels = [
 [[package]]
 name = "value-object-sindri"
 version = "1.0.0"
-source = { editable = "packages/value-objects" }
+source = { editable = "packages/value_objects" }
+dependencies = [
+    { name = "typing-extensions", marker = "python_full_version < '3.12'" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "typing-extensions", marker = "python_full_version < '3.12'", specifier = ">=4.0" }]
 
 [[package]]
 name = "virtualenv"
