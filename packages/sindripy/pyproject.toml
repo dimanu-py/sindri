@@ -1,0 +1,50 @@
+[project]
+name = "sindripy"
+version = "2.0.0"
+description = "Metapackage for value-object-sindri and object-mother-sindri"
+authors = [{name = "dimanu-py", email = "dimanu.py@gmail.com"}]
+requires-python = ">=3.10"
+license = "MIT"
+keywords = [
+    "value object",
+    "object mother",
+    "sindripy",
+    "domain driven design",
+    "ddd",
+    "design patterns",
+]
+classifiers = [
+    "Typing :: Typed",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development",
+]
+
+dependencies = [
+    "value-object-sindri",
+    "object-mother-sindri",
+]
+
+[project.optional-dependencies]
+mother = ["object-mother-sindri"]
+
+[project.urls]
+documentation = "https://dimanu-py.github.io/sindri/home/"
+repository = "https://github.com/dimanu-py/sindri/"
+homepage = "https://dimanu-py.github.io/sindri/home/"
+issues = "https://github.com/dimanu-py/sindri/issues/"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sindripy"]
