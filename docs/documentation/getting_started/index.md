@@ -1,4 +1,4 @@
-In this section you will learn the basics of `value-objects` and `object-mother` so you can start using them in your projects 
+In this section you will learn the basics of `value-object-sindri` and `object-mother-sindri` so you can start using them in your projects
 as quickly as possible.
 
 ## What you will find here
