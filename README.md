@@ -89,12 +89,33 @@ random_age = IntegerPrimitivesMother.any()
 random_name = StringPrimitivesMother.any()
 ```
 
-# Migrating to v1.0.0
+# Migration Guides
+
+## v2.0.0: Package split
 
 > **⚠️ `sindripy` is deprecated.** Use `value-object-sindri` and `object-mother-sindri` directly.
-> See the [migration guide](docs/documentation/value_objects/migration_guide.md) for details.
 
+The monolith `sindripy` package has been split into two independent packages:
 
+- **`value-object-sindri`** — value objects (zero runtime dependencies)
+- **`object-mother-sindri`** — object mothers (depends on `faker`)
+
+| Step                   | Before (`sindripy`)                                    | After                                                   |
+|------------------------|--------------------------------------------------------|---------------------------------------------------------|
+| Install value objects  | `pip install sindripy`                                 | `pip install value-object-sindri`                       |
+| Install object mothers | `pip install sindripy[mother]`                         | `pip install object-mother-sindri`                      |
+| Import value objects   | `from sindripy.value_objects import Integer`           | `from value_objects import Integer`                     |
+| Import mothers         | `from sindripy.mothers import IntegerPrimitivesMother` | `from object_mother import IntegerPrimitivesMother`     |
+| pyproject.toml dep     | `"sindripy"`                                           | `"value-object-sindri"` and/or `"object-mother-sindri"` |
+
+Most editors support bulk find-and-replace for import paths, making the migration mechanical:
+
+```
+sindripy.value_objects. → value_objects.
+sindripy.mothers.       → object_mother.
+```
+
+## v1.0.0: Validator signature change
 
 This release includes a breaking change to the validator API used by value objects:
 
