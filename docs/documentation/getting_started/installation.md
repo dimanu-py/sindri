@@ -1,5 +1,5 @@
 !!! info "Python Version Support"
-    Both packages officially support from Python 3.10 and higher.
+    Both packages officially support Python 3.10 and higher.
     Older versions of Python may work, but they are not guaranteed to be compatible.
 
 The project provides two independent packages you can install separately depending on your needs.
