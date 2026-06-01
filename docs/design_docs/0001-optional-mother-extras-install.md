@@ -1,9 +1,9 @@
 ---
 created: 2026-05-29
-status: Proposed
+status: Implemented
 ---
 
-# Split into Independent Packages: value-objects and object-mother
+# Split into Independent Packages: value-object-sindri and object-mother-sindri
 
 ## Overview
 
@@ -13,8 +13,8 @@ level — neither imports from the other.
 
 This change splits the monolith into two independent PyPI packages within a monorepo:
 
-- **`value-objects`** — value object pattern (zero runtime dependencies)
-- **`object-mother`** — object mother pattern (depends on `faker`)
+- **`value-object-sindri`** — value object pattern (zero runtime dependencies)
+- **`object-mother-sindri`** — object mother pattern (depends on `faker`)
 
 Users install only what they need. Each package has its own version, changelog, and release cycle.
 
@@ -30,8 +30,8 @@ Users install only what they need. Each package has its own version, changelog, 
 
 ### Functional Requirements
 
-- `pip install value-objects` must install only the value object functionality with no `faker` dependency
-- `pip install object-mother` must install only the object mother functionality with `faker`
+- `pip install value-object-sindri` must install only the value object functionality with no `faker` dependency
+- `pip install object-mother-sindri` must install only the object mother functionality with `faker`
 - Import paths match the new package names: `from value_objects import Integer` and `from object_mother import IntegerPrimitivesMother`
 - The `ObjectMother._faker()` method must raise a clear error if `faker` is missing
 - All existing value object classes, methods, and validation behavior must remain unchanged
@@ -39,7 +39,7 @@ Users install only what they need. Each package has its own version, changelog, 
 
 ### Non-Functional Requirements
 
-- Zero new runtime dependencies for the `value-objects` package
+- Zero new runtime dependencies for the `value-object-sindri` package
 - Monorepo must use UV workspaces for local development
 - Development workflow (`uv sync --all-groups`) must install both packages and all dev dependencies
 - CI must run lint, format, typing, and tests for both packages
@@ -50,7 +50,7 @@ Users install only what they need. Each package has its own version, changelog, 
 ### Example 1: Install value objects only
 
 ```bash
-pip install value-objects
+pip install value-object-sindri
 ```
 
 ```python
@@ -63,7 +63,7 @@ name = String("John Doe")
 ### Example 2: Install object mothers only
 
 ```bash
-pip install object-mother
+pip install object-mother-sindri
 ```
 
 ```python
@@ -80,7 +80,7 @@ random_name = StringPrimitivesMother.any()
 Traceback (most recent call last):
   ...
 ImportError: The 'faker' package is required to use ObjectMother.
-Install with: pip install object-mother
+Install with: pip install object-mother-sindri
 ```
 
 ## Implementation Steps
@@ -111,16 +111,16 @@ Existing users of `sindripy` need a clear path to migrate to the new packages. T
 
 ### Phase 1: Ship new packages + compatibility `sindripy` v2
 
-Publish `value-objects` and `object-mother` to PyPI as new packages. Simultaneously publish a final **`sindripy` v2.0.0** that is a metapackage with zero code of its own:
+Publish `value-object-sindri` and `object-mother-sindri` to PyPI as new packages. Simultaneously publish a final **`sindripy` v2.0.0** that is a metapackage:
 
 ```toml
 # sindripy v2.0.0 pyproject.toml
 [project]
 name = "sindripy"
-dependencies = ["value-objects", "object-mother"]
+dependencies = ["value-object-sindri", "object-mother-sindri"]
 
 [project.optional-dependencies]
-mother = ["object-mother"]
+mother = ["object-mother-sindri"]
 ```
 
 This means existing users who run `pip install sindripy` automatically get both new packages. The old `sindripy` source code is deleted — the v2 package is purely a dependency bridge.
@@ -129,14 +129,14 @@ This means existing users who run `pip install sindripy` automatically get both 
 
 Mark `sindripy` as deprecated in the README and all docs. Add a deprecation warning banner:
 
-> **sindripy is deprecated.** Use `value-objects` and `object-mother` directly. See the [migration guide](link) for details.
+> **sindripy is deprecated.** Use `value-object-sindri` and `object-mother-sindri` directly. See the [migration guide](link) for details.
 
 Encourage users to switch their `pyproject.toml` dependencies and imports.
 
 ### Phase 3: Remove `sindripy` from PyPI (optional)
 
 After a reasonable deprecation window (e.g. 6 months), yank the `sindripy` package from PyPI. Users must explicitly 
-install `value-objects` and/or `object-mother`.
+install `value-object-sindri` and/or `object-mother-sindri`.
 
 ### Per-user migration steps
 
@@ -144,11 +144,11 @@ A user migrating from `sindripy` to the new packages needs to:
 
 | Step | Before (`sindripy`) | After |
 |------|---------------------|-------|
-| Install value objects | `pip install sindripy` | `pip install value-objects` |
-| Install object mothers | `pip install sindripy[mother]` | `pip install object-mother` |
+| Install value objects | `pip install sindripy` | `pip install value-object-sindri` |
+| Install object mothers | `pip install sindripy[mother]` | `pip install object-mother-sindri` |
 | Import value objects | `from sindripy.value_objects import Integer` | `from value_objects import Integer` |
 | Import mothers | `from sindripy.mothers import IntegerPrimitivesMother` | `from object_mother import IntegerPrimitivesMother` |
-| pyproject.toml dep | `"sindripy"` | `"value-objects"` and/or `"object-mother"` |
+| pyproject.toml dep | `"sindripy"` | `"value-object-sindri"` and/or `"object-mother-sindri"` |
 
 Most editors support bulk find-and-replace for import paths, making the migration mechanical:
 
@@ -161,13 +161,14 @@ sindripy.mothers.       → object_mother.
 
 - **No runtime shim**: No `sindripy` package is kept on PyPI that re-exports with old import paths. This avoids maintaining duplicate code.
 - **No deprecation warnings in code**: Since old `sindripy` source is deleted entirely, there's no code to emit warnings. The deprecation is communicated through documentation and the metapackage's README.
-- **Version alignment**: The metapackage `sindripy` v2.0.0 simply requires `value-objects >= 1.0.0` and `object-mother >= 1.0.0` (or whatever the initial versions are).
+- **Version alignment**: The metapackage `sindripy` v2.0.0 simply requires `value-object-sindri >= 1.0.0` and `object-mother-sindri >= 1.0.0` (or whatever the initial versions are).
 
-## Open Questions
+## Decisions
 
-- **Versioning strategy**: Should both packages share the same version number (released in lockstep) or diverge independently? Independent versions mean separate git tags (e.g., `value-objects-v1.0.0`, `object-mother-v0.1.0`).
-- **Repository name**: Should the GitHub repo be renamed from `sindripy` / `value-object` to something neutral, or should it stay?
-- **CHANGELOG**: Single changelog at root or one per package?
+- **Versioning strategy**: Each package versioned independently. Git tags use `value-objects-v{version}` and `object-mother-v{version}` (the directory layout name, not the PyPI name).
+- **Repository name**: Kept as `sindri` / `sindripy` — the project brand stays.
+- **CHANGELOG**: One per subpackage, managed by semantic-release per-package configuration.
+- **PyPI names**: `value-object-sindri` and `object-mother-sindri` (since `value-objects` and `object-mother` are taken on PyPI).
 
 ## Notes
 
