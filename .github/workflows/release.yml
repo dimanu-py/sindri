@@ -18,8 +18,8 @@ on:
         required: true
         type: choice
         options:
-          - value-objects
-          - object-mother
+          - value-object-sindri
+          - object-mother-sindri
           - both
 
 concurrency:
@@ -29,7 +29,7 @@ concurrency:
 jobs:
   # ─── VALUE OBJECTS ─────────────────────────────────────
   release-value-objects:
-    if: inputs.package == 'value-objects' || inputs.package == 'both'
+    if: inputs.package == 'value-object-sindri' || inputs.package == 'both'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -67,7 +67,7 @@ jobs:
           ssh_private_signing_key: ${{ secrets.SSH_PRIVATE_SIGNING_KEY }}
 
   publish-value-objects:
-    name: Publish value-objects to PyPI
+    name: Publish value-object-sindri to PyPI
     needs: release-value-objects
     if: needs.release-value-objects.outputs.released == 'true'
     runs-on: ubuntu-latest
@@ -92,15 +92,14 @@ jobs:
         uses: ./.github/actions/python_setup
 
       - name: 🏃 Build package
-        run: uv build --package value-objects
+        run: uv build --package value-object-sindri
 
       - name: 🚀 Publish
         uses: pypa/gh-action-pypi-publish@release/v1
 
   # ─── OBJECT MOTHER ─────────────────────────────────────
   release-object-mother:
-    needs: release-value-objects
-    if: ${{ always() && (inputs.package == 'object-mother' || inputs.package == 'both') }}
+    if: inputs.package == 'object-mother-sindri' || inputs.package == 'both'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -138,7 +137,7 @@ jobs:
           ssh_private_signing_key: ${{ secrets.SSH_PRIVATE_SIGNING_KEY }}
 
   publish-object-mother:
-    name: Publish object-mother to PyPI
+    name: Publish object-mother-sindri to PyPI
     needs: release-object-mother
     if: needs.release-object-mother.outputs.released == 'true'
     runs-on: ubuntu-latest
@@ -163,7 +162,7 @@ jobs:
         uses: ./.github/actions/python_setup
 
       - name: 🏃 Build package
-        run: uv build --package object-mother
+        run: uv build --package object-mother-sindri
 
       - name: 🚀 Publish
         uses: pypa/gh-action-pypi-publish@release/v1
