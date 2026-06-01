@@ -8,8 +8,9 @@ resolution-markers = [
 
 [manifest]
 members = [
-    "object-mother",
-    "value-objects",
+    "object-mother-sindri",
+    "sindripy",
+    "value-object-sindri",
 ]
 
 [manifest.dependency-groups]
@@ -21,7 +22,7 @@ dev = [
     { name = "mkdocs-material", specifier = ">=9.6.21" },
     { name = "mkdocs-section-index", specifier = ">=0.3.10" },
     { name = "mypy" },
-    { name = "object-mother", editable = "packages/object-mother" },
+    { name = "object-mother-sindri", editable = "packages/object-mother" },
     { name = "pip-audit" },
     { name = "pre-commit" },
     { name = "pytest" },
@@ -29,7 +30,7 @@ dev = [
     { name = "pytest-sugar", specifier = ">=1.1.1" },
     { name = "python-semantic-release" },
     { name = "ruff" },
-    { name = "value-objects", editable = "packages/value-objects" },
+    { name = "value-object-sindri", editable = "packages/value-objects" },
 ]
 docs = [
     { name = "mkdocs", specifier = ">=1.6.1" },
@@ -978,7 +979,7 @@ wheels = [
 ]
 
 [[package]]
-name = "object-mother"
+name = "object-mother-sindri"
 version = "1.0.0"
 source = { editable = "packages/object-mother" }
 dependencies = [
@@ -1568,6 +1569,28 @@ wheels = [
 ]
 
 [[package]]
+name = "sindripy"
+version = "2.0.0"
+source = { editable = "packages/sindripy" }
+dependencies = [
+    { name = "object-mother-sindri" },
+    { name = "value-object-sindri" },
+]
+
+[package.optional-dependencies]
+mother = [
+    { name = "object-mother-sindri" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "object-mother-sindri", editable = "packages/object-mother" },
+    { name = "object-mother-sindri", marker = "extra == 'mother'", editable = "packages/object-mother" },
+    { name = "value-object-sindri", editable = "packages/value-objects" },
+]
+provides-extras = ["mother"]
+
+[[package]]
 name = "six"
 version = "1.17.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1727,7 +1750,7 @@ wheels = [
 ]
 
 [[package]]
-name = "value-objects"
+name = "value-object-sindri"
 version = "1.0.0"
 source = { editable = "packages/value-objects" }
 

@@ -4,8 +4,8 @@ dev = [
     {include-group = "test"},
     {include-group = "release"},
     {include-group = "docs"},
-    "object-mother",
-    "value-objects",
+    "object-mother-sindri",
+    "value-object-sindri",
 ]
 
 release = [
@@ -57,10 +57,11 @@ asyncio_default_fixture_loop_scope = "function"
 
 [tool.uv.workspace]
 members = [
+    "packages/sindripy",
     "packages/value-objects",
     "packages/object-mother",
 ]
 
 [tool.uv.sources]
-value-objects = { workspace = true, editable = true }
-object-mother = { workspace = true, editable = true }
+value-object-sindri = { workspace = true, editable = true }
+object-mother-sindri = { workspace = true, editable = true }
