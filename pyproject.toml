@@ -52,14 +52,14 @@ markers = [
     "acceptance: mark a test as an acceptance test",
     "integration: mark a test as an integration test",
 ]
-testpaths = ["packages/value-objects/test", "packages/object-mother/test"]
+testpaths = ["packages/value_objects/test"]
 asyncio_default_fixture_loop_scope = "function"
 
 [tool.uv.workspace]
 members = [
     "packages/sindripy",
-    "packages/value-objects",
-    "packages/object-mother",
+    "packages/value_objects",
+    "packages/object_mother",
 ]
 
 [tool.uv.sources]

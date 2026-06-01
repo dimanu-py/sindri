@@ -65,22 +65,22 @@ check-typing:  ## Run mypy type checking.
 .PHONY: check-lint
 check-lint:  ## Run ruff linting check.
 	@echo "\n⌛ Running linting check...\n"
-	@uvx ruff check packages/value-objects/src packages/value-objects/test packages/object-mother/src
+	@uvx ruff check packages/value_objects/src packages/value_objects/test packages/object_mother/src
 
 .PHONY: lint
 lint:  ## Apply ruff linting fix.
 	@echo "\n⌛ Applying linting fixes...\n"
-	@uvx ruff check --fix packages/value-objects/src packages/value-objects/test packages/object-mother/src
+	@uvx ruff check --fix packages/value_objects/src packages/value_objects/test packages/object_mother/src
 
 .PHONY: check-format
 check-format:  ## Run ruff format check.
 	@echo "⌛ Checking code formatting...\n"
-	@uvx ruff format --check packages/value-objects/src packages/value-objects/test packages/object-mother/src
+	@uvx ruff format --check packages/value_objects/src packages/value_objects/test packages/object_mother/src
 
 .PHONY: format
 format:  ## Apply ruff format fix.
 	@echo "⌛ Formatting project code...\n"
-	@uvx ruff format packages/value-objects/src packages/value-objects/test packages/object-mother/src
+	@uvx ruff format packages/value_objects/src packages/value_objects/test packages/object_mother/src
 
 .PHONY: secrets
 secrets: # Check for secrets in the source code
@@ -124,7 +124,7 @@ docs-serve:  ## Start server for documentation.
 
 .PHONY: watch
 watch:  ## Run all test with every change.
-	@uv run ptw --runner "pytest packages/value-objects/test packages/object-mother/test -ra"
+	@uv run ptw --runner "pytest packages/value_objects/test -ra"
 
 .PHONY: opencode
 opencode:  ## Create symlinks for OpenCode compatibility.

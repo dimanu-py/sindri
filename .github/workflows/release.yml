@@ -59,7 +59,7 @@ jobs:
           commit: true
           tag: true
           vcs_release: true
-          config_file: packages/value-objects/pyproject.toml
+          config_file: packages/value_objects/pyproject.toml
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_committer_email: ${{ vars.GIT_COMMITTER_EMAIL }}
           git_committer_name: ${{ vars.GIT_COMMITTER_NAME }}
@@ -129,7 +129,7 @@ jobs:
           commit: true
           tag: true
           vcs_release: true
-          config_file: packages/object-mother/pyproject.toml
+          config_file: packages/object_mother/pyproject.toml
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_committer_email: ${{ vars.GIT_COMMITTER_EMAIL }}
           git_committer_name: ${{ vars.GIT_COMMITTER_NAME }}
