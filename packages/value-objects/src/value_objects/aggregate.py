@@ -138,13 +138,13 @@ class Aggregate(ABC):
             ...         self.invoice_id = invoice_id
             ...         self.amount = amount
             ...         self._calculated_tax = amount * 0.1  # private attribute
-            ...         self.__Invoice__secret = "hidden"    # name-mangled private
+            ...         self.__secret = "hidden"    # name-mangled private
             ...
             >>> invoice = Invoice("INV-001", 100.0)
             >>> invoice._to_dict()
-            {'invoice_id': 'INV-001', 'amount': 100.0, 'calculated_tax': 100.0}
+            {'invoice_id': 'INV-001', 'amount': 100.0, 'calculated_tax': 10.0}
             >>> invoice._to_dict(ignore_private=False)
-            {'invoice_id': 'INV-001', 'amount': 100.0, 'calculated_tax': 100.0, 'secret': 'hidden'}
+            {'invoice_id': 'INV-001', 'amount': 100.0, 'calculated_tax': 10.0, 'secret': 'hidden'}
         """
         dictionary: dict[str, Any] = {}
         for key, value in self.__dict__.items():
@@ -265,6 +265,8 @@ class Aggregate(ABC):
 
         Example:
             >>> from enum import Enum
+            >>> from value_objects import ValueObject
+            >>> from value_objects.aggregate import Aggregate
             >>>
             >>> class Status(Enum):
             ...     ACTIVE = "active"

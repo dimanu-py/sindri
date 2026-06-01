@@ -22,13 +22,13 @@ class ValueObject(ABC, Generic[T]):
 
     Example:
         ```python
-        from sindripy import ValueObject
+        from value_objects import ValueObject
 
         class String(ValueObject[str]):
             pass
 
         string = String("Hello World")
-        repr(email)  # String(_value='Hello World')
+        repr(string)  # String(_value='Hello World')
         ```
     """
 
@@ -51,13 +51,14 @@ class ValueObject(ABC, Generic[T]):
             Various validation errors depending on the specific value object implementation.
 
         Example:
-            from sindripy import ValueObject
+            ```python
+            from value_objects import ValueObject
 
             class String(ValueObject[str]):
                 pass
 
             string = String("Hello World")
-            repr(email)  # String(_value='Hello World')
+            repr(string)  # String(_value='Hello World')
             ```
         """
         object.__setattr__(self, "_value", value)
