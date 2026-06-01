@@ -9,8 +9,8 @@ Sindri replaces ad hoc primitives and fragile validators with a consistent Value
 toolkit you can adopt quickly. 
 Spin up validated value objects, aggregates, and test data with a simple and a small, focused API.
 
-The project provides two independent packages: **`value-objects`** (zero runtime dependencies) for value
-object patterns and **`object-mother`** (depends on faker) for test data generation.
+The project provides two independent packages: **`value-object-sindri`** (zero runtime dependencies) for value
+object patterns and **`object-mother-sindri`** (depends on faker) for test data generation.
 
 <br><br>
 

@@ -3,7 +3,7 @@ generate test data using object mothers.
 
 ## Your First Value Object
 
-The `value-objects` package comes with a set of built-in value objects that you can use directly in your code
+The `value-object-sindri` package comes with a set of built-in value objects that you can use directly in your code
 without any additional setup. To create your first value object, follow these steps:
 
 1. First import the value object class you want to use from the `value_objects` module.
@@ -26,7 +26,7 @@ print(f"Name: {name.value}, Age: {age.value}")  # Output -> Name: John Doe, Age:
 
 ## Your First Object Mother
 
-On the other hand, the `object-mother` package provides a set of built-in object mothers that you 
+On the other hand, the `object-mother-sindri` package provides a set of built-in object mothers that you 
 can use to generate realistic test data for your value objects. To create your first object mother, follow these steps:
 
 1. First import the object mother classes you want to use from the `object_mother` module.

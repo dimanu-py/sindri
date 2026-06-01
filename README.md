@@ -15,8 +15,8 @@ Sindri replaces ad hoc primitives and fragile validators with a consistent Value
 toolkit you can adopt quickly. 
 Spin up validated value objects, aggregates, and test data with a simple and a small, focused API.
 
-The project provides two independent packages: **`value-objects`** (zero runtime dependencies) for value
-object patterns and **`object-mother`** (depends on faker) for test data generation.
+The project provides two independent packages: **`value-object-sindri`** (zero runtime dependencies) for value
+object patterns and **`object-mother-sindri`** (depends on faker) for test data generation.
 
 <br>
 
@@ -67,8 +67,8 @@ This section provides a high-level overview of the documentation so you can find
 Install only what you need:
 
 ```bash
-pip install value-objects      # zero dependencies
-pip install object-mother      # with faker for test data
+pip install value-object-sindri      # zero dependencies
+pip install object-mother-sindri      # with faker for test data
 ```
 
 Here is a simple example of how to use `sindri` to create a value object and generate test data using an object mother.
@@ -90,6 +90,11 @@ random_name = StringPrimitivesMother.any()
 ```
 
 # Migrating to v1.0.0
+
+> **⚠️ `sindripy` is deprecated.** Use `value-object-sindri` and `object-mother-sindri` directly.
+> See the [migration guide](docs/documentation/value_objects/migration_guide.md) for details.
+
+
 
 This release includes a breaking change to the validator API used by value objects:
 

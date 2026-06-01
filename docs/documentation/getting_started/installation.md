@@ -7,16 +7,16 @@ The project provides two independent packages you can install separately dependi
 ## Installing with pip
 
 ```bash
-pip install value-objects      # value objects only, zero runtime dependencies
-pip install object-mother      # object mothers with faker for test data
-pip install value-objects object-mother  # both
+pip install value-object-sindri      # value objects only, zero runtime dependencies
+pip install object-mother-sindri      # object mothers with faker for test data
+pip install value-object-sindri object-mother-sindri  # both
 ```
 
 ## Installing with uv
 
 ```bash
-uv add value-objects
-uv add object-mother --group test
+uv add value-object-sindri
+uv add object-mother-sindri --group test
 ```
 
 ## Next steps

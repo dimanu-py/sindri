@@ -1,6 +1,6 @@
 # Contributing
 
-First off, **thank you** for wanting to improve **value-objects** and **object-mother** packages! Whether you're fixing a typo or building a whole new feature,
+First off, **thank you** for wanting to improve **value-object-sindri** and **object-mother-sindri** packages! Whether you're fixing a typo or building a whole new feature,
 your help makes the library better for everyone.
 
 ## Before You Start
@@ -60,7 +60,7 @@ If you want to implement a new feature, fix a bug, or improve the codebase, it's
 
     ```bash
     git add .
-    git commit -m "feat(value-objects): implement positive integer value object" -S --signoff  # we only accept signed and signed-off commits
+    git commit -m "feat(value-object-sindri): implement positive integer value object" -S --signoff  # we only accept signed and signed-off commits
     ```
 
 4. **Push Your Changes**: Push your changes to your fork.
