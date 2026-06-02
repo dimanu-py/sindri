@@ -4,7 +4,7 @@
 
 | Package        | PyPI                                                                     | Documentation                                           |
 |----------------|--------------------------------------------------------------------------|---------------------------------------------------------|
-| Value Objects  | [`value-object-sindri`](https://pypi.org/project/value-object-sindri/)   | [docs](https://dimanu-py.github.io/value-objects/home/) |
+| Value Objects  | [`value-object-sindri`](https://pypi.org/project/value-object-sindri/)   | [docs](https://dimanu-py.github.io/value-object/home/)  |
 | Object Mothers | [`object-mother-sindri`](https://pypi.org/project/object-mother-sindri/) | [docs](https://dimanu-py.github.io/object-mother/home/) |
 
 ## What is this?
@@ -44,5 +44,5 @@ from value_object import ValueObject, validate
 ```
 
 For full documentation, visit:
-- [Value Objects docs](https://dimanu-py.github.io/value-objects/home/)
+- [Value Objects docs](https://dimanu-py.github.io/value-object/home/)
 - [Object Mother docs](https://dimanu-py.github.io/object-mother/home/)

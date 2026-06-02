@@ -4,7 +4,7 @@
 
 | Package | PyPI | Documentation |
 |---------|------|---------------|
-| Value Objects | [`value-object-sindri`](https://pypi.org/project/value-object-sindri/) | [docs](https://dimanu-py.github.io/value-objects/home/) |
+| Value Objects | [`value-object-sindri`](https://pypi.org/project/value-object-sindri/) | [docs](https://dimanu-py.github.io/value-object/home/) |
 | Object Mothers | [`object-mother-sindri`](https://pypi.org/project/object-mother-sindri/) | [docs](https://dimanu-py.github.io/object-mother/home/) |
 
 ## Why the split?
@@ -40,5 +40,5 @@ from object_mother import IntegerPrimitivesMother
 ```
 
 For full documentation, visit:
-- [Value Object docs](https://dimanu-py.github.io/value-objects/home/)
+- [Value Object docs](https://dimanu-py.github.io/value-object/home/)
 - [Object Mother docs](https://dimanu-py.github.io/object-mother/home/)
