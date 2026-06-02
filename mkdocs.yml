@@ -1,8 +1,7 @@
-site_name: Sindri
+site_name: Sindri (deprecated)
 site_url: https://dimanu-py.github.io/sindri
 site_description: >
-  A tool to help you create value objects, validate domain logic, ensure data integrity 
-  and generate test data in your Python applications.
+  [DEPRECATED] This package has been split into value-object-sindri and object-mother-sindri.
 repo_name: sindripy
 repo_url: https://github.com/dimanu-py/sindri
 docs_dir: docs/documentation
@@ -71,21 +70,6 @@ theme:
       accent: '#FAB387'
 nav:
   - Home: home/index.md
-  - Getting Started:
-      - getting_started/index.md
-      - Installation: getting_started/installation.md
-      - First Steps: getting_started/first_steps.md
-  - Value Object:
-      - value_objects/index.md
-      - Built-in Value Objects: value_objects/built_in_vo.md
-      - Validation Mechanism: value_objects/validation.md
-      - Customizing Value Objects: value_objects/customizing_vo.md
-      - Aggregate Roots: value_objects/aggregate_roots.md
-      - Migration Guide: value_objects/migration_guide.md
-  - Object Mother:
-      - object_mothers/index.md
-      - Built-in Mothers: object_mothers/built_in_mothers.md
-      - Customizing Mothers: object_mothers/customizing_mothers.md
-  - Contributing:
-      - How to Contribute: contributing/contributing_guide.md
-      - Security Policy: contributing/security.md
+  - Migration:
+      - Value Object: https://dimanu-py.github.io/value-objects/home/
+      - Object Mother: https://dimanu-py.github.io/object-mother/home/

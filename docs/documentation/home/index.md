@@ -1,61 +1,44 @@
-# Sindripy
+# Sindripy [DEPRECATED]
 
-<div align="center">
-  <strong>Easy use and customizable implementation for Value Object and Object Mother patterns.</strong>
-</div>
+**This package has been split into two independent packages.**
 
-<div align="center"><table><tr><td>
-Sindripy replaces ad hoc primitives and fragile validators with a consistent Value Object and Aggregate 
-toolkit you can adopt quickly. 
-Spin up validated value objects, aggregates, and test data with a simple and a small, focused API.
+| Package | PyPI | Documentation |
+|---------|------|---------------|
+| Value Objects | [`value-object-sindri`](https://pypi.org/project/value-object-sindri/) | [docs](https://dimanu-py.github.io/value-objects/home/) |
+| Object Mothers | [`object-mother-sindri`](https://pypi.org/project/object-mother-sindri/) | [docs](https://dimanu-py.github.io/object-mother/home/) |
 
-Sindripy provides a basic-high-customizable implementation to help you enforce
-domain invariants and improve code quality with minimal effort.
+## Why the split?
 
-<br><br>
+The `sindripy` package originally contained both the Value Object and Object Mother patterns. To give each pattern its own focus, versioning, and maintenance, they have been separated into independent packages:
 
-<b>Why use sindripy?</b> Building your domain with Sindri lets you:
+- **[value-object-sindri](https://pypi.org/project/value-object-sindri/)** — Value Object pattern implementation for Python and Domain Driven Design applications.
+- **[object-mother-sindri](https://pypi.org/project/object-mother-sindri/)** — Object Mother pattern implementation for Python test data generation.
 
-<ul style="list-style-type: none">
-  <li>⏱️ Cut domain modeling and validation to seconds</li>
-  <li>🛡️ Declare immutable, validated value objects with clear error messages</li>
-  <li>🧩 Model aggregates with explicit invariants and composition</li>
-  <li>🧪 Generate realistic test data via the Object Mother pattern</li>
-  <li>🧰 Start from ready made primitives and identifiers or extend with your own</li>
-  <li>🔧 Plug in custom validators, decorators, and typed primitives</li>
-</ul>
+## Using this package (v2.0.0)
 
-</td></tr></table></div>
+`sindripy` v2.0.0 is a transitional release that installs both `value-object-sindri` and `object-mother-sindri` as dependencies. When you import it, you'll see a deprecation warning instructing you to migrate to the new packages.
 
-!!! tip "Created with Instant Python"
-    This project was generated using [Instant Python](https://dimanu-py.github.io/instant-python/home/), a fast, easy and reliable project generator for Python projects.
+## Migration
 
-## Navigation Guide
+1. Replace `sindripy` with the new packages:
 
-This section provides a high-level overview of the `sindripy` documentation so you can find quickly what you need.
+```bash
+pip uninstall sindripy
+pip install value-object-sindri object-mother-sindri
+```
 
-### For Users
+2. Update your imports:
 
-- [Installation]
-- [First Steps]
-- [Value Object Pattern]
-- [Object Mother Pattern]
+```python
+# Old
+from sindripy.value_objects import Integer, String
+from sindripy.mothers import IntegerPrimitivesMother
 
-### For Developers
+# New
+from value_objects import Integer, String
+from object_mother import IntegerPrimitivesMother
+```
 
-- [Contributing Guide]
-- [Security Policy]
-
-### Need help?
-
--   Join a discussion 💬 on [GitHub Discussions]
--   [Raise an issue][GitHub Issues] on GitHub
-
-[GitHub Discussions]: https://github.com/dimanu-py/sindri/discussions
-[GitHub Issues]: https://github.com/dimanu-py/sindri/issues
-[Installation]: ../getting_started/installation.md
-[First Steps]: ../getting_started/first_steps.md
-[Value Object Pattern]: ../value_objects/index.md
-[Object Mother Pattern]: ../object_mothers/index.md
-[Contributing Guide]: ../contributing/contributing_guide.md
-[Security Policy]: ../contributing/security.md
+For full documentation, visit:
+- [Value Object docs](https://dimanu-py.github.io/value-objects/home/)
+- [Object Mother docs](https://dimanu-py.github.io/object-mother/home/)

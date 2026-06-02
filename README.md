@@ -1,131 +1,48 @@
-# Sindripy
+# Sindripy [DEPRECATED]
 
-### Value Object and Object Mother patterns for Python and Domain Driven Design applications
+**This package has been split into two independent packages.**
 
-Easy use and customizable implementation for Value Object and Object Mother patterns.
+| Package        | PyPI                                                                     | Documentation                                           |
+|----------------|--------------------------------------------------------------------------|---------------------------------------------------------|
+| Value Objects  | [`value-object-sindri`](https://pypi.org/project/value-object-sindri/)   | [docs](https://dimanu-py.github.io/value-objects/home/) |
+| Object Mothers | [`object-mother-sindri`](https://pypi.org/project/object-mother-sindri/) | [docs](https://dimanu-py.github.io/object-mother/home/) |
 
-<p align="center">
-  <a href="https://dimanu-py.github.io/sindri/getting_started/">Getting Started</a>&nbsp;&nbsp;•&nbsp;
-  <a href="https://dimanu-py.github.io/sindri/value_objects/">Value Object Pattern</a>&nbsp;&nbsp;•&nbsp;
-  <a href="https://dimanu-py.github.io/sindri/object_mothers/">Object Mother Pattern</a>
-</p>
+## What is this?
 
-<div align="center"><table><tr><td>
-Sindri replaces ad hoc primitives and fragile validators with a consistent Value Object and Aggregate 
-toolkit you can adopt quickly. 
-Spin up validated value objects, aggregates, and test data with a simple and a small, focused API.
+`sindripy` v2.0.0 is a transitional release that installs `value-object-sindri` and `object-mother-sindri` as dependencies and shows a deprecation warning on import. It no longer contains any implementation.
 
-Sindripy provides a basic-high-customizable implementation to help you enforce
-domain invariants and improve code quality with minimal effort.
+## Migration
 
-<br>
-
-<b>Why use sindripy?</b> Building your domain with Sindri lets you:
-
-<ul style="list-style-type: none">
-  <li>⏱️ Cut domain modeling and validation to seconds</li>
-  <li>🛡️ Declare immutable, validated value objects with clear error messages</li>
-  <li>🧩 Model aggregates with explicit invariants and composition</li>
-  <li>🧪 Generate realistic test data via the Object Mother pattern</li>
-  <li>🧰 Start from ready made primitives and identifiers or extend with your own</li>
-  <li>🔧 Plug in custom validators, decorators, and typed primitives</li>
-</ul>
-
-</td></tr></table></div>
-
-<div style="background-color: #1e2d3d; border: 1px solid #00d9ff; border-radius: 8px; padding: 16px; margin: 16px 0; display: flex; align-items: flex-start; gap: 12px;">
-  <div style="font-size: 20px; color: #00d9ff; flex-shrink: 0;">💧</div>
-  <div>
-    <strong style="color: #00d9ff;">Created with Instant Python</strong><br>
-    <span style="color: #a0a0a0;">This project was generated using <a href="https://github.com/dimanu-py/instant-python" style="color: #00d9ff; text-decoration: none;">Instant Python</a>, a fast, easy and reliable project generator for Python projects.</span>
-  </div>
-</div>
-
-## Navigation Guide
-
-This section provides a high-level overview of the `sindripy` documentation so you can find quickly what you need.
-
-### For Users
-
-- [Installation]
-- [First Steps]
-- [Value Object Pattern]
-- [Object Mother Pattern]
-
-### For Developers
-
-- [Contributing Guide]
-- [Security Policy]
-
-### Need help?
-
--   Join a discussion 💬 on [GitHub Discussions]
--   [Raise an issue][GitHub Issues] on GitHub
-
-## Fast Kickstart
-
-The latest version of `sindripy` can be installed from PyPI:
+1. Replace `sindripy` with the new packages:
 
 ```bash
-pip install sindripy
+pip uninstall sindripy
+pip install value-object-sindri object-mother-sindri
 ```
 
-Here is a simple example of how to use `sindri` to create a value object and generate test data using an object mother.
+2. Update your imports:
 
 ```python
+# Old
 from sindripy.value_objects import Integer, String
+from sindripy.mothers import IntegerPrimitivesMother
 
-age = Integer(30)
-name = String("John Doe")
-
-print(f"Name: {name.value}, Age: {age.value}")
+# New
+from value_object import Integer, String
+from object_mother import IntegerPrimitivesMother
 ```
+
+3. For custom value objects and validators, update the base class imports:
 
 ```python
-from sindripy.mothers import IntegerPrimitivesMother, StringPrimitivesMother
+# Old
+from sindripy.value_objects.value_object import ValueObject
+from sindripy.value_objects.decorators.validation import validate
 
-random_age = IntegerPrimitivesMother.any()
-random_name = StringPrimitivesMother.any()
+# New
+from value_object import ValueObject, validate
 ```
 
-# Migrating to v1.0.0
-
-This release includes a breaking change to the validator API used by value objects:
-
-- Validators no longer accept the incoming value as a parameter. Instead, the value is assigned to `self._value` before validators run, and validator methods have the signature `def _validate_xxx(self) -> None:`.
-- This simplifies validator signatures and reduces repetition across validation methods.
-
-Why this is a breaking change
-
-- Existing validator methods that still declare a `value` parameter will receive the wrong signature and raise a `TypeError` when the framework calls them. Custom code that expects the old parameter (for example, custom exception constructors or external utilities) may also need small updates.
-
-How to migrate
-
-- Follow the step-by-step migration guide which shows the exact edits and examples: [Validator Signature Migration Guide](docs/documentation/value_objects/migration_guide.md).
-- In short: find all methods decorated with `@validate`, remove the `value` parameter, replace uses of `value` with `self._value`, and update any error messages or custom exceptions that referenced the old parameter.
-
-A quick checklist:
-
-- [ ] Update `@validate` methods to `def _... (self) -> None`
-- [ ] Replace `value` references with `self._value`
-- [ ] Update error messages and custom exception usages
-- [ ] Run your tests
-
-
-<div style="background-color: #1e2d3d; border: 1px solid #00d9ff; border-radius: 8px; padding: 16px; margin: 16px 0; display: flex; align-items: flex-start; gap: 12px;">
-  <div style="font-size: 20px; color: #00d9ff; flex-shrink: 0;">ℹ️</div>
-  <div>
-    <strong style="color: #00d9ff;">Learn More</strong><br>
-    <span style="color: #a0a0a0;">To learn more about advanced usage of value objects, including validation, custom value objects, complex objects like aggregates, visit the <a href="https://dimanu-py.github.io/sindri/value_objects/" style="color: #00d9ff; text-decoration: none;">Value Object Pattern</a> and <a href="https://dimanu-py.github.io/sindri/object_mothers" style="color: #00d9ff; text-decoration: none;">Object Mother Pattern</a> sections of the documentation.</span>
-  </div>
-</div>
-
-
-[GitHub Discussions]: https://github.com/dimanu-py/sindri/discussions
-[GitHub Issues]: https://github.com/dimanu-py/sindri/issues
-[Installation]: https://github.com/dimanu-py/sindri/getting_started/installation/
-[First Steps]: https://github.com/dimanu-py/sindri/getting_started/first_steps/
-[Value Object Pattern]: https://dimanu-py.github.io/sindri/value_objects/
-[Object Mother Pattern]: https://dimanu-py.github.io/sindri/object_mothers
-[Contributing Guide]: https://github.com/dimanu-py/sindri/contributing/contributing_guide/
-[Security Policy]: https://github.com/dimanu-py/sindri/contributing/security/
+For full documentation, visit:
+- [Value Objects docs](https://dimanu-py.github.io/value-objects/home/)
+- [Object Mother docs](https://dimanu-py.github.io/object-mother/home/)
