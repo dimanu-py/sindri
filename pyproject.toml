@@ -1,34 +1,16 @@
 [project]
 name = "sindripy"
 version = "1.0.1"
-description = "Value Object and Object Mother patterns implementation for Python"
+description = "[DEPRECATED] Use value-object-sindri and object-mother-sindri instead"
 authors = [{name = "dimanu-py", email = "dimanu.py@gmail.com"}]
 dependencies = [
-    "faker",
+    "value-object-sindri>=0.1.0",
+    "object-mother-sindri>=0.1.0",
 ]
 requires-python = ">=3.10, <3.14"
 readme = "README.md"
 license = { file = "LICENSE" }
-keywords = [
-    "value object",
-    "value-object",
-    "value objects",
-    "value-objects",
-    "Value Object",
-    "object mother",
-    "object-mother",
-    "object mothers",
-    "object-mothers",
-    "Object Mother",
-    "domain driven design",
-    "ddd",
-    "clean architecture",
-    "hexagonal architecture",
-    "design patterns",
-    "testing",
-    "bdd",
-    "unit tests",
-]
+keywords = ["sindripy", "deprecated"]
 classifiers = [
     "Typing :: Typed",
     "Programming Language :: Python",
