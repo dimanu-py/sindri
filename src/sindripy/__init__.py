@@ -9,7 +9,7 @@ Install them directly instead of sindripy.
 
 import warnings
 
-__version__ = "1.0.1"
+__version__ = "2.0.0"
 
 warnings.warn(
     "sindripy is deprecated. Use 'value-object-sindri' (for Value Objects) "

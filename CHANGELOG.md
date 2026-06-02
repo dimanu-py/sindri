@@ -2,6 +2,35 @@
 
 <!-- version list -->
 
+## v2.0.0 (2026-06-02)
+
+### Build System
+
+- Fix uv.lock not updating package version when releasing
+  ([`dd605c2`](https://github.com/dimanu-py/sindri/commit/dd605c24c77e66879b82c356c3471bcb4445b246))
+
+- Remove implementation, add dependencies on split packages
+  ([`51db699`](https://github.com/dimanu-py/sindri/commit/51db6994f951ea88185b14ed5ea52fa839a920c0))
+
+- Update sindripy version tab in uv.lock
+  ([`40518a7`](https://github.com/dimanu-py/sindri/commit/40518a77756f2b324ab8d480e11cefa65af90b75))
+
+- Upgrade dependencies due to detected vulnerabilities
+  ([`caa4959`](https://github.com/dimanu-py/sindri/commit/caa4959f0d2f55f9e3e579aa207df559eaec6a68))
+
+### Documentation
+
+- Fix doc link to new value object
+  ([`ade14fc`](https://github.com/dimanu-py/sindri/commit/ade14fc2fd9e3e00138e8b0e697f55f4105af694))
+
+- Move official library documentation to docs/documentation to be able to store other type of
+  documentation in this folder
+  ([`711fe09`](https://github.com/dimanu-py/sindri/commit/711fe092e9f6046bec70dcf74ff96b6118569eb4))
+
+- Update README and site documentation for package split
+  ([`c966006`](https://github.com/dimanu-py/sindri/commit/c966006f62f26ce5d67278b93c4517007613495a))
+
+
 ## v1.0.1 (2026-02-05)
 
 ### Bug Fixes
