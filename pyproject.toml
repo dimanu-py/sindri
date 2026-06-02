@@ -123,6 +123,9 @@ markers = [
 testpaths = ["test"]
 asyncio_default_fixture_loop_scope = "function"
 
+[project.optional-dependencies]
+build = ["uv>=0.11.17"]
+
 [tool.semantic_release]
 version_toml = ["pyproject.toml:project.version"]
 version_variables = ["src/sindripy/__init__.py:__version__"]
@@ -133,8 +136,10 @@ allow_zero_version = true
 no_git_verify = false
 tag_format = "{version}"
 build_command = """
-    uv lock --upgrade-package sindripy
+    pip install -e '.[build]'
+    uv lock --upgrade-package "$PACKAGE_NAME"
     git add uv.lock
+    uv build
 """
 
 [tool.semantic_release.commit_parser_options]
@@ -152,6 +157,6 @@ mode = "update"
 #template_dir = "docs/changelog"
 
 [tool.semantic_release.changelog.default_templates]
-changelog_file = "CHANGELOG"
+changelog_file = "CHANGELOG.md"
 output_format = "md"
 mask_initial_release = false
